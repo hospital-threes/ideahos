@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper SYSTEM "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jz.mapper.WeatherMapper">
+    <!--//第一题  boolean addWeather_1(Weather_1 weather1);-->
+    <insert id="addWeather_1">
+        insert into weather1 (weather_description, temperature, humidity, wind_direction,
+        wind_power, city, date_y, wind)
+        values (#{weatherDescription},#{temperature},#{humidity},#{windDirection},#{windPower}
+        ,#{city},#{dateY},#{wind})
+    </insert>
+    <!--//第二题  boolean addWeather_2(Weather_2 weather2);-->
+    <insert id="addWeather_2">
+        insert into weather2 (bj_time, temperature, humidity, info, wid, direct, power, aqi)
+        values (#{bjTime},#{temperature},#{humidity},#{info},#{wid},#{direct},#{power},#{aqi});
+    </insert>
+
+    <!-- List<User> findall();-->
+    <select id="findall" resultType="com.jz.pojo.User">
+      select * from  user
+    </select>
+
+    <!--User findall2();-->
+    <select id="findall2" resultType="com.jz.pojo.User">
+      select * from  user where id=1
+    </select>
+</mapper>
