@@ -12,6 +12,6 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class Hospitalcon {
     @Autowired
-    private HospitalService service;
+    private HospitalService  service;
 
 }
