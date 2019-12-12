@@ -165,9 +165,6 @@
         </dependency>
 
 
-
-
-
         <!--httpclient-->
          <dependency>
                <groupId>com.squareup.okhttp3</groupId>
