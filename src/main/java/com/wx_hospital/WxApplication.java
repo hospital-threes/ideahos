@@ -7,13 +7,13 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.jz.mapper")
+@MapperScan(basePackages = "com.wx_hospital.mapper")
 //@EnableAsync//开启异步注解功能
 @EnableScheduling
-public class Jz_12Application {
+public class WxApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Jz_12Application.class, args);
+        SpringApplication.run(WxApplication.class, args);
     }
 
 }
