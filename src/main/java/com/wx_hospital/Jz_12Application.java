@@ -1,4 +1,4 @@
-package com.jz;
+package com.wx_hospital;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

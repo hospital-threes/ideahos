@@ -1,4 +1,4 @@
-package com.jz.service;
+package com.wx_hospital.service;
 
 /**
  * @author Administrator

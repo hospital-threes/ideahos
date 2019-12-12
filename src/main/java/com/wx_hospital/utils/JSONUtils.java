@@ -1,4 +1,4 @@
-package com.jz.utils;
+package com.wx_hospital.utils;
 
 
 import com.alibaba.fastjson.JSON;

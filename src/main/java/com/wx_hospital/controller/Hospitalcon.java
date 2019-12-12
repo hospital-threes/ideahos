@@ -1,6 +1,6 @@
-package com.jz.controller;
+package com.wx_hospital.controller;
 
-import com.jz.service.HospitalService;
+import com.wx_hospital.service.HospitalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -12,6 +12,6 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class Hospitalcon {
     @Autowired
-    private HospitalService  service;
+    private HospitalService service;
 
 }

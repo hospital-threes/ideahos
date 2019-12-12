@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.demo.dao.SecDoctorMapper" >
-  <resultMap id="BaseResultMap" type="com.example.demo.pojo.SecDoctor" >
+<mapper namespace="com.wx_hospital.mapper.SecDoctorMapper" >
+  <resultMap id="BaseResultMap" type="com.wx_hospital.pojo.SecDoctor" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="disabled" property="disabled" jdbcType="BIT" />

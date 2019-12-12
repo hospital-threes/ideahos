@@ -1,4 +1,4 @@
-package com.jz.controller;
+package com.wx_hospital.controller;
 
 import okhttp3.*;
 import org.apache.http.HttpEntity;

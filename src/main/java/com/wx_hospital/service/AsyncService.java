@@ -1,4 +1,4 @@
-package com.jz.service;
+package com.wx_hospital.service;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
