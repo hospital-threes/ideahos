@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wx_hospital.mapper.SecHospitalNewsMapper" >
 
-<select id="SelectNew" parameterType="com.wx_hospital.pojo.SecHospitalNews">
+<select id="SelectNew" resultType="com.wx_hospital.pojo.SecHospitalNews">
    SELECT
      *
     FROM
      sec_hospital_news
     WHERE
-     new_type='医院动态'
+     new_type=2
 </select>
 </mapper>
