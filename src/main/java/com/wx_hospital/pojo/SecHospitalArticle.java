@@ -3,7 +3,7 @@ package com.wx_hospital.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
-public class SecHospitalInfo implements Serializable {
+public class SecHospitalArticle implements Serializable {
     private Integer id;
 
     private String status;
@@ -12,11 +12,11 @@ public class SecHospitalInfo implements Serializable {
 
     private Date createtime;
 
-    private Integer newId;
+    private String articleTitle;
 
-    private Integer sequence;
+    private Integer articleType;
 
-    private String newInfo;
+    private Integer hospitalId;
 
     private static final long serialVersionUID = 1L;
 
@@ -52,28 +52,28 @@ public class SecHospitalInfo implements Serializable {
         this.createtime = createtime;
     }
 
-    public Integer getNewId() {
-        return newId;
+    public String getArticleTitle() {
+        return articleTitle;
     }
 
-    public void setNewId(Integer newId) {
-        this.newId = newId;
+    public void setArticleTitle(String articleTitle) {
+        this.articleTitle = articleTitle == null ? null : articleTitle.trim();
     }
 
-    public Integer getSequence() {
-        return sequence;
+    public Integer getArticleType() {
+        return articleType;
     }
 
-    public void setSequence(Integer sequence) {
-        this.sequence = sequence;
+    public void setArticleType(Integer articleType) {
+        this.articleType = articleType;
     }
 
-    public String getNewInfo() {
-        return newInfo;
+    public Integer getHospitalId() {
+        return hospitalId;
     }
 
-    public void setNewInfo(String newInfo) {
-        this.newInfo = newInfo == null ? null : newInfo.trim();
+    public void setHospitalId(Integer hospitalId) {
+        this.hospitalId = hospitalId;
     }
 
     @Override
@@ -86,9 +86,9 @@ public class SecHospitalInfo implements Serializable {
         sb.append(", status=").append(status);
         sb.append(", disabled=").append(disabled);
         sb.append(", createtime=").append(createtime);
-        sb.append(", newId=").append(newId);
-        sb.append(", sequence=").append(sequence);
-        sb.append(", newInfo=").append(newInfo);
+        sb.append(", articleTitle=").append(articleTitle);
+        sb.append(", articleType=").append(articleType);
+        sb.append(", hospitalId=").append(hospitalId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
