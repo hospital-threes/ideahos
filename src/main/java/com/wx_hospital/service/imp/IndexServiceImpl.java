@@ -1,7 +1,12 @@
 package com.wx_hospital.service.imp;
 
+import com.wx_hospital.mapper.SecHospitalMapper;
+import com.wx_hospital.pojo.SecHospital;
 import com.wx_hospital.service.IndexService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @program: ideahos
@@ -11,6 +16,11 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class IndexServiceImpl implements IndexService {
-
+    @Autowired
+    private SecHospitalMapper secHospitalMapper;
+    @Override
+    public List<SecHospital> SelectHos() {
+        return secHospitalMapper.SelectHos();
+    }
 }
 

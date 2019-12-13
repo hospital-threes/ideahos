@@ -12,11 +12,11 @@ public class SecHospitalNews implements Serializable {
 
     private Date createtime;
 
-    private Integer newType;
+    private Integer articleType;
 
-    private Integer hospital;
+    private Integer hospitalId;
 
-    private String newTitle;
+    private String articleTitle;
 
     private static final long serialVersionUID = 1L;
 
@@ -33,7 +33,7 @@ public class SecHospitalNews implements Serializable {
     }
 
     public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+        this.status = status;
     }
 
     public Boolean getDisabled() {
@@ -52,45 +52,40 @@ public class SecHospitalNews implements Serializable {
         this.createtime = createtime;
     }
 
-    public Integer getNewType() {
-        return newType;
+    public Integer getArticleType() {
+        return articleType;
     }
 
-    public void setNewType(Integer newType) {
-        this.newType = newType;
+    public void setArticleType(Integer articleType) {
+        this.articleType = articleType;
     }
 
-    public Integer getHospital() {
-        return hospital;
+    public Integer getHospitalId() {
+        return hospitalId;
     }
 
-    public void setHospital(Integer hospital) {
-        this.hospital = hospital;
+    public void setHospitalId(Integer hospitalId) {
+        this.hospitalId = hospitalId;
     }
 
-    public String getNewTitle() {
-        return newTitle;
+    public String getArticleTitle() {
+        return articleTitle;
     }
 
-    public void setNewTitle(String newTitle) {
-        this.newTitle = newTitle == null ? null : newTitle.trim();
+    public void setArticleTitle(String articleTitle) {
+        this.articleTitle = articleTitle;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", status=").append(status);
-        sb.append(", disabled=").append(disabled);
-        sb.append(", createtime=").append(createtime);
-        sb.append(", newType=").append(newType);
-        sb.append(", hospital=").append(hospital);
-        sb.append(", newTitle=").append(newTitle);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "SecHospitalNews{" +
+                "id=" + id +
+                ", status='" + status + '\'' +
+                ", disabled=" + disabled +
+                ", createtime=" + createtime +
+                ", articleType=" + articleType +
+                ", hospitalId=" + hospitalId +
+                ", articleTitle='" + articleTitle + '\'' +
+                '}';
     }
 }

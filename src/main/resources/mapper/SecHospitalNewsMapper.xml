@@ -6,8 +6,8 @@
    SELECT
      *
     FROM
-     sec_hospital_news
+     sec_hospital_article
     WHERE
-     new_type=2
+     article_type=2
 </select>
 </mapper>
