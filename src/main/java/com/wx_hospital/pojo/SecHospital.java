@@ -12,6 +12,8 @@ public class SecHospital implements Serializable {
 
     private Date createtime;
 
+    private String hospitalSort;
+
     private String hospitalName;
 
     private String hospitalAddress;
@@ -23,6 +25,14 @@ public class SecHospital implements Serializable {
     private Double latitude;
 
     private static final long serialVersionUID = 1L;
+
+    public String getHospitalSort() {
+        return hospitalSort;
+    }
+
+    public void setHospitalSort(String hospitalSort) {
+        this.hospitalSort = hospitalSort;
+    }
 
     public Integer getId() {
         return id;
