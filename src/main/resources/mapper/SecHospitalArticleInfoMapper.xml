@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.example.demo.dao.SecHospitalArticleInfoMapper" >
-
+<mapper namespace="com.wx_hospital.mapper.SecHospitalArticleInfoMapper" >
+<select id="SelectArticleInfoAll" resultType="com.wx_hospital.pojo.SecHospitalArticleInfo">
+    SELECT
+		a.article_title,i.article_info
+	FROM
+		sec_hospital_article a,sec_hospital_article_info i
+	WHERE
+		a.id=i.article_id and a.id=#{id}
+</select>
 </mapper>
