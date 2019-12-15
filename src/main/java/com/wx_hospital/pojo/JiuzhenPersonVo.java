@@ -16,7 +16,15 @@ public class JiuzhenPersonVo {/*就诊人vo*/
     private Date sampleTime;
     private String  secondDepartmentName;
     private String  secondDepartmentAddress;
+    private String  fileAddr;
 
+    public String getFileAddr() {
+        return fileAddr;
+    }
+
+    public void setFileAddr(String fileAddr) {
+        this.fileAddr = fileAddr;
+    }
 
     @Override
     public String toString() {
@@ -28,6 +36,7 @@ public class JiuzhenPersonVo {/*就诊人vo*/
                 ", sampleTime=" + sampleTime +
                 ", secondDepartmentName='" + secondDepartmentName + '\'' +
                 ", secondDepartmentAddress='" + secondDepartmentAddress + '\'' +
+                ", fileAddr='" + fileAddr + '\'' +
                 '}';
     }
 

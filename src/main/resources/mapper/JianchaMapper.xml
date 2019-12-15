@@ -27,17 +27,18 @@ select sec_report.id, sec_report.examine_info examineInfo,sec_report.sample_time
     <!--    JiuzhenPersonVo Xingqing(@Param("id") Integer id,@Param("reportId") Integer reportId);
 -->
     <select id="Xingqing" resultType="com.wx_hospital.pojo.JiuzhenPersonVo">
-select sec_patient.patient_name patientName,
+  select sec_patient.patient_name patientName,
   sec_report.examine_info examineInfo,
   sec_report.sample_type sampleType,
   sec_report.sample_time sampleTime,
   sec_second_department.second_department_name secondDepartmentName,
-  sec_second_department.second_department_address  secondDepartmentAddress
+  sec_second_department.second_department_address  secondDepartmentAddress,
+  sec_report.file_addr  fileAddr
   from sec_user,sec_report,sec_patient,sec_second_department
   where  sec_patient.id=sec_report.examine_id
   and  sec_user.id=sec_patient.user_id
   and  sec_second_department.id=sec_report.clinic_department_id
-  and  sec_user.id=#{id}
+   and  sec_user.id=#{id}
   and  sec_report.id=#{reportId}
     </select>
 
