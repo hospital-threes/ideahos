@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wx_hospital.mapper.SecUserMapper" >
+    <!--  SecUser findUserByPhone(@Param("phone") String phone); -->
+    <select id="findUserByPhone" resultType="com.wx_hospital.pojo.SecUser">
+        select * from sec_user WHERE phone = #{phone}
+    </select>
 
+    <!-- int zhuce(@Param("phone")String phone); -->
+    <insert id="zhuce" parameterType="String">
+        insert into sec_user ( createtime, username, phone, role_id) values (now(),"一般用户",#{phone},4);
+    </insert>
 </mapper>

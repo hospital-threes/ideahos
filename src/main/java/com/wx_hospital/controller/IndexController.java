@@ -28,5 +28,6 @@ public class IndexController {
         List<SecHospital> list=indexServiceImpl.SelectHos(hospitalId);
         return list;
     }
+
 }
 

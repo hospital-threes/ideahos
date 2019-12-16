@@ -1,5 +1,7 @@
 package com.wx_hospital.service;
 
+import com.wx_hospital.pojo.SecUser;
+
 /**
  * @program: ideahos
  * @description:
@@ -8,5 +10,6 @@ package com.wx_hospital.service;
  **/
 public interface PersonalCenterService {
 
+    SecUser userLogin(String phone);
 }
 
