@@ -4,6 +4,7 @@ import com.wx_hospital.mapper.JianchaDao;
 import com.wx_hospital.pojo.JiuzhenPersonVo;
 import com.wx_hospital.pojo.SecPatient;
 import com.wx_hospital.pojo.SecReport;
+import com.wx_hospital.pojo.SecUser;
 import com.wx_hospital.service.JianchaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class JianchaServiceImpl implements JianchaService {
     }
 
     @Override
-    public SecPatient JiuzenPerson(Integer id) {
+    public SecUser JiuzenPerson(Integer id) {
         return  dao.JiuzenPerson(id);
     }
 

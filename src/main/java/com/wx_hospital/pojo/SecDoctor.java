@@ -38,6 +38,43 @@ public class SecDoctor implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+
+
+    private String DepartmentName;
+
+    private String rankName;
+
+    private String hospitalName;
+
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getDepartmentName() {
+        return DepartmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        DepartmentName = departmentName;
+    }
+
+    public String getRankName() {
+        return rankName;
+    }
+
+    public void setRankName(String rankName) {
+        this.rankName = rankName;
+    }
+
+    public String getHospitalName() {
+        return hospitalName;
+    }
+
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -168,28 +205,26 @@ public class SecDoctor implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", status=").append(status);
-        sb.append(", disabled=").append(disabled);
-        sb.append(", createtime=").append(createtime);
-        sb.append(", name=").append(name);
-        sb.append(", assistant=").append(assistant);
-        sb.append(", display=").append(display);
-        sb.append(", tel=").append(tel);
-        sb.append(", rank=").append(rank);
-        sb.append(", visitplaces=").append(visitplaces);
-        sb.append(", visitaddress=").append(visitaddress);
-        sb.append(", introduce=").append(introduce);
-        sb.append(", adeptat=").append(adeptat);
-        sb.append(", onlineconsultant=").append(onlineconsultant);
-        sb.append(", ispremium=").append(ispremium);
-        sb.append(", price=").append(price);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "SecDoctor{" +
+                "id=" + id +
+                ", status='" + status + '\'' +
+                ", disabled=" + disabled +
+                ", createtime=" + createtime +
+                ", name='" + name + '\'' +
+                ", assistant=" + assistant +
+                ", display=" + display +
+                ", tel='" + tel + '\'' +
+                ", rank=" + rank +
+                ", visitplaces='" + visitplaces + '\'' +
+                ", visitaddress='" + visitaddress + '\'' +
+                ", introduce='" + introduce + '\'' +
+                ", adeptat='" + adeptat + '\'' +
+                ", onlineconsultant=" + onlineconsultant +
+                ", ispremium=" + ispremium +
+                ", price=" + price +
+                ", DepartmentName='" + DepartmentName + '\'' +
+                ", rankName='" + rankName + '\'' +
+                ", hospitalName='" + hospitalName + '\'' +
+                '}';
     }
 }

@@ -1,12 +1,16 @@
-package com.wx_hospital.mapper;
+package com.wx_hospital.service;
+
 
 import com.wx_hospital.pojo.SecDoctor;
 import com.wx_hospital.pojo.SecDoctorAppointmenttime;
 import com.wx_hospital.pojo.SecDoctorAppointmenttimeTimeframe;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface SecDoctorMapper {
+
+public interface DoctorService {
+
     List<SecDoctor> findDoctor(String deptId);
 
     SecDoctor huoquaddress(String id);
@@ -23,4 +27,3 @@ public interface SecDoctorMapper {
 
     Integer sum2(Integer id);
 }
-

@@ -1,8 +1,5 @@
 package com.wx_hospital.controller;
-import com.wx_hospital.pojo.JiuzhenPersonVo;
-import com.wx_hospital.pojo.ReportBaobiao;
-import com.wx_hospital.pojo.SecPatient;
-import com.wx_hospital.pojo.SecReport;
+import com.wx_hospital.pojo.*;
 import com.wx_hospital.service.JianchaService;
 import com.wx_hospital.utils.poiReadExcelInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +32,8 @@ public class JianchaController {
     /*检查报告（对应用户id查询）*/
     @RequestMapping("/JiuzenPerson")
     @ResponseBody
-    public SecPatient JiuzenPerson(Integer id){//用户id(获取session的id)
-        SecPatient user =service.JiuzenPerson(id);
+    public SecUser JiuzenPerson(Integer id){//用户id(获取session的id)
+        SecUser user =service.JiuzenPerson(id);
         return user;
     }
 
@@ -52,8 +49,11 @@ public class JianchaController {
     /*报表excel表返回前端显示*/
     @RequestMapping("/baobiao")
     @ResponseBody
-    public  List<ReportBaobiao>  baobiao(String url) {//用户id(获取session的id)
-        List<ReportBaobiao> list = poiReadExcelInfo.Res("D:\\test.xlsx");//传的前端获取对应的地址（活的最后再改）
+    public  List<ReportBaobiao>  baobiao(String fileAddr) {//用户id(获取session的id)
+        System.out.println(fileAddr+"______________________________________");
+        List<ReportBaobiao> list = poiReadExcelInfo.Res(fileAddr);//传的前端获取对应的地址（活的最后再改）
         return  list;
     }
+
+
 }

@@ -1,26 +1,77 @@
 package com.wx_hospital.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class SecDoctorAppointmenttime implements Serializable {
+
+
     private Integer id;
 
     private String status;
 
     private Boolean disabled;
-
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createtime;
 
     private Integer hospitalId;
 
     private Integer doctorId;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date appointmentTime;
 
     private String appointmentStatus;
 
+    private String appointmentTimes;
+
+    private String week;
+
+
+
+
     private static final long serialVersionUID = 1L;
+
+
+    @Override
+    public String toString() {
+        return "SecDoctorAppointmenttime{" +
+                "id=" + id +
+                ", status='" + status + '\'' +
+                ", disabled=" + disabled +
+                ", createtime=" + createtime +
+                ", hospitalId=" + hospitalId +
+                ", doctorId=" + doctorId +
+                ", appointmentTime=" + appointmentTime +
+                ", appointmentStatus='" + appointmentStatus + '\'' +
+                ", appointmentTimes='" + appointmentTimes + '\'' +
+                ", week='" + week + '\'' +
+                '}';
+    }
+
+    public String getAppointmentTimes() {
+        return appointmentTimes;
+    }
+
+    public void setAppointmentTimes(String appointmentTimes) {
+        this.appointmentTimes = appointmentTimes;
+    }
+
+    public String getWeek() {
+        return week;
+    }
+
+    public void setWeek(String week) {
+        this.week = week;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public Integer getId() {
         return id;
@@ -86,22 +137,4 @@ public class SecDoctorAppointmenttime implements Serializable {
         this.appointmentStatus = appointmentStatus == null ? null : appointmentStatus.trim();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", status=").append(status);
-        sb.append(", disabled=").append(disabled);
-        sb.append(", createtime=").append(createtime);
-        sb.append(", hospitalId=").append(hospitalId);
-        sb.append(", doctorId=").append(doctorId);
-        sb.append(", appointmentTime=").append(appointmentTime);
-        sb.append(", appointmentStatus=").append(appointmentStatus);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
 }
