@@ -18,7 +18,17 @@ public class SecHospitalArticleInfo implements Serializable {
 
     private String articleInfo;
 
+    private String articleTitle;
+
     private static final long serialVersionUID = 1L;
+
+    public String getArticleTitle() {
+        return articleTitle;
+    }
+
+    public void setArticleTitle(String articleTitle) {
+        this.articleTitle = articleTitle;
+    }
 
     public Integer getId() {
         return id;
@@ -78,19 +88,15 @@ public class SecHospitalArticleInfo implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", status=").append(status);
-        sb.append(", disabled=").append(disabled);
-        sb.append(", createtime=").append(createtime);
-        sb.append(", articleId=").append(articleId);
-        sb.append(", sequence=").append(sequence);
-        sb.append(", articleInfo=").append(articleInfo);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "SecHospitalArticleInfo{" +
+                "id=" + id +
+                ", status='" + status + '\'' +
+                ", disabled=" + disabled +
+                ", createtime=" + createtime +
+                ", articleId=" + articleId +
+                ", sequence=" + sequence +
+                ", articleInfo='" + articleInfo + '\'' +
+                ", articleTitle='" + articleTitle + '\'' +
+                '}';
     }
 }
