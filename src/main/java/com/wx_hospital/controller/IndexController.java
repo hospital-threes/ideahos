@@ -24,8 +24,8 @@ public class IndexController {
     //首页的信息
     @RequestMapping("/SelectHos")
     @ResponseBody
-    public List<SecHospital> SelectHos() {
-        List<SecHospital> list=indexServiceImpl.SelectHos();
+    public List<SecHospital> SelectHos(String hospitalId) {
+        List<SecHospital> list=indexServiceImpl.SelectHos(hospitalId);
         return list;
     }
 }

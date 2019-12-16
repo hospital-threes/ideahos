@@ -13,5 +13,5 @@ import java.util.List;
  **/
 public interface IndexService {
     //查询医院的首页信息
-    List<SecHospital> SelectHos();
+    List<SecHospital> SelectHos(String hospitalId);
 }

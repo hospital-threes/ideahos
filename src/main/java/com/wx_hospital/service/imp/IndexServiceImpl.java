@@ -20,8 +20,9 @@ public class IndexServiceImpl implements IndexService {
     private SecHospitalMapper secHospitalMapper;
     //主页信息
     @Override
-    public List<SecHospital> SelectHos() {
-        return secHospitalMapper.SelectHos();
+    public List<SecHospital> SelectHos(String hospitalId) {
+
+        return secHospitalMapper.SelectHos(hospitalId);
     }
 }
 
