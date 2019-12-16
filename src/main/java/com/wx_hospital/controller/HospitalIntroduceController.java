@@ -17,7 +17,7 @@ import java.util.List;
  * @create: 2019-12-13 12:05
  **/
 @Controller
-@RequestMapping("hospitalIntroduce")
+@RequestMapping("/hospitalIntroduce")
 public class HospitalIntroduceController {
 
     @Autowired
