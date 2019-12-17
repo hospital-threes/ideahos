@@ -7,6 +7,6 @@
         FROM
          sec_hospital_article
         WHERE
-         article_type=2
+         article_type=#{articleType} and hospital_id=#{hospitalId}
     </select>
 </mapper>
