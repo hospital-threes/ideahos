@@ -61,4 +61,19 @@ public class DoctorServiceImpl implements DoctorService {
     public Integer sum2(Integer id) {
         return secDoctorMapper.sum2(id);
     }
+
+    @Override
+    public String findTime(Integer id) {
+        return secDoctorMapper.findTime( id);
+    }
+
+    @Override
+    public String findTime2(Integer apptimeId) {
+        return secDoctorMapper.findTime2( apptimeId);
+    }
+
+    @Override
+    public String findDoctorName(Integer doctorId) {
+        return secDoctorMapper.findDoctorName( doctorId);
+    }
 }

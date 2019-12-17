@@ -5,6 +5,7 @@ import com.wx_hospital.utils.poiReadExcelInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -41,17 +42,18 @@ public class JianchaController {
     /*检查报告详情（对应用户id查询）*/
     @RequestMapping("/Xingqing")
     @ResponseBody
-    public JiuzhenPersonVo Xingqing(Integer id, Integer reportId){//用户id(获取session的id)
+    public JiuzhenPersonVo Xingqing(Integer id, Integer reportId,String fileAddr){//用户id(获取session的id)
+        System.out.println(fileAddr+"______________________________________");
         JiuzhenPersonVo user =service.Xingqing(id,reportId);
         return user;
     }
 
-    /*报表excel表返回前端显示*/
+  //*报表excel表返回前端显示*//*
     @RequestMapping("/baobiao")
     @ResponseBody
-    public  List<ReportBaobiao>  baobiao(String fileAddr) {//用户id(获取session的id)
-        System.out.println(fileAddr+"______________________________________");
-        List<ReportBaobiao> list = poiReadExcelInfo.Res(fileAddr);//传的前端获取对应的地址（活的最后再改）
+    public  List<ReportBaobiao>  baobiao(@RequestParam("fileAddr") String fileAddr) {//用户id(获取session的id)
+        String fileAddrpath="D:\\"+fileAddr+".xlsx";
+        List<ReportBaobiao> list = poiReadExcelInfo.Res(fileAddrpath);//传的前端获取对应的地址（活的最后再改）
         return  list;
     }
 

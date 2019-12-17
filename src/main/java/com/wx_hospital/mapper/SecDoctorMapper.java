@@ -22,5 +22,11 @@ public interface SecDoctorMapper {
     Integer sum1(Integer id);
 
     Integer sum2(Integer id);
+
+    String findTime(Integer id);
+
+    String findTime2(Integer apptimeId);
+
+    String findDoctorName(Integer doctorId);
 }
 

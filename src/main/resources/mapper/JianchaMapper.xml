@@ -22,8 +22,6 @@ and   sec_user.id=#{id}
     <!-- 回显就诊人信息 SecUser JiuzenPerson(Integer id); 后期可能会加就诊人id-->
     <select id="JiuzenPerson" resultType="com.wx_hospital.pojo.SecUser">
   select *  from  sec_user  where sec_user.id=#{id}
-
-
     </select>
 
     <!--    JiuzhenPersonVo Xingqing(@Param("id") Integer id,@Param("reportId") Integer reportId);

@@ -1,16 +1,15 @@
 package com.wx_hospital.controller;
 
-import com.wx_hospital.pojo.SecDoctor;
-import com.wx_hospital.pojo.SecDoctorAppointmenttime;
-import com.wx_hospital.pojo.SecDoctorAppointmenttimeTimeframe;
-import com.wx_hospital.pojo.SecPayWay;
+import com.wx_hospital.pojo.*;
 import com.wx_hospital.service.DoctorService;
 import com.wx_hospital.service.OnlineRegistrationService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -67,7 +66,8 @@ public class OnlineRegistrationController {
 
     //获取预约状态 时间
     @RequestMapping("huoqutime")
-    public List<SecDoctorAppointmenttime> huoqutime(Integer id){
+    public List<SecDoctorAppointmenttime> huoqutime(Integer id,HttpServletResponse response){
+        response.setContentType("text/html;charset=utf-8");
         System.out.println(id);
         List<SecDoctorAppointmenttime> list=doctorService.huoqutime(id);
         for(SecDoctorAppointmenttime l:list){
@@ -119,8 +119,9 @@ public class OnlineRegistrationController {
     }
 
     //查询预约状态
-    @RequestMapping("huoqustutas")
-    public String huoqustutas(Integer id){
+    @RequestMapping(value = "huoqustutas" )
+    public String huoqustutas(Integer id, HttpServletResponse response){
+        response.setContentType("text/html;charset=utf-8");
         if(id==null){
             id=1;
         }
@@ -132,6 +133,7 @@ public class OnlineRegistrationController {
         System.out.println(sum1+"loooooooo"+sum2);
         if(sum1==sum2){
             status="停诊";
+
             System.out.println(status);
             return status;
         }else {
@@ -139,4 +141,25 @@ public class OnlineRegistrationController {
             return status;
         }
     }
+
+
+    //获取预约时间
+    @RequestMapping("findtime")
+    public Time findtime(Integer id, Integer apptimeId, Integer doctorId){
+        String time1=doctorService.findTime(id);
+        String time2=doctorService.findTime2(apptimeId);
+        String doctorName=doctorService.findDoctorName(doctorId);
+        String week=OnlineRegistrationController.dateToWeek(time2);
+        Time t=new Time();
+        t.setYuyuetime(time1);
+        t.setYuyuetime1(time2);
+        t.setWeek(week);
+        t.setDoctorName(doctorName);
+        System.out.println(t);
+        return t;
+
+
+    }
+
+
 }
