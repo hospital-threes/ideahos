@@ -1,5 +1,9 @@
 package com.wx_hospital.service;
 
+import com.wx_hospital.pojo.SecPayWay;
+
+import java.util.List;
+
 /**
  * @program: ideahos
  * @description:
@@ -8,5 +12,6 @@ package com.wx_hospital.service;
  **/
 public interface OnlineRegistrationService {
 
+    List<SecPayWay> selectZhifuStyle();
 }
 

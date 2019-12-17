@@ -1,7 +1,12 @@
 package com.wx_hospital.service.imp;
 
+import com.wx_hospital.mapper.SecPayWayMapper;
+import com.wx_hospital.pojo.SecPayWay;
 import com.wx_hospital.service.OnlineRegistrationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @program: ideahos
@@ -12,5 +17,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class OnlineRegistrationServiceImpl implements OnlineRegistrationService {
 
+    @Autowired
+    private SecPayWayMapper secPayWayMapper;
+
+    @Override
+    public List<SecPayWay> selectZhifuStyle() {
+        return secPayWayMapper.selectZhifuStyle();
+    }
 }
 
