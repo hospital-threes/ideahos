@@ -142,7 +142,6 @@ public class OnlineRegistrationController {
         }
     }
 
-
     //获取预约时间
     @RequestMapping("findtime")
     public Time findtime(Integer id, Integer apptimeId, Integer doctorId){
