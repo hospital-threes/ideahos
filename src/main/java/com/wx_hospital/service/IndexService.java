@@ -1,6 +1,5 @@
 package com.wx_hospital.service;
 
-import com.wx_hospital.mapper.SecHospitalMapper;
 import com.wx_hospital.pojo.SecHospital;
 
 import java.util.List;

@@ -26,8 +26,8 @@ public class HospitalIntroduceController {
     //医院动态信息
     @RequestMapping("/SelectNews")
     @ResponseBody
-    public List<SecHospitalArticle> SelectNews(){
-        List<SecHospitalArticle> list=hospitalIntroduceServiceImpl.SelectNews();
+    public List<SecHospitalArticle> SelectNews(Integer articleType,Integer hospitalId){
+        List<SecHospitalArticle> list=hospitalIntroduceServiceImpl.SelectNews(articleType,hospitalId);
         return list;
     }
     //医院动态详细

@@ -22,7 +22,27 @@ public class SecSecondDepartment implements Serializable {
 
     private String secondDepartmentCommont;
 
+    private Integer hospitalId;
+
+    private String departmentName;
+
     private static final long serialVersionUID = 1L;
+
+    public Integer getHospitalId() {
+        return hospitalId;
+    }
+
+    public void setHospitalId(Integer hospitalId) {
+        this.hospitalId = hospitalId;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
 
     public Integer getId() {
         return id;
@@ -98,21 +118,18 @@ public class SecSecondDepartment implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", status=").append(status);
-        sb.append(", disabled=").append(disabled);
-        sb.append(", createtime=").append(createtime);
-        sb.append(", firstDepartmentId=").append(firstDepartmentId);
-        sb.append(", secondDepartmentName=").append(secondDepartmentName);
-        sb.append(", sequence=").append(sequence);
-        sb.append(", secondDepartmentAddress=").append(secondDepartmentAddress);
-        sb.append(", secondDepartmentCommont=").append(secondDepartmentCommont);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "SecSecondDepartment{" +
+                "id=" + id +
+                ", status='" + status + '\'' +
+                ", disabled=" + disabled +
+                ", createtime=" + createtime +
+                ", firstDepartmentId=" + firstDepartmentId +
+                ", secondDepartmentName='" + secondDepartmentName + '\'' +
+                ", sequence=" + sequence +
+                ", secondDepartmentAddress='" + secondDepartmentAddress + '\'' +
+                ", secondDepartmentCommont='" + secondDepartmentCommont + '\'' +
+                ", hospitalId=" + hospitalId +
+                ", departmentName='" + departmentName + '\'' +
+                '}';
     }
 }
