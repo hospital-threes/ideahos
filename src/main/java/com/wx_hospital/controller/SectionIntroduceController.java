@@ -1,9 +1,13 @@
 package com.wx_hospital.controller;
 
+import com.wx_hospital.pojo.SecSecondDepartment;
 import com.wx_hospital.service.SectionIntroduceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * @program: ideahos
@@ -16,5 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SectionIntroduceController {
     @Autowired
     private SectionIntroduceService sectionIntroduceServiceImpl;
+
+    @RequestMapping("/SelectFirDep")
+    @ResponseBody
+    public List<SecSecondDepartment> SelectFirDep(Integer hospitalId){
+        List<SecSecondDepartment> list=sectionIntroduceServiceImpl.SelectFirDep(hospitalId);
+        return list;
+    }
 }
 

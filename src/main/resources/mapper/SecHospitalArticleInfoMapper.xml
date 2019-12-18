@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wx_hospital.mapper.SecHospitalArticleInfoMapper" >
 <select id="SelectArticleInfoAll" resultType="com.wx_hospital.pojo.SecHospitalArticleInfo">
+	<!--List<SecHospitalArticleInfo> SelectArticleInfoAll(Integer id);-->
     SELECT
 		a.article_title,i.article_info
 	FROM
