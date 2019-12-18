@@ -161,4 +161,37 @@ public class OnlineRegistrationController {
     }
 
 
+    //selectPatient 查询就诊人
+    @RequestMapping("/selectPatient")
+    @ResponseBody
+    public List<SecPatient> selectPatient(Integer id){//用户id(获取session的id)
+        List<SecPatient>  list =onlineRegistrationServiceImpl.selectpatient(id);
+        return list;
+    }
+
+
+    //UpdateMoren 修改默认人
+    @RequestMapping("/UpdateMoren")
+    @ResponseBody
+    public int UpdateMoren(Integer id){//patientid
+        int i =onlineRegistrationServiceImpl.UpdateMoren(id);
+        return i;
+    }
+
+
+    //selectHuixiapatient 回显就诊人（就诊信息）
+    @RequestMapping("/selectHuixiapatient")
+    @ResponseBody
+    public SecPatient selectHuixiapatient(Integer id){
+        SecPatient i =onlineRegistrationServiceImpl.selectHuixiapatient(id);
+        if(i==null){
+            SecPatient i2 =onlineRegistrationServiceImpl.selectUser(id);
+             return i2;
+        }else {
+            return  i;
+        }
+
+
+    }
+
 }
