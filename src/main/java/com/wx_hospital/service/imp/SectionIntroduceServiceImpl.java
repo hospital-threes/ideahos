@@ -1,7 +1,12 @@
 package com.wx_hospital.service.imp;
 
+import com.wx_hospital.mapper.SecSecondDepartmentMapper;
+import com.wx_hospital.pojo.SecSecondDepartment;
 import com.wx_hospital.service.SectionIntroduceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @program: ideahos
@@ -11,6 +16,11 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class SectionIntroduceServiceImpl implements SectionIntroduceService {
-
+    @Autowired
+    private SecSecondDepartmentMapper secSecondDepartmentMapper;
+    @Override
+    public List<SecSecondDepartment> SelectFirDep(Integer hospitalId) {
+        return secSecondDepartmentMapper.SelectFirDep(hospitalId);
+    }
 }
 
