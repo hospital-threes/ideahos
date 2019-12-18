@@ -2,4 +2,60 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wx_hospital.mapper.SecDoctorMapper" >
 
+    <!--List<SecDoctor> findDoctor(String deptId);-->
+    <select id="findDoctor" resultType="com.wx_hospital.pojo.SecDoctor">
+       select * from sec_doctor sd,sec_rank_dic srd,sec_doctor_multipoint sdm,sec_first_department sfd where
+sd.rank=srd.rank_code and sd.id=sdm.doctor_id  and sfd.id=sdm.department_id and sfd.id=#{deptId}
+    </select>
+    <!--SecDoctor huoquaddress(String id);-->
+    <select id="huoquaddress" resultType="com.wx_hospital.pojo.SecDoctor">
+        select * from sec_doctor sd where sd.id=#{id}
+    </select>
+    <!--SecDoctorAppointmenttime huoquappointment(String appointmenttime);-->
+    <select id="huoquappointment" resultType="com.wx_hospital.pojo.SecDoctorAppointmenttime">
+        SELECT * from sec_doctor_appointmenttime where appointment_time=#{appointmenttime}
+    </select>
+
+    <!-- List<SecDoctorAppointmenttime> huoqutime(Integer id);-->
+    <select id="huoqutime" resultType="com.wx_hospital.pojo.SecDoctorAppointmenttime">
+        select * from sec_doctor_appointmenttime where doctor_id=#{id}
+    </select>
+
+    <!--List<SecDoctor> huoquadministrative(String deptname);-->
+    <select id="huoquadministrative" resultType="com.wx_hospital.pojo.SecDoctor">
+        select * from sec_doctor sd,sec_rank_dic srd,sec_doctor_multipoint sdm,sec_first_department sfd where
+sd.rank=srd.rank_code and sd.id=sdm.doctor_id  and sfd.id=sdm.department_id and sfd.department_name=#{deptname}
+    </select>
+
+    <!--List<SecDoctorAppointmenttimeTimeframe> huoquappointmenttime();-->
+    <select id="huoquappointmenttime" resultType="com.wx_hospital.pojo.SecDoctorAppointmenttimeTimeframe">
+        select * from sec_doctor_appointmenttime_timeframe where appointmenttime_id=#{id}
+    </select>
+
+    <!--String sum1(Integer id);-->
+    <select id="sum1" resultType="Integer">
+        SELECT sum(timeframe_peoplenum) from sec_doctor_appointmenttime_timeframe where appointmenttime_id=#{id}
+    </select>
+
+    <!--String sum1(Integer id);-->
+    <select id="sum2" resultType="Integer">
+        SELECT sum(timeframe_peoplenum1) from sec_doctor_appointmenttime_timeframe where appointmenttime_id=#{id}
+    </select>
+
+
+
+    <!-- String findTime(Integer id);-->
+    <select id="findTime" resultType="String">
+        SELECT timeframe from sec_doctor_appointmenttime_timeframe where id=#{id}
+    </select>
+
+    <!--  String findTime2(Integer apptimeId);-->
+    <select id="findTime2" resultType="String">
+        SELECT appointment_time FROM sec_doctor_appointmenttime where id=#{apptimeId}
+    </select>
+
+    <!--String findDoctorName(Integer doctorId);-->
+    <select id="findDoctorName" resultType="String">
+        SELECT `name` from sec_doctor where id=#{doctorId}
+    </select>
 </mapper>
