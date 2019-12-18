@@ -20,7 +20,7 @@ import java.util.List;
 public class SectionIntroduceController {
     @Autowired
     private SectionIntroduceService sectionIntroduceServiceImpl;
-
+    //科室介绍页面信息
     @RequestMapping("/SelectFirDep")
     @ResponseBody
     public List<SecSecondDepartment> SelectFirDep(Integer hospitalId){

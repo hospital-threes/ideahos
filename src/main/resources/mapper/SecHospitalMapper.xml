@@ -11,6 +11,15 @@
         where
             id=#{hospitalId};
     </select>
+    <select id="SelectPic" resultType="com.wx_hospital.pojo.SecPic">
+        SELECT
+            *
+        FROM
+            sec_pic
+        WHERE
+            obj_id=1 AND obj_type='hospital' AND type='focus'
+        ORDER BY id DESC LIMIT 3
+    </select>
 
 
 
