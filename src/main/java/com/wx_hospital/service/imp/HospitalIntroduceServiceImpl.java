@@ -24,8 +24,8 @@ public class HospitalIntroduceServiceImpl implements HospitalIntroduceService {
     private SecHospitalArticleInfoMapper SecHospitalArticleInfoMapper;
 
     @Override
-    public List<SecHospitalArticle> SelectNews() {
-        return SecHospitalArticleMapper.SelectNews();
+    public List<SecHospitalArticle> SelectNews( Integer articleType,Integer hospitalId) {
+        return SecHospitalArticleMapper.SelectNews(articleType,hospitalId);
     }
 
     @Override
