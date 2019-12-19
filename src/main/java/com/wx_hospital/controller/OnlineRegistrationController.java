@@ -20,10 +20,6 @@ public class OnlineRegistrationController {
 
     @Autowired
     private OnlineRegistrationService onlineRegistrationServiceImpl;
-    @Autowired
-    private PersonalCenterService personalCenterService;
-
-
 
     /**
      * 查询支付方式
@@ -203,47 +199,5 @@ public class OnlineRegistrationController {
 
     }
 
-    /**
-     *  查询就诊人
-     * @param id
-     * @return
-     */
-    @RequestMapping("/selectPatient")
-    @ResponseBody
-    public List<SecPatient> selectPatient(Integer id){//用户id(获取session的id)
-        List<SecPatient>  list =personalCenterService.selectpatient(id);
-        return list;
-    }
-
-    /**
-     * 修改默认人
-     * @param id
-     * @return
-     */
-    @RequestMapping("/UpdateMoren")
-    @ResponseBody
-    public int UpdateMoren(Integer id){//patientid
-        int i =personalCenterService.UpdateMoren(id);
-        return i;
-    }
-
-    /**
-     * 回显就诊人（就诊信息）
-     * @param id
-     * @return
-     */
-    @RequestMapping("/selectHuixiapatient")
-    @ResponseBody
-    public SecPatient selectHuixiapatient(Integer id){
-        SecPatient i =personalCenterService.selectHuixiapatient(id);
-        if(i==null){
-            SecPatient i2 =personalCenterService.selectUser(id);
-             return i2;
-        }else {
-            return  i;
-        }
-
-
-    }
 
 }
