@@ -1,7 +1,6 @@
 package com.wx_hospital.controller;
 
 import com.wx_hospital.pojo.*;
-import com.wx_hospital.service.DoctorService;
 import com.wx_hospital.service.OnlineRegistrationService;
 
 import com.wx_hospital.service.PersonalCenterService;
@@ -22,13 +21,7 @@ import java.util.List;
 public class OnlineRegistrationController {
 
     @Autowired
-    private DoctorService doctorService;
-    @Autowired
     private OnlineRegistrationService onlineRegistrationServiceImpl;
-    @Autowired
-    private PersonalCenterService personalCenterService;
-
-
 
     /**
      * 查询支付方式
@@ -48,7 +41,7 @@ public class OnlineRegistrationController {
      */
     @RequestMapping("appointment")
     public List<SecDoctor> appointment(String deptId){
-        List<SecDoctor> list=doctorService.findDoctor(deptId);
+        List<SecDoctor> list=onlineRegistrationServiceImpl.findDoctor(deptId);
         System.out.println(list);
         return list;
     }
@@ -60,7 +53,7 @@ public class OnlineRegistrationController {
      */
     @RequestMapping("huoquaddress")
     public SecDoctor huoquaddress(String id){
-        return doctorService.huoquaddress(id);
+        return onlineRegistrationServiceImpl.huoquaddress(id);
     }
 
     /**
@@ -70,7 +63,7 @@ public class OnlineRegistrationController {
      */
     @RequestMapping("huoquappointment")
     public String huoquappointment(String appointmenttime){
-        SecDoctorAppointmenttime sd=doctorService.huoquappointment(appointmenttime);
+        SecDoctorAppointmenttime sd=onlineRegistrationServiceImpl.huoquappointment(appointmenttime);
         String statu="";
         if(sd.getAppointmentStatus().equals("开放预约")){
             statu="开放预约";
@@ -93,7 +86,7 @@ public class OnlineRegistrationController {
     public List<SecDoctorAppointmenttime> huoqutime(Integer id,HttpServletResponse response){
         response.setContentType("text/html;charset=utf-8");
         System.out.println(id);
-        List<SecDoctorAppointmenttime> list=doctorService.huoqutime(id);
+        List<SecDoctorAppointmenttime> list=onlineRegistrationServiceImpl.huoqutime(id);
         for(SecDoctorAppointmenttime l:list){
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             String s = formatter.format(l.getAppointmentTime());
@@ -135,7 +128,7 @@ public class OnlineRegistrationController {
      */
     @RequestMapping("huoquadministrative")
     public List<SecDoctor> huoquadministrative(String deptname){
-        List<SecDoctor> list=doctorService.huoquadministrative(deptname);
+        List<SecDoctor> list=onlineRegistrationServiceImpl.huoquadministrative(deptname);
         return list;
     }
 
@@ -149,7 +142,7 @@ public class OnlineRegistrationController {
         if(id==null){
             id=1;
         }
-        List<SecDoctorAppointmenttimeTimeframe> list=doctorService.huoquappointmenttime(id);
+        List<SecDoctorAppointmenttimeTimeframe> list=onlineRegistrationServiceImpl.huoquappointmenttime(id);
         System.out.println(list);
 
         return list;
@@ -169,9 +162,9 @@ public class OnlineRegistrationController {
         }
         String status="";
         //可预约人数
-        Integer sum1=doctorService.sum1(id);
+        Integer sum1=onlineRegistrationServiceImpl.sum1(id);
         //已预约人数
-        Integer sum2=doctorService.sum2(id);
+        Integer sum2=onlineRegistrationServiceImpl.sum2(id);
         System.out.println(sum1+"loooooooo"+sum2);
         if(sum1==sum2){
             status="停诊";
@@ -193,9 +186,9 @@ public class OnlineRegistrationController {
      */
     @RequestMapping("findtime")
     public Time findtime(Integer id, Integer apptimeId, Integer doctorId){
-        String time1=doctorService.findTime(id);
-        String time2=doctorService.findTime2(apptimeId);
-        String doctorName=doctorService.findDoctorName(doctorId);
+        String time1=onlineRegistrationServiceImpl.findTime(id);
+        String time2=onlineRegistrationServiceImpl.findTime2(apptimeId);
+        String doctorName=onlineRegistrationServiceImpl.findDoctorName(doctorId);
         String week=OnlineRegistrationController.dateToWeek(time2);
         Time t=new Time();
         t.setYuyuetime(time1);
@@ -208,47 +201,18 @@ public class OnlineRegistrationController {
 
     }
 
-    /**
-     *  查询就诊人
-     * @param id
-     * @return
-     */
-    @RequestMapping("/selectPatient")
-    @ResponseBody
-    public List<SecPatient> selectPatient(Integer id){//用户id(获取session的id)
-        List<SecPatient>  list =personalCenterService.selectpatient(id);
-        return list;
-    }
 
     /**
-     * 修改默认人
-     * @param id
-     * @return
+     * 立即预约
+     * 添加预约表 addReservationTable
      */
-    @RequestMapping("/UpdateMoren")
+    @RequestMapping("/addReservationTable")
     @ResponseBody
-    public int UpdateMoren(Integer id){//patientid
-        int i =personalCenterService.UpdateMoren(id);
-        return i;
+    public int  addReservationTable(SecReservation secReservation){
+       int i=onlineRegistrationServiceImpl.addReservationTable(secReservation);
+       return  i;
     }
 
-    /**
-     * 回显就诊人（就诊信息）
-     * @param id
-     * @return
-     */
-    @RequestMapping("/selectHuixiapatient")
-    @ResponseBody
-    public SecPatient selectHuixiapatient(Integer id){
-        SecPatient i =personalCenterService.selectHuixiapatient(id);
-        if(i==null){
-            SecPatient i2 =personalCenterService.selectUser(id);
-             return i2;
-        }else {
-            return  i;
-        }
 
-
-    }
 
 }

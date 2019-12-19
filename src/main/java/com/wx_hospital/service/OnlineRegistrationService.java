@@ -1,8 +1,6 @@
 package com.wx_hospital.service;
 
-import com.wx_hospital.pojo.SecPatient;
-import com.wx_hospital.pojo.SecPayWay;
-import com.wx_hospital.pojo.SecUser;
+import com.wx_hospital.pojo.*;
 
 import java.util.List;
 
@@ -16,12 +14,29 @@ public interface OnlineRegistrationService {
 
     List<SecPayWay> selectZhifuStyle();
 
-//    List<SecPatient> selectpatient(Integer id);
-//
-//    int UpdateMoren(Integer id);
-//
-//    SecPatient selectHuixiapatient(Integer id);
-//
-//    SecPatient selectUser(Integer id);
+    int addReservationTable(SecReservation secReservation);
+
+    List<SecDoctor> findDoctor(String deptId);
+
+    SecDoctor huoquaddress(String id);
+
+    SecDoctorAppointmenttime huoquappointment(String appointmenttime);
+
+    List<SecDoctorAppointmenttime> huoqutime(Integer id);
+
+    List<SecDoctor> huoquadministrative(String deptname);
+
+    List<SecDoctorAppointmenttimeTimeframe> huoquappointmenttime(Integer id);
+
+    Integer sum1(Integer id);
+
+    Integer sum2(Integer id);
+
+    String findTime(Integer id);
+
+    String findTime2(Integer apptimeId);
+
+    String findDoctorName(Integer doctorId);
+
 }
 

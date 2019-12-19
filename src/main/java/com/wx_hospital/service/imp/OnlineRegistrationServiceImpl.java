@@ -1,9 +1,9 @@
 package com.wx_hospital.service.imp;
 
+import com.wx_hospital.mapper.SecDoctorMapper;
 import com.wx_hospital.mapper.SecPayWayMapper;
-import com.wx_hospital.pojo.SecPatient;
-import com.wx_hospital.pojo.SecPayWay;
-import com.wx_hospital.pojo.SecUser;
+import com.wx_hospital.mapper.SecReservationMapper;
+import com.wx_hospital.pojo.*;
 import com.wx_hospital.service.OnlineRegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,30 +21,80 @@ public class OnlineRegistrationServiceImpl implements OnlineRegistrationService 
 
     @Autowired
     private SecPayWayMapper secPayWayMapper;
+    @Autowired
+    private SecReservationMapper secReservationMapper;
+    @Autowired
+    private SecDoctorMapper secDoctorMapper;
+
+
 
     @Override
     public List<SecPayWay> selectZhifuStyle() {
         return secPayWayMapper.selectZhifuStyle();
     }
 
-   /* @Override
-    public List<SecPatient> selectpatient(Integer id) {
-        return secPayWayMapper.selectpatient(id);
+    @Override
+    public int addReservationTable(SecReservation secReservation) {
+        return secReservationMapper.addReservationTable(secReservation);
     }
 
     @Override
-    public int UpdateMoren(Integer id) {
-        return secPayWayMapper.UpdateMoren(id);
+    public List<SecDoctor> findDoctor(String deptId) {
+        return secDoctorMapper.findDoctor(deptId);
     }
 
     @Override
-    public SecPatient selectHuixiapatient(Integer id) {
-        return secPayWayMapper.selectHuixiapatient(id);
+    public SecDoctor huoquaddress(String id) {
+        return secDoctorMapper.huoquaddress(id);
     }
 
     @Override
-    public SecPatient selectUser(Integer id) {
-        return secPayWayMapper.selectUser(id);
-    }*/
+    public SecDoctorAppointmenttime huoquappointment(String appointmenttime) {
+        return secDoctorMapper.huoquappointment(appointmenttime);
+    }
+
+    @Override
+    public List<SecDoctorAppointmenttime> huoqutime(Integer id) {
+        List<SecDoctorAppointmenttime> list=secDoctorMapper.huoqutime(id);
+        return list;
+    }
+
+    @Override
+    public List<SecDoctor> huoquadministrative(String deptname) {
+        return secDoctorMapper.huoquadministrative(deptname);
+    }
+
+    @Override
+    public List<SecDoctorAppointmenttimeTimeframe> huoquappointmenttime(Integer id) {
+        List<SecDoctorAppointmenttimeTimeframe> list=secDoctorMapper.huoquappointmenttime(id);
+
+
+        return list;
+    }
+
+    @Override
+    public Integer sum1(Integer id) {
+        return secDoctorMapper.sum1(id);
+    }
+
+    @Override
+    public Integer sum2(Integer id) {
+        return secDoctorMapper.sum2(id);
+    }
+
+    @Override
+    public String findTime(Integer id) {
+        return secDoctorMapper.findTime( id);
+    }
+
+    @Override
+    public String findTime2(Integer apptimeId) {
+        return secDoctorMapper.findTime2( apptimeId);
+    }
+
+    @Override
+    public String findDoctorName(Integer doctorId) {
+        return secDoctorMapper.findDoctorName( doctorId);
+    }
 }
 

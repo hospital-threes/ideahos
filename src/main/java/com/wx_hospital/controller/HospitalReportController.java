@@ -25,13 +25,13 @@ import java.util.List;
 public class HospitalReportController {
 
     @Autowired
-    private HospitalReportService hospitalReportService;
+    private HospitalReportService hospitalReportServiceImpl;
 
     /*检查报告（对应用户id查询）*/
     @RequestMapping("/seclectReport")
     @ResponseBody
     public List<SecReport> seclectReport(Integer id){//用户id
-        List<SecReport> list =hospitalReportService.seclectReport(id);
+        List<SecReport> list =hospitalReportServiceImpl.seclectReport(id);
         return list;
     }
 
@@ -41,7 +41,7 @@ public class HospitalReportController {
     @RequestMapping("/JiuzenPerson")
     @ResponseBody
     public SecUser JiuzenPerson(Integer id){//用户id(获取session的id)
-        SecUser user =hospitalReportService.JiuzenPerson(id);
+        SecUser user =hospitalReportServiceImpl.JiuzenPerson(id);
         return user;
     }
 
@@ -51,7 +51,7 @@ public class HospitalReportController {
     @ResponseBody
     public JiuzhenPersonVo Xingqing(Integer id, Integer reportId, String fileAddr){//用户id(获取session的id)
         System.out.println(fileAddr+"______________________________________");
-        JiuzhenPersonVo user =hospitalReportService.Xingqing(id,reportId);
+        JiuzhenPersonVo user =hospitalReportServiceImpl.Xingqing(id,reportId);
         return user;
     }
 

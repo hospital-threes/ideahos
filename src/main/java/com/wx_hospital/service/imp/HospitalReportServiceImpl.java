@@ -19,21 +19,21 @@ import java.util.List;
 @Service
 public class HospitalReportServiceImpl implements HospitalReportService {
     @Autowired
-    private SecReportMapper seclectReport;
+    private SecReportMapper secReportMapper;
 
     @Override
     public List<SecReport> seclectReport(Integer id) {
-        return  seclectReport.seclectReport(id);
+        return  secReportMapper.seclectReport(id);
     }
 
     @Override
     public SecUser JiuzenPerson(Integer id) {
-        return  seclectReport.JiuzenPerson(id);
+        return  secReportMapper.JiuzenPerson(id);
     }
 
     @Override
     public JiuzhenPersonVo Xingqing(Integer id, Integer reportId) {
-        return seclectReport.Xingqing(id,reportId);
+        return secReportMapper.Xingqing(id,reportId);
     }
 
 }
