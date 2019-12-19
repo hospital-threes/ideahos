@@ -27,7 +27,7 @@ public class OnlineRegistrationServiceImpl implements OnlineRegistrationService 
         return secPayWayMapper.selectZhifuStyle();
     }
 
-    @Override
+   /* @Override
     public List<SecPatient> selectpatient(Integer id) {
         return secPayWayMapper.selectpatient(id);
     }
@@ -45,6 +45,6 @@ public class OnlineRegistrationServiceImpl implements OnlineRegistrationService 
     @Override
     public SecPatient selectUser(Integer id) {
         return secPayWayMapper.selectUser(id);
-    }
+    }*/
 }
 

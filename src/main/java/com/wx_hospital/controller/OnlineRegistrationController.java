@@ -4,6 +4,7 @@ import com.wx_hospital.pojo.*;
 import com.wx_hospital.service.DoctorService;
 import com.wx_hospital.service.OnlineRegistrationService;
 
+import com.wx_hospital.service.PersonalCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,9 +25,15 @@ public class OnlineRegistrationController {
     private DoctorService doctorService;
     @Autowired
     private OnlineRegistrationService onlineRegistrationServiceImpl;
+    @Autowired
+    private PersonalCenterService personalCenterService;
 
 
-    /*查询支付方式*/
+
+    /**
+     * 查询支付方式
+     * @return
+     */
     @RequestMapping("/selectZhifuStyle")
     @ResponseBody
     public List<SecPayWay> selectZhifuStyle(){//用户id
@@ -34,7 +41,11 @@ public class OnlineRegistrationController {
         return list;
     }
 
-    //查询医生信息
+    /**
+     * 查询医生信息
+     * @param deptId
+     * @return
+     */
     @RequestMapping("appointment")
     public List<SecDoctor> appointment(String deptId){
         List<SecDoctor> list=doctorService.findDoctor(deptId);
@@ -42,13 +53,21 @@ public class OnlineRegistrationController {
         return list;
     }
 
-    //获取医生就诊地址
+    /**
+     * 获取医生就诊地址
+     * @param id
+     * @return
+     */
     @RequestMapping("huoquaddress")
     public SecDoctor huoquaddress(String id){
         return doctorService.huoquaddress(id);
     }
 
-    //查询预约状态
+    /**
+     * 查询预约状态
+     * @param appointmenttime
+     * @return
+     */
     @RequestMapping("huoquappointment")
     public String huoquappointment(String appointmenttime){
         SecDoctorAppointmenttime sd=doctorService.huoquappointment(appointmenttime);
@@ -64,7 +83,12 @@ public class OnlineRegistrationController {
         return statu;
     }
 
-    //获取预约状态 时间
+    /**
+     * 获取预约状态 时间
+     * @param id
+     * @param response
+     * @return
+     */
     @RequestMapping("huoqutime")
     public List<SecDoctorAppointmenttime> huoqutime(Integer id,HttpServletResponse response){
         response.setContentType("text/html;charset=utf-8");
@@ -82,7 +106,11 @@ public class OnlineRegistrationController {
 
     }
 
-    //获取周几
+    /**
+     * 获取周几
+     * @param datetime
+     * @return
+     */
     public static String dateToWeek(String datetime) {
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
         String[] weekDays = { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" };
@@ -99,14 +127,23 @@ public class OnlineRegistrationController {
             w = 0;
         return weekDays[w];
     }
-    //获取同科室医生
+
+    /**
+     * 获取同科室医生
+     * @param deptname
+     * @return
+     */
     @RequestMapping("huoquadministrative")
     public List<SecDoctor> huoquadministrative(String deptname){
         List<SecDoctor> list=doctorService.huoquadministrative(deptname);
         return list;
     }
 
-    //获取预约时间
+    /**
+     * 获取预约时间
+     * @param id
+     * @return
+     */
     @RequestMapping("huoquappointmenttime")
     public List<SecDoctorAppointmenttimeTimeframe> huoquappointmenttime(Integer id){
         if(id==null){
@@ -118,7 +155,12 @@ public class OnlineRegistrationController {
         return list;
     }
 
-    //查询预约状态
+    /**
+     * 查询预约状态
+     * @param id
+     * @param response
+     * @return
+     */
     @RequestMapping(value = "huoqustutas" )
     public String huoqustutas(Integer id, HttpServletResponse response){
         response.setContentType("text/html;charset=utf-8");
@@ -142,7 +184,13 @@ public class OnlineRegistrationController {
         }
     }
 
-    //获取预约时间
+    /**
+     * 获取预约时间
+     * @param id
+     * @param apptimeId
+     * @param doctorId
+     * @return
+     */
     @RequestMapping("findtime")
     public Time findtime(Integer id, Integer apptimeId, Integer doctorId){
         String time1=doctorService.findTime(id);
@@ -160,32 +208,41 @@ public class OnlineRegistrationController {
 
     }
 
-
-    //selectPatient 查询就诊人
+    /**
+     *  查询就诊人
+     * @param id
+     * @return
+     */
     @RequestMapping("/selectPatient")
     @ResponseBody
     public List<SecPatient> selectPatient(Integer id){//用户id(获取session的id)
-        List<SecPatient>  list =onlineRegistrationServiceImpl.selectpatient(id);
+        List<SecPatient>  list =personalCenterService.selectpatient(id);
         return list;
     }
 
-
-    //UpdateMoren 修改默认人
+    /**
+     * 修改默认人
+     * @param id
+     * @return
+     */
     @RequestMapping("/UpdateMoren")
     @ResponseBody
     public int UpdateMoren(Integer id){//patientid
-        int i =onlineRegistrationServiceImpl.UpdateMoren(id);
+        int i =personalCenterService.UpdateMoren(id);
         return i;
     }
 
-
-    //selectHuixiapatient 回显就诊人（就诊信息）
+    /**
+     * 回显就诊人（就诊信息）
+     * @param id
+     * @return
+     */
     @RequestMapping("/selectHuixiapatient")
     @ResponseBody
     public SecPatient selectHuixiapatient(Integer id){
-        SecPatient i =onlineRegistrationServiceImpl.selectHuixiapatient(id);
+        SecPatient i =personalCenterService.selectHuixiapatient(id);
         if(i==null){
-            SecPatient i2 =onlineRegistrationServiceImpl.selectUser(id);
+            SecPatient i2 =personalCenterService.selectUser(id);
              return i2;
         }else {
             return  i;

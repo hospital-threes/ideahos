@@ -1,8 +1,5 @@
 package com.wx_hospital.service;
 
-import com.wx_hospital.pojo.SecPatient;
-import com.wx_hospital.pojo.SecUser;
-
 /**
  * @program: ideahos
  * @description:
@@ -11,8 +8,5 @@ import com.wx_hospital.pojo.SecUser;
  **/
 public interface PersonalCenterService {
 
-    SecUser userLogin(String phone);
-
-    SecPatient getDefaultPatient(Integer userId);
 }
 

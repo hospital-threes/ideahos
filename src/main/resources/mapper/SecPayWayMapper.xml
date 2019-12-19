@@ -41,12 +41,12 @@ UPDATE sec_patient
 
     <!--SecPatient selectHuixiapatient(Integer id); 回显就诊人，有默认回显（就诊信息）-->
     <select id="selectHuixiapatient" resultType="com.wx_hospital.pojo.SecPatient">
-      select patient_name patientName from  sec_patient where user_id=#{id} and is_default=1
+      select patient_name patientName,id from  sec_patient where user_id=#{id} and is_default=1
     </select>
 
     <!-- SecUser selectUser(Integer id); 回显就诊人,没有默认回显 （就诊信息）-->
     <select id="selectUser" resultType="com.wx_hospital.pojo.SecPatient">
-      select username patientName from  sec_user where id=#{id}
+      select username patientName,id from  sec_user where id=#{id}
     </select>
 
 

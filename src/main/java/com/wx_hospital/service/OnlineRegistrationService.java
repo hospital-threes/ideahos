@@ -16,12 +16,12 @@ public interface OnlineRegistrationService {
 
     List<SecPayWay> selectZhifuStyle();
 
-    List<SecPatient> selectpatient(Integer id);
-
-    int UpdateMoren(Integer id);
-
-    SecPatient selectHuixiapatient(Integer id);
-
-    SecPatient selectUser(Integer id);
+//    List<SecPatient> selectpatient(Integer id);
+//
+//    int UpdateMoren(Integer id);
+//
+//    SecPatient selectHuixiapatient(Integer id);
+//
+//    SecPatient selectUser(Integer id);
 }
 
