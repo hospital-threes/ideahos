@@ -38,5 +38,12 @@ public interface OnlineRegistrationService {
 
     String findDoctorName(Integer doctorId);
 
+    int addReservationTablePay(SecReservation secReservation);
+
+    SecReservation SelectPaytime(String orderId);
+
+    SecPatient SelectCardNumber(String patientId);
+
+    int deleteOrder(Integer orderId);
 }
 

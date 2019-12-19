@@ -1,6 +1,7 @@
 package com.wx_hospital.service.imp;
 
 import com.wx_hospital.mapper.SecDoctorMapper;
+import com.wx_hospital.mapper.SecPatientMapper;
 import com.wx_hospital.mapper.SecPayWayMapper;
 import com.wx_hospital.mapper.SecReservationMapper;
 import com.wx_hospital.pojo.*;
@@ -25,7 +26,8 @@ public class OnlineRegistrationServiceImpl implements OnlineRegistrationService 
     private SecReservationMapper secReservationMapper;
     @Autowired
     private SecDoctorMapper secDoctorMapper;
-
+    @Autowired
+    private SecPatientMapper secPatientMapper;
 
 
     @Override
@@ -95,6 +97,26 @@ public class OnlineRegistrationServiceImpl implements OnlineRegistrationService 
     @Override
     public String findDoctorName(Integer doctorId) {
         return secDoctorMapper.findDoctorName( doctorId);
+    }
+
+    @Override
+    public int addReservationTablePay(SecReservation secReservation) {
+        return secReservationMapper.addReservationTablePay(secReservation);
+    }
+
+    @Override
+    public SecReservation SelectPaytime(String orderId) {
+        return secReservationMapper.SelectPaytime(orderId);
+    }
+
+    @Override
+    public SecPatient SelectCardNumber(String patientId) {
+        return secPatientMapper.SelectCardNumber(patientId);
+    }
+
+    @Override
+    public int deleteOrder(Integer orderId) {
+        return secReservationMapper.deleteOrder(orderId);
     }
 }
 

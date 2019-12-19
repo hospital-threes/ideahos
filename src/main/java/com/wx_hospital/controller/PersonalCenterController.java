@@ -96,15 +96,13 @@ public class PersonalCenterController {
 
     /**
      * 回显就诊人（就诊信息）
-     * @param patientId
+     * @param
      * @return
      */
     @RequestMapping("/selectHuixiapatient")
     @ResponseBody
-    public SecPatient selectHuixiapatient(Integer patientId){
-
-        SecPatient secPatient =personalCenterServiceImpl.selectHuixiapatient(patientId);
-
+    public SecPatient selectHuixiapatient(Integer id){
+        SecPatient secPatient =personalCenterServiceImpl.selectHuixiapatient(id);
         return  secPatient;
     }
 
