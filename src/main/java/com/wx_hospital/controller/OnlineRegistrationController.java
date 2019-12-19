@@ -2,13 +2,10 @@ package com.wx_hospital.controller;
 
 import com.wx_hospital.pojo.*;
 import com.wx_hospital.service.OnlineRegistrationService;
-
-import com.wx_hospital.service.PersonalCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,7 +20,8 @@ public class OnlineRegistrationController {
 
     @Autowired
     private OnlineRegistrationService onlineRegistrationServiceImpl;
-
+    @Autowired
+    private PersonalCenterService personalCenterService;
 
 
 
@@ -206,21 +204,46 @@ public class OnlineRegistrationController {
     }
 
     /**
-         * 立即预约
-          * 添加预约表 addReservationTable
-          */
-   @RequestMapping("/addReservationTable")
-   @ResponseBody
-    public int  addReservationTable(SecReservation secReservation){
-       //订单号
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
-        String newDate=sdf.format(new Date());
-        secReservation.setOrderId(Integer.valueOf(newDate));
+     *  查询就诊人
+     * @param id
+     * @return
+     */
+    @RequestMapping("/selectPatient")
+    @ResponseBody
+    public List<SecPatient> selectPatient(Integer id){//用户id(获取session的id)
+        List<SecPatient>  list =personalCenterService.selectpatient(id);
+        return list;
+    }
+
+    /**
+     * 修改默认人
+     * @param id
+     * @return
+     */
+    @RequestMapping("/UpdateMoren")
+    @ResponseBody
+    public int UpdateMoren(Integer id){//patientid
+        int i =personalCenterService.UpdateMoren(id);
+        return i;
+    }
+
+    /**
+     * 回显就诊人（就诊信息）
+     * @param id
+     * @return
+     */
+    @RequestMapping("/selectHuixiapatient")
+    @ResponseBody
+    public SecPatient selectHuixiapatient(Integer id){
+        SecPatient i =personalCenterService.selectHuixiapatient(id);
+        if(i==null){
+            SecPatient i2 =personalCenterService.selectUser(id);
+             return i2;
+        }else {
+            return  i;
+        }
 
 
-
-       int i=onlineRegistrationServiceImpl.addReservationTable(secReservation);
-        return  i;
-   }
+    }
 
 }
