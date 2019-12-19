@@ -1,5 +1,6 @@
 package com.wx_hospital.controller;
 
+import com.wx_hospital.pojo.SecPatient;
 import com.wx_hospital.pojo.SecUser;
 import com.wx_hospital.service.PersonalCenterService;
 import com.wx_hospital.utils.JSONUtils;
@@ -30,8 +31,19 @@ public class PersonalCenterController {
     @Autowired
     private JedisClientPool jedisClientPool;
 
+    /**
+     * 获取默认就诊人信息
+     * @param userId
+     * @return
+     */
+    @RequestMapping("/getDefaultPatient")
+    @ResponseBody
+    public SecPatient getDefaultPatient(Integer userId){
 
+        SecPatient secPatient = personalCenterServiceImpl.getDefaultPatient(userId);
 
+        return secPatient;
+    }
 
     /**
      * 发送手机验证码
