@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @RestController
 @RequestMapping("doctor")
@@ -22,6 +23,9 @@ public class OnlineRegistrationController {
 
     @Autowired
     private OnlineRegistrationService onlineRegistrationServiceImpl;
+
+
+
 
     /**
      * 查询支付方式
@@ -201,18 +205,22 @@ public class OnlineRegistrationController {
 
     }
 
-
     /**
-     * 立即预约
-     * 添加预约表 addReservationTable
-     */
-    @RequestMapping("/addReservationTable")
-    @ResponseBody
+         * 立即预约
+          * 添加预约表 addReservationTable
+          */
+   @RequestMapping("/addReservationTable")
+   @ResponseBody
     public int  addReservationTable(SecReservation secReservation){
+       //订单号
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
+        String newDate=sdf.format(new Date());
+        secReservation.setOrderId(Integer.valueOf(newDate));
+
+
+
        int i=onlineRegistrationServiceImpl.addReservationTable(secReservation);
-       return  i;
-    }
-
-
+        return  i;
+   }
 
 }
