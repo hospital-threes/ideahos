@@ -18,6 +18,7 @@ public class DoctorServiceImpl implements DoctorService {
     @Resource
     private SecDoctorMapper secDoctorMapper;
 
+
     @Override
     public List<SecDoctor> findDoctor(String deptId) {
         return secDoctorMapper.findDoctor(deptId);
@@ -46,8 +47,8 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public List<SecDoctorAppointmenttimeTimeframe> huoquappointmenttime(Integer id) {
-        List<SecDoctorAppointmenttimeTimeframe> list=secDoctorMapper.huoquappointmenttime(id);
 
+        List<SecDoctorAppointmenttimeTimeframe> list=secDoctorMapper.huoquappointmenttime(id);
 
         return list;
     }

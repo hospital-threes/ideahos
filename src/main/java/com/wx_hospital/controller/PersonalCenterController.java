@@ -15,6 +15,7 @@ import redis.clients.jedis.JedisPool;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,6 +31,7 @@ public class PersonalCenterController {
     private PersonalCenterService personalCenterServiceImpl;
     @Autowired
     private JedisClientPool jedisClientPool;
+
 
     /**
      * 获取默认就诊人信息
@@ -98,6 +100,49 @@ public class PersonalCenterController {
         }
 
         return map;
+    }
+
+
+
+
+
+    /**
+     *  查询就诊人
+     * @param id
+     * @return
+     */
+    @RequestMapping("/selectPatient")
+    @ResponseBody
+    public List<SecPatient> selectPatient(Integer id){//用户id(获取session的id)
+        List<SecPatient>  list =personalCenterServiceImpl.selectpatient(id);
+        return list;
+    }
+
+    /**
+     * 修改默认人
+     * @param patientid
+     * @param userId
+     * @return
+     */
+    @RequestMapping("/UpdateMoren")
+    @ResponseBody
+    public int UpdateMoren(Integer patientid,Integer userId){//patientid
+        int i =personalCenterServiceImpl.UpdateMoren(patientid,userId);
+        return i;
+    }
+
+    /**
+     * 回显就诊人（就诊信息）
+     * @param patientId
+     * @return
+     */
+    @RequestMapping("/selectHuixiapatient")
+    @ResponseBody
+    public SecPatient selectHuixiapatient(Integer patientId){
+
+        SecPatient secPatient =personalCenterServiceImpl.selectHuixiapatient(patientId);
+
+        return  secPatient;
     }
 
 }

@@ -2,4 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wx_hospital.mapper.SecPatientMapper" >
 
+    <!-- List<SecPatient> selectpatient(Integer id);查询当前用户就诊人-->
+    <select id="selectpatient" resultType="com.wx_hospital.pojo.SecPatient">
+        select sec_patient.id,  sec_patient.is_default isDefault, sec_patient.status,
+            sec_patient.patient_name patientName,sec_patient.patient_tel patientTel,
+            sec_patient.patient_idCard patientIdCard
+             from sec_reservation,sec_doctor,sec_report,sec_patient,sec_user,sec_second_department
+             where
+            sec_report.examine_id=sec_reservation.doctor_id
+            and sec_reservation.doctor_id=sec_doctor.id
+            and sec_second_department.id=sec_reservation.department_id
+            and sec_patient.id=sec_reservation.patient_id
+            and sec_user.id=sec_reservation.user_id
+            and sec_reservation.user_id=sec_patient.user_id
+            and   sec_user.id=#{id}
+            GROUP BY sec_patient.id
+    </select>
+
+    <!-- int UpdateMoren(@Param("patientid") Integer patientid,@Param("userId")  Integer userId);-->
+    <update id="UpdateMoren">
+      UPDATE sec_patient
+              SET is_default = CASE id
+                                 when #{patientid} then 1
+                                 else 0
+                                 END
+                WHERE user_id = #{userId}
+    </update>
+
+    <!--SecPatient selectHuixiapatient(Integer id); 回显就诊人，有默认回显（就诊信息）-->
+    <select id="selectHuixiapatient" resultType="com.wx_hospital.pojo.SecPatient">
+      select * from sec_patient where id=#{id}
+    </select>
+
+    <!-- SecPatient getDefaultPatient(Integer userId); -->
+    <select id="getDefaultPatient" resultType="com.wx_hospital.pojo.SecPatient">
+        select * from sec_patient where user_id=#{id} AND is_default = 0
+    </select>
+
 </mapper>
