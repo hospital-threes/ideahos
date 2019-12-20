@@ -2,6 +2,7 @@ package com.wx_hospital.controller;
 
 import com.wx_hospital.pojo.SecPatient;
 import com.wx_hospital.pojo.SecReservation;
+import com.wx_hospital.pojo.SecUser;
 import com.wx_hospital.service.PersonalCenterService;
 import com.wx_hospital.utils.JedisClientPool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,19 +29,7 @@ public class PersonalCenterController {
     @Autowired
     private JedisClientPool jedisClientPool;
 
-    /**
-     * 获取默认就诊人信息
-     * @param userId
-     * @return
-     */
-    @RequestMapping("/getDefaultPatient")
-    @ResponseBody
-    public SecPatient getDefaultPatient(Integer userId){
 
-        SecPatient secPatient = personalCenterServiceImpl.getDefaultPatient(userId);
-
-        return secPatient;
-    }
 
     /**
      * 发送手机验证码
@@ -67,6 +56,49 @@ public class PersonalCenterController {
         //boolean b = SendSMSUtils.sendMSM(phone, pCode);
 
         return expire>0;
+    }
+
+
+    /**
+     * 验证手机验证码
+     * @param pCode
+     * @param phone
+     * @return
+     */
+    @RequestMapping("/verifyPhoneCode")
+    @ResponseBody
+    public Map<String, String> verifyMobileCode(String phone, String pCode) {
+        Map<String, String> map = new HashMap<String, String>();
+        String sss= "pCode" + phone;
+        //将用户的验证码从redis中取出
+        String code = jedisClientPool.get(sss);
+        //进行判断
+        if (pCode.equals(code)) {
+
+            map.put("result","success");
+
+            SecUser secUser= personalCenterServiceImpl.userLogin(phone);
+
+            map.put("userId", secUser.getId()+"");
+        }else {
+            map.put("result","failed");
+        }
+
+        return map;
+    }
+
+    /**
+     * 获取默认就诊人信息
+     * @param userId
+     * @return
+     */
+    @RequestMapping("/getDefaultPatient")
+    @ResponseBody
+    public SecPatient getDefaultPatient(Integer userId){
+
+        SecPatient secPatient = personalCenterServiceImpl.getDefaultPatient(userId);
+
+        return secPatient;
     }
 
     /**
