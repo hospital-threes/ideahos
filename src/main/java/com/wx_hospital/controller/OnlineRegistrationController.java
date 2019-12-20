@@ -195,9 +195,82 @@ public class OnlineRegistrationController {
         t.setDoctorName(doctorName);
         System.out.println(t);
         return t;
-
-
     }
 
+
+
+
+    /**
+     * 添加预约表
+     * @param secReservation
+     * @return
+     */
+    @RequestMapping("addReservationTable")
+    @ResponseBody
+    public int addReservationTable(SecReservation secReservation){
+        int i=onlineRegistrationServiceImpl.addReservationTable(secReservation);
+        return i;
+    }
+
+
+
+    /**
+     * 添加预约表点击支付支付成功
+     * @param secReservation
+     * @return
+     */
+    @RequestMapping("addReservationTablePay")
+    @ResponseBody
+    public int addReservationTablePay(SecReservation secReservation){
+        int i=onlineRegistrationServiceImpl.addReservationTablePay(secReservation);
+        return i;
+    }
+
+
+
+
+    /**
+     * 查询支付时间
+     * @param orderId
+     * @return
+     */
+    @RequestMapping("SelectPaytime")
+    public SecReservation SelectPaytime(String orderId){
+        SecReservation secReservation=onlineRegistrationServiceImpl.SelectPaytime(orderId);
+        return secReservation;
+    }
+
+
+
+
+    /**SelectCardNumber
+     * 查询就诊卡号
+     * @param patientId
+     * @return
+     */
+    @RequestMapping("SelectCardNumber")
+    @ResponseBody
+    public SecPatient SelectCardNumber(String patientId){
+        SecPatient secPatient=onlineRegistrationServiceImpl.SelectCardNumber(patientId);
+        return secPatient;
+    }
+
+
+    /**
+     * 删除订单（取消）
+     * @param patientId
+     * @return
+     */
+    @RequestMapping("deleteOrder")
+    @ResponseBody
+    public int deleteOrder(Integer  orderId){
+        int i=onlineRegistrationServiceImpl.deleteOrder(orderId);
+        if(i!=0){
+            return i;
+        }else {
+            return 0;
+        }
+
+    }
 
 }

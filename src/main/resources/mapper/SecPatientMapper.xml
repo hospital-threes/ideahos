@@ -23,20 +23,26 @@
     <update id="UpdateMoren">
       UPDATE sec_patient
               SET is_default = CASE id
-                                 when #{patientid} then 1
-                                 else 0
+                                 when #{patientid} then 0
+                                 else 1
                                  END
                 WHERE user_id = #{userId}
     </update>
 
     <!--SecPatient selectHuixiapatient(Integer id); 回显就诊人，有默认回显（就诊信息）-->
     <select id="selectHuixiapatient" resultType="com.wx_hospital.pojo.SecPatient">
-      select * from sec_patient where id=#{id}
+     select patient_name patientName,id  from sec_patient where user_id=#{id} AND is_default = 0
     </select>
 
     <!-- SecPatient getDefaultPatient(Integer userId); -->
-    <select id="getDefaultPatient" resultType="com.wx_hospital.pojo.SecPatient">
-        select * from sec_patient where user_id=#{id} AND is_default = 0
+    <!--<select id="getDefaultPatient" resultType="com.wx_hospital.pojo.SecPatient">-->
+       <!--select patient_name patientName,id  from sec_patient where user_id=#{id} AND is_default = 0-->
+    <!--</select>-->
+
+
+    <!--SecPatient SelectCardNumber(String patientId);查询就诊卡-->
+    <select id="SelectCardNumber" resultType="com.wx_hospital.pojo.SecPatient">
+     select patient_medicalCardNumber patientMedicalCardNumber from sec_patient where id=#{patientId}
     </select>
 
 </mapper>

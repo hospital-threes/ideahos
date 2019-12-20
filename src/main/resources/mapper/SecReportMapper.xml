@@ -6,7 +6,7 @@
 
     <!--就诊人检测报告内容回显 List<SecReport> seclectReport(Integer id);-->
     <select id="seclectReport" resultType="com.wx_hospital.pojo.SecReport">
-    select sec_report.id, sec_report.examine_info examineInfo,sec_report.sample_time sampleTime,sec_report.file_addr  fileAddr
+select sec_report.id, sec_report.examine_info examineInfo,sec_report.sample_time sampleTime,sec_report.file_addr  fileAddr
  from sec_reservation,sec_doctor,sec_report,sec_patient,sec_user,sec_second_department
  where
 sec_report.examine_id=sec_reservation.doctor_id

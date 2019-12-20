@@ -14,4 +14,6 @@ public interface SecPatientMapper {
     SecPatient selectHuixiapatient(Integer id);
 
     SecPatient getDefaultPatient(Integer userId);
+
+    SecPatient SelectCardNumber(String patientId);
 }
