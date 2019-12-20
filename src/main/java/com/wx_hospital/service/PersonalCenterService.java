@@ -22,5 +22,9 @@ public interface PersonalCenterService {
     SecUser userLogin(String phone);
 
     SecPatient getDefaultPatient(Integer userId);
+
+    int addPatient(SecPatient secPatient);
+
+    int updatePatient(SecPatient secPatient);
 }
 

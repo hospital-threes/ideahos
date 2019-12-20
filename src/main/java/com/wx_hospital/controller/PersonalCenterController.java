@@ -103,15 +103,17 @@ public class PersonalCenterController {
 
     /**
      *  查询就诊人
-     * @param id
+     * @param userId
      * @return
      */
     @RequestMapping("/selectPatient")
     @ResponseBody
-    public List<SecPatient> selectPatient(Integer id){//用户id(获取session的id)
-        List<SecPatient>  list =personalCenterServiceImpl.selectpatient(id);
+    public List<SecPatient> selectPatient(Integer userId){//用户id(获取session的id)
+        List<SecPatient>  list =personalCenterServiceImpl.selectpatient(userId);
         return list;
     }
+
+
 
     /**
      * 修改默认人
@@ -136,6 +138,31 @@ public class PersonalCenterController {
     public SecPatient selectHuixiapatient(Integer id){
         SecPatient secPatient =personalCenterServiceImpl.selectHuixiapatient(id);
         return  secPatient;
+    }
+
+    /**
+     * 添加就诊人
+     * @param secPatient
+     * @return
+     */
+    @RequestMapping("/addPatient")
+    @ResponseBody
+    public boolean addPatient(SecPatient secPatient){
+        int i = personalCenterServiceImpl.addPatient(secPatient);
+        return i>0;
+    }
+
+
+    /**
+     * 添加就诊人
+     * @param secPatient
+     * @return
+     */
+    @RequestMapping("/updatePatient")
+    @ResponseBody
+    public boolean updatePatient(SecPatient secPatient){
+        int i = personalCenterServiceImpl.updatePatient(secPatient);
+        return i>0;
     }
 
 }

@@ -4,19 +4,7 @@
 
     <!-- List<SecPatient> selectpatient(Integer id);查询当前用户就诊人-->
     <select id="selectpatient" resultType="com.wx_hospital.pojo.SecPatient">
-        select sec_patient.id,  sec_patient.is_default isDefault, sec_patient.status,
-            sec_patient.patient_name patientName,sec_patient.patient_tel patientTel,
-            sec_patient.patient_idCard patientIdCard
-             from sec_reservation,sec_doctor,sec_report,sec_patient,sec_user,sec_second_department
-             where
-            sec_report.examine_id=sec_reservation.doctor_id
-            and sec_reservation.doctor_id=sec_doctor.id
-            and sec_second_department.id=sec_reservation.department_id
-            and sec_patient.id=sec_reservation.patient_id
-            and sec_user.id=sec_reservation.user_id
-            and sec_reservation.user_id=sec_patient.user_id
-            and   sec_user.id=#{id}
-            GROUP BY sec_patient.id
+        select * from sec_patient where user_id=#{id}
     </select>
 
     <!-- int UpdateMoren(@Param("patientid") Integer patientid,@Param("userId")  Integer userId);-->
@@ -44,5 +32,19 @@
     <select id="SelectCardNumber" resultType="com.wx_hospital.pojo.SecPatient">
      select patient_medicalCardNumber patientMedicalCardNumber from sec_patient where id=#{patientId}
     </select>
+
+
+    <!-- int addPatient(@Param("secPatient")SecPatient secPatient); -->
+    <insert id="addPatient" parameterType="com.wx_hospital.pojo.SecPatient">
+        insert into sec_patient (createtime, user_id, patient_name, patient_tel, patient_idCard, patient_medicalCardNumber,
+        patient_healthCareCardNumber, patient_area, patient_address, is_default)
+        values (now(),#{secPatient.userId},#{secPatient.patientName},#{secPatient.patientTel},#{secPatient.patientIdcard},#{secPatient.patientMedicalcardnumber},
+        #{secPatient.patientHealthcarecardnumber},#{secPatient.patientArea},#{secPatient.patientAddress},#{secPatient.isDefault})
+    </insert>
+
+    <!-- int updatePatient(@Param("secPatient")SecPatient secPatient); -->
+    <update id="updatePatient" parameterType="com.wx_hospital.pojo.SecPatient">
+
+    </update>
 
 </mapper>
