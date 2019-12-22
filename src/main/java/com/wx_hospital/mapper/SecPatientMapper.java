@@ -16,4 +16,8 @@ public interface SecPatientMapper {
     SecPatient getDefaultPatient(Integer userId);
 
     SecPatient SelectCardNumber(String patientId);
+
+    int addPatient(@Param("secPatient")SecPatient secPatient);
+
+    int updatePatient(@Param("secPatient")SecPatient secPatient);
 }

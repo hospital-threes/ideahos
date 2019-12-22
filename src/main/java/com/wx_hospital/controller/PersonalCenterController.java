@@ -2,6 +2,7 @@ package com.wx_hospital.controller;
 
 import com.wx_hospital.pojo.SecPatient;
 import com.wx_hospital.pojo.SecReservation;
+import com.wx_hospital.pojo.SecUser;
 import com.wx_hospital.service.PersonalCenterService;
 import com.wx_hospital.utils.JedisClientPool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,19 +29,7 @@ public class PersonalCenterController {
     @Autowired
     private JedisClientPool jedisClientPool;
 
-    /**
-     * 获取默认就诊人信息
-     * @param userId
-     * @return
-     */
-    @RequestMapping("/getDefaultPatient")
-    @ResponseBody
-    public SecPatient getDefaultPatient(Integer userId){
 
-        SecPatient secPatient = personalCenterServiceImpl.getDefaultPatient(userId);
-
-        return secPatient;
-    }
 
     /**
      * 发送手机验证码
@@ -69,17 +58,62 @@ public class PersonalCenterController {
         return expire>0;
     }
 
+
+    /**
+     * 验证手机验证码
+     * @param pCode
+     * @param phone
+     * @return
+     */
+    @RequestMapping("/verifyPhoneCode")
+    @ResponseBody
+    public Map<String, String> verifyMobileCode(String phone, String pCode) {
+        Map<String, String> map = new HashMap<String, String>();
+        String sss= "pCode" + phone;
+        //将用户的验证码从redis中取出
+        String code = jedisClientPool.get(sss);
+        //进行判断
+        if (pCode.equals(code)) {
+
+            map.put("result","success");
+
+            SecUser secUser= personalCenterServiceImpl.userLogin(phone);
+
+            map.put("userId", secUser.getId()+"");
+        }else {
+            map.put("result","failed");
+        }
+
+        return map;
+    }
+
+    /**
+     * 获取默认就诊人信息
+     * @param userId
+     * @return
+     */
+    @RequestMapping("/getDefaultPatient")
+    @ResponseBody
+    public SecPatient getDefaultPatient(Integer userId){
+
+        SecPatient secPatient = personalCenterServiceImpl.getDefaultPatient(userId);
+
+        return secPatient;
+    }
+
     /**
      *  查询就诊人
-     * @param id
+     * @param userId
      * @return
      */
     @RequestMapping("/selectPatient")
     @ResponseBody
-    public List<SecPatient> selectPatient(Integer id){//用户id(获取session的id)
-        List<SecPatient>  list =personalCenterServiceImpl.selectpatient(id);
+    public List<SecPatient> selectPatient(Integer userId){//用户id(获取session的id)
+        List<SecPatient>  list =personalCenterServiceImpl.selectpatient(userId);
         return list;
     }
+
+
 
     /**
      * 修改默认人
@@ -104,6 +138,31 @@ public class PersonalCenterController {
     public SecPatient selectHuixiapatient(Integer id){
         SecPatient secPatient =personalCenterServiceImpl.selectHuixiapatient(id);
         return  secPatient;
+    }
+
+    /**
+     * 添加就诊人
+     * @param secPatient
+     * @return
+     */
+    @RequestMapping("/addPatient")
+    @ResponseBody
+    public boolean addPatient(SecPatient secPatient){
+        int i = personalCenterServiceImpl.addPatient(secPatient);
+        return i>0;
+    }
+
+
+    /**
+     * 添加就诊人
+     * @param secPatient
+     * @return
+     */
+    @RequestMapping("/updatePatient")
+    @ResponseBody
+    public boolean updatePatient(SecPatient secPatient){
+        int i = personalCenterServiceImpl.updatePatient(secPatient);
+        return i>0;
     }
 
 }

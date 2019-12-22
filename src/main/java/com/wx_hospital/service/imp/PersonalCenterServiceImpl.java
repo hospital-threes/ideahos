@@ -60,5 +60,16 @@ public class PersonalCenterServiceImpl implements PersonalCenterService {
 
         return secPatientMapper.getDefaultPatient(userId);
     }
+
+    @Override
+    public int addPatient(SecPatient secPatient) {
+
+        return secPatientMapper.addPatient(secPatient);
+    }
+
+    @Override
+    public int updatePatient(SecPatient secPatient) {
+        return secPatientMapper.updatePatient(secPatient);
+    }
 }
 
