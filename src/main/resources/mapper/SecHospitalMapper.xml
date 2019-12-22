@@ -23,4 +23,55 @@
 
 
 
+
+
+
+
+    <!--//新增楼盘
+  boolean addSecConsultation(@Param("doctor") Doctor doctor, @Param("userid") int userid,@Param("phone") String phone,@Param("biaoti") String biaoti, @Param("text") String text,@Param("fix") String fix@Param("paymentStatus") int paymentStatus,@Param("orderId") int orderId);-->
+    <insert id="addSecConsultation"  useGeneratedKeys="true" keyProperty="doctor.id" >
+     insert into sec_consultation (id, status, disabled,
+      createtime, order_id, patient_id,
+      question_title, sex, Illness_description,
+      payment_status, doctor_id, response_id,
+      response, response_time)
+    values (null, 0, 0,
+      now(), #{orderId}, #{userid},
+      #{biaoti}, #{fix}, #{text},
+      #{paymentStatus}, #{doctor.id}, null,
+      null,null)
+  </insert>
+    <!--//添加订单表
+    boolean addHisOrder(@Param("hisOrder") HisOrder hisOrder);-->
+    <insert id="addHisOrder" parameterType="com.wx_hospital.pojo.HisOrder" useGeneratedKeys="true" keyProperty="hisOrder.id">
+    insert into his_order (id, disabled, createtime,
+      order_name, order_num, order_placer,
+      status, pay_start_time, refund_start_time,
+      pay_money, pay_way)
+    values (null, #{hisOrder.disabled,jdbcType=BIT}, now(),
+      #{hisOrder.orderName,jdbcType=VARCHAR}, #{hisOrder.orderNum,jdbcType=VARCHAR}, #{hisOrder.orderPlacer,jdbcType=INTEGER},
+      #{hisOrder.status,jdbcType=VARCHAR}, #{hisOrder.payStartTime,jdbcType=TIMESTAMP}, #{hisOrder.refundStartTime,jdbcType=TIMESTAMP},
+      #{hisOrder.payMoney,jdbcType=DOUBLE}, #{hisOrder.payWay,jdbcType=VARCHAR})
+  </insert>
+    <!-- //添加图片
+     boolean addSecPicBySecConsultation(@Param("pic") SecPic pic);-->
+    <insert id="addSecPicBySecConsultation" parameterType="com.wx_hospital.pojo.SecPic">
+    insert into sec_pic (id, status, disabled,
+      createtime, type, obj_id,
+      obj_type, pic_name, pic_size,
+      pic_path, pic_info, sequence
+      )
+    values (null, #{pic.status,jdbcType=VARCHAR}, #{pic.disabled,jdbcType=BIT},
+      now(), #{pic.type,jdbcType=VARCHAR}, #{pic.objId,jdbcType=INTEGER},
+      #{pic.objType,jdbcType=VARCHAR}, #{pic.picName,jdbcType=VARCHAR}, #{pic.picSize,jdbcType=VARCHAR},
+      #{pic.picPath,jdbcType=VARCHAR}, #{pic.picInfo,jdbcType=VARCHAR}, #{pic.sequence,jdbcType=INTEGER}
+      )
+  </insert>
+    <!-- boolean updateConsultationState(int id);-->
+    <update id="updateConsultationState">
+          UPDATE sec_consultation SET sec_consultation.payment_status=0
+          WHERE sec_consultation.id=#{id}
+    </update>
+
+
 </mapper>
