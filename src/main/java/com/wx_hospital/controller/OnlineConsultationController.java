@@ -7,6 +7,7 @@ import com.wx_hospital.pojo.SecPic;
 import com.wx_hospital.service.OnlineConsultationService;
 import com.wx_hospital.utils.JSONUtils;
 import com.wx_hospital.utils.OssUtil;
+import com.wx_hospital.utils.Response;
 import org.apache.commons.net.util.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,15 +53,17 @@ public class OnlineConsultationController {
         return list;
     }
 
+
+    @ResponseBody
     @RequestMapping(value = "/api", method = RequestMethod.POST)
-    public  com.wx_hospital.utils.Response xxx(@RequestBody JSONObject jsonObject) {
+    public Response xxx(@RequestBody JSONObject jsonObject) {
 
 
         JSONObject ite = jsonObject.getJSONObject("ite");
         String s = ite.toJSONString();
         SecDoctor doctor = JSONUtils.json2Ojbect(s, SecDoctor.class);
         System.out.println("目标医生信息：");
-        System.out.println(doctor);   //医生信息对象
+//        System.out.println(doctor.getId()+"doctor.getId()-------------------------");   //医生信息对象
 
         String phone=jsonObject.getString("phone");  //当前用户的手机号
         String biaoti=jsonObject.getString("biaoti");  //标题
@@ -74,15 +77,27 @@ public class OnlineConsultationController {
         int state=Integer.parseInt(jsonObject.getString("state"));  //问题是付费还是免费
         //根据前台传过来的付费状态，判断需不需要支付
         int paymentStatus=1;
-        if(state==1){
+        if(state==0){
             System.out.println("已经支付");
             paymentStatus=0;  //已支付
-        }else if(state==2){
+        }else if(state==1){
             System.out.println("没有支付");
             paymentStatus=1;  //未支付
         }
 
         JSONArray photos = jsonObject.getJSONArray("photos");
+
+        String orderNum="";
+        //生成订单号
+        for(int i=0;i<10;i++){
+            int oo = ThreadLocalRandom.current().nextInt(10);
+            orderNum+=String.valueOf(oo);
+        }
+
+
+        //添加数据库  咨询表\订单表
+        Response f= onlineConsultationServiceImpl.addSecConsultation(doctor,userid,phone,biaoti,text,fix,paymentStatus,orderNum,state);
+
         if (photos.size() > 0) {
             for (int i = 0; i < photos.size(); i++) {
                 JSONObject obj = photos.getJSONObject(i);
@@ -90,7 +105,7 @@ public class OnlineConsultationController {
                 String base64Str = obj.getString("base64Str");
                 String directoryName = "xx/xx";
                 /*  String extension = fileName.substring(fileName.lastIndexOf(".")).toLowerCase();*/
-                String extension =phone+"-"+String.valueOf(doctor.getId())+"-"+String.valueOf(i+1)+".jpg";
+                String extension =phone+"-"+jsonObject.getString("userid")+"-"+String.valueOf(i+1)+".jpg";
 
                 InputStream inputStream = new ByteArrayInputStream(Base64.decodeBase64(base64Str.substring(base64Str.indexOf(",") + 1)));
                 System.out.println("转换成的地址+++：：：："+inputStream);
@@ -111,23 +126,16 @@ public class OnlineConsultationController {
                 pic.setPicPath(url);
                 pic.setPicName(extension);
                 pic.setStatus("1");
-                boolean h = onlineConsultationServiceImpl.addSecPicBySecConsultation(pic);
+
+                boolean h = onlineConsultationServiceImpl.addSecPicBySecConsultation(pic,f.getOrderId());
+
             }
 
         }
-        String orderNum="";
-        //生成订单号
-        for(int i=0;i<10;i++){
-            int oo = ThreadLocalRandom.current().nextInt(10);
-            orderNum+=String.valueOf(oo);
-        }
-
-
-        //添加数据库  咨询表\订单表
-        com.wx_hospital.utils.Response f= onlineConsultationServiceImpl.addSecConsultation(doctor,userid,phone,biaoti,text,fix,paymentStatus,orderNum,state);
 
 
 
+        System.out.println(f.getResponse()+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         return f;
 
     }

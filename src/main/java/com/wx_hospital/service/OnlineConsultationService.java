@@ -18,7 +18,7 @@ public interface OnlineConsultationService {
 
     boolean updateConsultationState(int id);
 
-    boolean addSecPicBySecConsultation(SecPic pic);
+    boolean addSecPicBySecConsultation(SecPic pic, int orderId);
 
     Response addSecConsultation(SecDoctor doctor, int userid, String phone, String biaoti, String text, String fix, int paymentStatus, String orderNum, int state);
 }

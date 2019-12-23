@@ -32,7 +32,7 @@ public class SecDoctor implements Serializable {
 
     private Boolean onlineconsultant;
 
-    private Boolean ispremium;
+    private Integer ispremium;
 
     private Double price;
 
@@ -257,11 +257,11 @@ public class SecDoctor implements Serializable {
         this.onlineconsultant = onlineconsultant;
     }
 
-    public Boolean getIspremium() {
+    public Integer getIspremium() {
         return ispremium;
     }
 
-    public void setIspremium(Boolean ispremium) {
+    public void setIspremium(Integer ispremium) {
         this.ispremium = ispremium;
     }
 

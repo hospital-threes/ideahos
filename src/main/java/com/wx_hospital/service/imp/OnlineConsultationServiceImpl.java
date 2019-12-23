@@ -99,11 +99,11 @@ public class OnlineConsultationServiceImpl implements OnlineConsultationService 
         hisOrder.setOrderNum(orderNum);
         hisOrder.setOrderPlacer(userid);
         //免费咨询
-        if(state==1){
+        if(state==0){
             hisOrder.setStatus("已支付");
             hisOrder.setPayMoney(0.0);
             //付费咨询
-        }else if(state==2){
+        }else if(state==1){
             hisOrder.setStatus("未支付");
         }
 
@@ -118,15 +118,15 @@ public class OnlineConsultationServiceImpl implements OnlineConsultationService 
 
         Response response=new Response();
         response.setResponse(g);
-        response.setId(doctor.getId());
+        response.setId(userid);//doctor.getId()
         response.setOrderNum(orderNum);
         return response;
     }
     //添加图片
     @Override
-    public boolean addSecPicBySecConsultation(SecPic pic) {
+    public boolean addSecPicBySecConsultation(SecPic pic, int orderId) {
         boolean k=false;
-        k= secHospitalMapper.addSecPicBySecConsultation( pic);
+        k= secHospitalMapper.addSecPicBySecConsultation(pic);
         return k;
     }
 

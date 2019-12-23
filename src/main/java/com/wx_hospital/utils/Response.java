@@ -11,7 +11,10 @@ public class Response {
     private int id;
     private int orderId;
     private String orderNum;
-    private boolean response;
+    private Boolean response;
+    private Boolean rrrr;
+
+
 
     @Override
     public String toString() {
@@ -47,11 +50,19 @@ public class Response {
         this.orderNum = orderNum;
     }
 
-    public boolean isResponse() {
+    public Boolean getResponse() {
         return response;
     }
 
-    public void setResponse(boolean response) {
+    public void setResponse(Boolean response) {
         this.response = response;
+    }
+
+    public Boolean getRrrr() {
+        return rrrr;
+    }
+
+    public void setRrrr(Boolean rrrr) {
+        this.rrrr = rrrr;
     }
 }

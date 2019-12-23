@@ -4,6 +4,6 @@
 
     <!-- List<SecPayWay> selectZhifuStyle();-->
     <select id="selectZhifuStyle" resultType="com.wx_hospital.pojo.SecPayWay">
-        select * from sec_pay_way
+        select * from sec_pay_way  and  disabled=0
     </select>
 </mapper>

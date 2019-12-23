@@ -16,6 +16,7 @@
             and sec_user.id=sec_reservation.user_id
             and sec_reservation.user_id=sec_patient.user_id
             and   sec_user.id=#{id}
+            and   sec_report.disabled=0
             GROUP BY sec_patient.id
     </select>
 
@@ -31,18 +32,18 @@
 
     <!--SecPatient selectHuixiapatient(Integer id); 回显就诊人，有默认回显（就诊信息）-->
     <select id="selectHuixiapatient" resultType="com.wx_hospital.pojo.SecPatient">
-     select *  from sec_patient where id=#{id}
+     select *  from sec_patient where id=#{id}   and   disabled=0
     </select>
 
     <!-- SecPatient getDefaultPatient(Integer userId); -->
     <select id="getDefaultPatient" resultType="com.wx_hospital.pojo.SecPatient">
-       select *  from sec_patient where user_id=#{id} AND is_default = 0
+       select *  from sec_patient where user_id=#{id} AND is_default = 0 and disabled=0
     </select>
 
 
     <!--SecPatient SelectCardNumber(String patientId);查询就诊卡-->
     <select id="SelectCardNumber" resultType="com.wx_hospital.pojo.SecPatient">
-     select patient_medicalCardNumber patientMedicalCardNumber from sec_patient where id=#{patientId}
+     select patient_medicalCardNumber patientMedicalCardNumber from sec_patient where id=#{patientId} and disabled=0
     </select>
 
 

@@ -27,7 +27,7 @@
 
 
 
-    <!--//新增楼盘
+    <!--//
   boolean addSecConsultation(@Param("doctor") Doctor doctor, @Param("userid") int userid,@Param("phone") String phone,@Param("biaoti") String biaoti, @Param("text") String text,@Param("fix") String fix@Param("paymentStatus") int paymentStatus,@Param("orderId") int orderId);-->
     <insert id="addSecConsultation"  useGeneratedKeys="true" keyProperty="doctor.id" >
      insert into sec_consultation (id, status, disabled,
@@ -41,7 +41,7 @@
       #{paymentStatus}, #{doctor.id}, null,
       null,null)
   </insert>
-    <!--//添加订单表
+    <!--//添加订单表boolean addSecPicBySecConsultation(SecPic pic);
     boolean addHisOrder(@Param("hisOrder") HisOrder hisOrder);-->
     <insert id="addHisOrder" parameterType="com.wx_hospital.pojo.HisOrder" useGeneratedKeys="true" keyProperty="hisOrder.id">
     insert into his_order (id, disabled, createtime,
