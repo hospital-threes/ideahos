@@ -135,8 +135,8 @@ public class PersonalCenterController {
      */
     @RequestMapping("/selectHuixiapatient")
     @ResponseBody
-    public SecPatient selectHuixiapatient(Integer id){
-        SecPatient secPatient =personalCenterServiceImpl.selectHuixiapatient(id);
+    public SecPatient selectHuixiapatient(Integer patientid){
+        SecPatient secPatient =personalCenterServiceImpl.selectHuixiapatient(patientid);
         return  secPatient;
     }
 
@@ -164,6 +164,26 @@ public class PersonalCenterController {
         int i = personalCenterServiceImpl.updatePatient(secPatient);
         return i>0;
     }
+
+    /**
+     * 逻辑删除 就诊人信息
+     * @param patientid
+     * @return
+     */
+    @RequestMapping("/deletePatient")
+    @ResponseBody
+    public boolean deletePatient(Integer patientid){
+
+        int i = personalCenterServiceImpl.deletePatient(patientid);
+
+        return i>0;
+    }
+
+
+    /**
+     * getOnlineOrder
+     * 获取当前就诊人的在线咨询信息
+     */
 
 }
 
