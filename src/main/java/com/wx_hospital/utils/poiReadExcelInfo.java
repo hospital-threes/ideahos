@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -159,11 +160,58 @@ public class poiReadExcelInfo {
         return resolveRuleList;
     }
 
-    public static void main(String[] args){
-        List<ReportBaobiao> resolveRuleList = Res("D:\\test.xlsx");
-        for (ReportBaobiao  bus:resolveRuleList) {
-            System.out.println(bus);
+    public static void main(String[] args) throws IOException {
+        String wenjian="test";
+
+//        String path="D:\\wx_hospital\\reportFile\\"+wenjian+"";
+        //List<ReportBaobiao> resolveRuleList = Res(path);
+//        for (ReportBaobiao  bus:resolveRuleList) {
+//            System.out.println(bus);
+//        }
+
+
+        //判断文件是否存在  如果不存在则不读取返回前端
+        File file = new File("D:\\wx_hospital");
+        List<ReportBaobiao> list = null;
+        try {
+            if (!file.exists()) { //文件夹不存在
+                System.out.println("异常1");
+            }else {//文件夹存在
+                File file1 = new File("D:\\wx_hospital\\reportFile");
+                if (!file1.exists()) {
+                    System.out.println("异常2");
+                } else {
+                    File file2 = new File("D:\\wx_hospital\\reportFile\\" + wenjian + ".xlsx");
+                    if (!file2.exists()) {
+                        System.out.println("异常3");
+                    } else {
+                        String path1 = "D:\\wx_hospital\\reportFile\\" + wenjian + ".xlsx";
+                        list = poiReadExcelInfo.Res(path1);//传的前端获取对应的地址（活的最后再改）
+//                        for (ReportBaobiao  bus:list) {
+//                                   System.out.println(bus);
+//                         }
+                    }
+                }
+            }
+        } catch (Exception exc) {//捕获异常
+            exc.toString();
+            System.out.println("异常1111");
         }
+
+        System.out.println(list);
+
+
+
+//        //判断文件夹if(){}
+//
+//        //判断前端传来文件是否为空
+//
+//        String path2=file+wenjian;
+//        List<ReportBaobiao> resolveRuleList = Res(path);
+//
+//        for (ReportBaobiao  bus:resolveRuleList) {
+//            System.out.println(bus);
+//        }
 
 
 
