@@ -4,6 +4,7 @@ import com.wx_hospital.pojo.SecPatient;
 import com.wx_hospital.pojo.SecReservation;
 import com.wx_hospital.pojo.SecUser;
 import com.wx_hospital.service.PersonalCenterService;
+import com.wx_hospital.utils.JSONUtils;
 import com.wx_hospital.utils.JedisClientPool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -80,6 +81,10 @@ public class PersonalCenterController {
             SecUser secUser= personalCenterServiceImpl.userLogin(phone);
 
             map.put("userId", secUser.getId()+"");
+
+            SecPatient secPatient = personalCenterServiceImpl.getDefaultPatient(secUser.getId());
+
+            map.put("patientInfo", JSONUtils.object2Json(secPatient));
         }else {
             map.put("result","failed");
         }
