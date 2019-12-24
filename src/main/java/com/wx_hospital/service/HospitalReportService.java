@@ -1,6 +1,7 @@
 package com.wx_hospital.service;
 
 import com.wx_hospital.pojo.JiuzhenPersonVo;
+import com.wx_hospital.pojo.SecPatient;
 import com.wx_hospital.pojo.SecReport;
 import com.wx_hospital.pojo.SecUser;
 
@@ -15,9 +16,7 @@ import java.util.List;
 public interface HospitalReportService {
     List<SecReport> seclectReport(Integer id);
 
-    SecUser JiuzenPerson(Integer id);
-
-    JiuzhenPersonVo Xingqing(Integer id, Integer reportId);
+    JiuzhenPersonVo Xingqing(Integer reportId);
 
 }
 

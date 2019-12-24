@@ -2,8 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wx_hospital.mapper.SecReportMapper" >
 
-    <!--检查报告-->
-
     <!--就诊人检测报告内容回显 List<SecReport> seclectReport(Integer id);-->
     <select id="seclectReport" resultType="com.wx_hospital.pojo.SecReport">
 select sec_report.id, sec_report.examine_info examineInfo,sec_report.sample_time sampleTime,sec_report.file_addr  fileAddr
@@ -16,14 +14,13 @@ and sec_patient.id=sec_reservation.patient_id
 and sec_user.id=sec_reservation.user_id
 and sec_reservation.user_id=sec_patient.user_id
 and   sec_user.id=#{id}
-and   sec_report.disabled=0
     </select>
 
 
 
     <!-- 回显就诊人信息 SecUser JiuzenPerson(Integer id); 后期可能会加就诊人id-->
     <select id="JiuzenPerson" resultType="com.wx_hospital.pojo.SecUser">
-  select *  from  sec_user  where sec_user.id=#{id}  and disabled=0
+  select *  from  sec_user  where sec_user.id=#{id}
     </select>
 
     <!--    JiuzhenPersonVo Xingqing(@Param("id") Integer id,@Param("reportId") Integer reportId);
@@ -44,11 +41,9 @@ and sec_reservation.doctor_id=sec_doctor.id
 and sec_second_department.id=sec_reservation.department_id
 and sec_patient.id=sec_reservation.patient_id
 and sec_user.id=sec_reservation.user_id
-and sec_reservation.user_id=
-sec_patient.user_id
+and sec_reservation.user_id=sec_patient.user_id
 and   sec_user.id=#{id}
 and   sec_report.id=#{reportId}
-and   sec_report.disabled=0
     </select>
 
 
