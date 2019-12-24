@@ -2,6 +2,7 @@ package com.wx_hospital.service.imp;
 
 import com.wx_hospital.mapper.SecReportMapper;
 import com.wx_hospital.pojo.JiuzhenPersonVo;
+import com.wx_hospital.pojo.SecPatient;
 import com.wx_hospital.pojo.SecReport;
 import com.wx_hospital.pojo.SecUser;
 import com.wx_hospital.service.HospitalReportService;
@@ -27,13 +28,8 @@ public class HospitalReportServiceImpl implements HospitalReportService {
     }
 
     @Override
-    public SecUser JiuzenPerson(Integer id) {
-        return  secReportMapper.JiuzenPerson(id);
-    }
-
-    @Override
-    public JiuzhenPersonVo Xingqing(Integer id, Integer reportId) {
-        return secReportMapper.Xingqing(id,reportId);
+    public JiuzhenPersonVo Xingqing(Integer reportId) {
+        return secReportMapper.Xingqing(reportId);
     }
 
 }

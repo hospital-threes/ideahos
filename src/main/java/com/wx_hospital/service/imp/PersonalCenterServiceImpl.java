@@ -71,5 +71,10 @@ public class PersonalCenterServiceImpl implements PersonalCenterService {
     public int updatePatient(SecPatient secPatient) {
         return secPatientMapper.updatePatient(secPatient);
     }
+
+    @Override
+    public int deletePatient(Integer patientid) {
+        return secPatientMapper.deletePatient(patientid);
+    }
 }
 

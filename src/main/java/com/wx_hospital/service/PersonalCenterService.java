@@ -26,5 +26,7 @@ public interface PersonalCenterService {
     int addPatient(SecPatient secPatient);
 
     int updatePatient(SecPatient secPatient);
+
+    int deletePatient(Integer patientid);
 }
 

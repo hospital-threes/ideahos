@@ -4,7 +4,7 @@
 
     <!-- List<SecPatient> selectpatient(Integer id);查询当前用户就诊人-->
     <select id="selectpatient" resultType="com.wx_hospital.pojo.SecPatient">
-        select * from sec_patient where user_id=#{id}
+        select * from sec_patient where user_id=#{id} AND disabled = 0
     </select>
 
     <!-- int UpdateMoren(@Param("patientid") Integer patientid,@Param("userId")  Integer userId);-->
@@ -19,18 +19,18 @@
 
     <!--SecPatient selectHuixiapatient(Integer id); 回显就诊人，有默认回显（就诊信息）-->
     <select id="selectHuixiapatient" resultType="com.wx_hospital.pojo.SecPatient">
-     select *  from sec_patient where id=#{id}
+     select *  from sec_patient where id=#{id} AND disabled = 0
     </select>
 
     <!-- SecPatient getDefaultPatient(Integer userId); -->
     <select id="getDefaultPatient" resultType="com.wx_hospital.pojo.SecPatient">
-       select *  from sec_patient where user_id=#{id} AND is_default = 0
+       select *  from sec_patient where user_id=#{id} AND is_default = 0 AND disabled = 0
     </select>
 
 
     <!--SecPatient SelectCardNumber(String patientId);查询就诊卡-->
     <select id="SelectCardNumber" resultType="com.wx_hospital.pojo.SecPatient">
-     select patient_medicalCardNumber patientMedicalCardNumber from sec_patient where id=#{patientId}
+     select patient_medicalCardNumber patientMedicalCardNumber from sec_patient where id=#{patientId} AND disabled = 0
     </select>
 
 
@@ -44,7 +44,21 @@
 
     <!-- int updatePatient(@Param("secPatient")SecPatient secPatient); -->
     <update id="updatePatient" parameterType="com.wx_hospital.pojo.SecPatient">
-        
+        update sec_patient set
+        patient_name = #{secPatient.patientName},
+        patient_tel = #{secPatient.patientTel},
+        patient_idCard = #{secPatient.patientIdcard},
+        patient_medicalCardNumber = #{secPatient.patientMedicalcardnumber},
+        patient_healthCareCardNumber = #{secPatient.patientHealthcarecardnumber},
+        patient_area = #{secPatient.patientArea},
+        patient_address = #{secPatient.patientAddress}
+        where id = #{secPatient.id}
+    </update>
+
+
+    <!-- int deletePatient(Integer patientid); -->
+    <update id="deletePatient">
+        update sec_patient set disabled = 1 where id = #{patientid}
     </update>
     <!-- int UpdataMedical(@Param("medicalCardBalance")SecPatient medicalCardBalance);-->
     <update id="UpdataMedical" parameterType="com.wx_hospital.pojo.SecPatient">

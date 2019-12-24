@@ -4,6 +4,7 @@ import com.wx_hospital.pojo.SecPatient;
 import com.wx_hospital.pojo.SecReservation;
 import com.wx_hospital.pojo.SecUser;
 import com.wx_hospital.service.PersonalCenterService;
+import com.wx_hospital.utils.JSONUtils;
 import com.wx_hospital.utils.JedisClientPool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -80,6 +81,10 @@ public class PersonalCenterController {
             SecUser secUser= personalCenterServiceImpl.userLogin(phone);
 
             map.put("userId", secUser.getId()+"");
+
+            SecPatient secPatient = personalCenterServiceImpl.getDefaultPatient(secUser.getId());
+
+            map.put("patientInfo", JSONUtils.object2Json(secPatient));
         }else {
             map.put("result","failed");
         }
@@ -135,8 +140,8 @@ public class PersonalCenterController {
      */
     @RequestMapping("/selectHuixiapatient")
     @ResponseBody
-    public SecPatient selectHuixiapatient(Integer id){
-        SecPatient secPatient =personalCenterServiceImpl.selectHuixiapatient(id);
+    public SecPatient selectHuixiapatient(Integer patientid){
+        SecPatient secPatient =personalCenterServiceImpl.selectHuixiapatient(patientid);
         return  secPatient;
     }
 
@@ -164,6 +169,26 @@ public class PersonalCenterController {
         int i = personalCenterServiceImpl.updatePatient(secPatient);
         return i>0;
     }
+
+    /**
+     * 逻辑删除 就诊人信息
+     * @param patientid
+     * @return
+     */
+    @RequestMapping("/deletePatient")
+    @ResponseBody
+    public boolean deletePatient(Integer patientid){
+
+        int i = personalCenterServiceImpl.deletePatient(patientid);
+
+        return i>0;
+    }
+
+
+    /**
+     * getOnlineOrder
+     * 获取当前就诊人的在线咨询信息
+     */
 
 }
 
