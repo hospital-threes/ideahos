@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface SecSecondDepartmentMapper {
     //查询科室管理
-    List<SecSecondDepartment> SelectFirDep(@Param("hospitalId") Integer hospitalId);
+    List<SecSecondDepartment> SelectFirDep();
 
 
 

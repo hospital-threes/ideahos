@@ -44,7 +44,14 @@
 
     <!-- int updatePatient(@Param("secPatient")SecPatient secPatient); -->
     <update id="updatePatient" parameterType="com.wx_hospital.pojo.SecPatient">
-
+        
+    </update>
+    <!-- int UpdataMedical(@Param("medicalCardBalance")SecPatient medicalCardBalance);-->
+    <update id="UpdataMedical" parameterType="com.wx_hospital.pojo.SecPatient">
+        UPDATE
+            sec_patient
+        SET
+            medicalCard_balance=medicalCard_balance+${medicalCardBalance}
     </update>
 
 </mapper>

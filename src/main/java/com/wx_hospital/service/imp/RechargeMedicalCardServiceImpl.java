@@ -1,6 +1,9 @@
 package com.wx_hospital.service.imp;
 
+import com.wx_hospital.mapper.SecPatientMapper;
+import com.wx_hospital.pojo.SecPatient;
 import com.wx_hospital.service.RechargeMedicalCardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,6 +14,12 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class RechargeMedicalCardServiceImpl implements RechargeMedicalCardService {
+    @Autowired
+    private SecPatientMapper secPatientMapper;
 
+    @Override
+    public int UpdataMedical(SecPatient medicalCardBalance) {
+        return secPatientMapper.UpdataMedical(medicalCardBalance);
+    }
 }
 

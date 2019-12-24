@@ -20,4 +20,7 @@ public interface SecPatientMapper {
     int addPatient(@Param("secPatient")SecPatient secPatient);
 
     int updatePatient(@Param("secPatient")SecPatient secPatient);
+
+    /*就趁充值*/
+    int UpdataMedical(@Param("medicalCardBalance")SecPatient medicalCardBalance);
 }
