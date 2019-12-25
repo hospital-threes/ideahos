@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wx_hospital.mapper.SecReservationMapper" >
+<mapper namespace="com.wx_hospital.mapper.SecReservationMapper">
 
     <!--int addReservationTable(SecReservation secReservation); 添加预约表-->
-<insert id="addReservationTable">
+    <insert id="addReservationTable">
    INSERT into sec_reservation (order_id,hospital_id,timeframe_id,department_id,doctor_id,patient_id,price,user_id)
     VALUES (#{orderId},#{hospitalId},#{timeframeId},#{doctorId},#{departmentId},#{patientId},#{price},#{userId})
 </insert>
-
 
 
     <!--int addReservationTablePay(SecReservation secReservation);添加支付方式和支付时间-->
@@ -25,4 +24,16 @@
     <delete id="deleteOrder">
        DELETE from sec_reservation where order_id=#{orderId}
     </delete>
+
+
+    <!-- List<SecReservationVoio> getReservationIsNotPaid(Integer patientId); -->
+    <select id="getReservationIsNotPaid" resultType="com.wx_hospital.pojo.SecReservationVoio">
+        select sr.id,ho.id as orderId,ho.order_name,ho.order_num,ho.pay_money,ho.status,sda.appointment_time,sdat.timeframe,hospital_name,sd.name as doctorName
+            from sec_reservation sr left JOIN sec_hospital sh on sr.hospital_id = sh.id
+            left JOIN sec_doctor sd on sr.doctor_id = sd.id
+            left JOIN his_order ho on sr.order_id = ho.id
+            left JOIN sec_doctor_appointmenttime_timeframe sdat on sr.timeframe_id = sdat.id
+            left JOIN sec_doctor_appointmenttime sda on sdat.appointmenttime_id = sda.id
+            where sr.patient_id = #{patientId}
+    </select>
 </mapper>
