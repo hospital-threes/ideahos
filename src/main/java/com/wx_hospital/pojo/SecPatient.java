@@ -32,7 +32,17 @@ public class SecPatient implements Serializable {
 
     private Double medicalcardBalance;
 
+    private Double price;
+
     private static final long serialVersionUID = 1L;
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
 
     public Integer getId() {
         return id;
@@ -148,26 +158,22 @@ public class SecPatient implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", status=").append(status);
-        sb.append(", disabled=").append(disabled);
-        sb.append(", createtime=").append(createtime);
-        sb.append(", userId=").append(userId);
-        sb.append(", patientName=").append(patientName);
-        sb.append(", patientTel=").append(patientTel);
-        sb.append(", patientIdcard=").append(patientIdcard);
-        sb.append(", patientMedicalcardnumber=").append(patientMedicalcardnumber);
-        sb.append(", patientHealthcarecardnumber=").append(patientHealthcarecardnumber);
-        sb.append(", patientArea=").append(patientArea);
-        sb.append(", patientAddress=").append(patientAddress);
-        sb.append(", isDefault=").append(isDefault);
-        sb.append(", medicalcardBalance=").append(medicalcardBalance);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "SecPatient{" +
+                "id=" + id +
+                ", status='" + status + '\'' +
+                ", disabled=" + disabled +
+                ", createtime=" + createtime +
+                ", userId=" + userId +
+                ", patientName='" + patientName + '\'' +
+                ", patientTel='" + patientTel + '\'' +
+                ", patientIdcard='" + patientIdcard + '\'' +
+                ", patientMedicalcardnumber='" + patientMedicalcardnumber + '\'' +
+                ", patientHealthcarecardnumber='" + patientHealthcarecardnumber + '\'' +
+                ", patientArea='" + patientArea + '\'' +
+                ", patientAddress='" + patientAddress + '\'' +
+                ", isDefault=" + isDefault +
+                ", medicalcardBalance=" + medicalcardBalance +
+                ", price=" + price +
+                '}';
     }
 }

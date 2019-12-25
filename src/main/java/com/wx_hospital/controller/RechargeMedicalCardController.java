@@ -21,8 +21,8 @@ public class RechargeMedicalCardController {
 
     @RequestMapping("/UpdataMedical")
     @ResponseBody
-    public int UpdataMedical(SecPatient medicalCardBalance){
-        return rechargeMedicalCardServiceImpl.UpdataMedical(medicalCardBalance);
+    public int UpdataMedical(SecPatient secPatient){
+        return rechargeMedicalCardServiceImpl.UpdataMedical(secPatient);
     }
 
 }
