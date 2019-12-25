@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wx_hospital.mapper.HisOrderMapper" >
+    <!-- List<HisOrder> getNoPaymentOrderBypatientId(Integer patientId); -->
+    <select id="getNoPaymentOrderBypatientId" resultType="com.wx_hospital.pojo.HisOrder">
+        select * from his_order WHERE order_placer = #{patientId} AND status = 0
+    </select>
     <insert id="InsertOrder" parameterType="com.wx_hospital.pojo.HisOrder">
          INSERT into his_order (id,disabled,createtime,order_name,order_num,order_placer,status,pay_start_time,refund_start_time,pay_money,pay_way)
     VALUES (#{id},#{disabled},#{createtime},#{orderName},#{orderNum},#{orderPlacer},#{status},#{payStartTime},#{refundStartTime},#{payMoney},#{payWay})

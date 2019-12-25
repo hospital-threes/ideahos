@@ -1,5 +1,11 @@
 package com.wx_hospital.service;
 
+import com.wx_hospital.pojo.SecDoctor;
+import com.wx_hospital.pojo.SecPic;
+import com.wx_hospital.utils.Response;
+
+import java.util.List;
+
 /**
  * @program: ideahos
  * @description:
@@ -8,5 +14,12 @@ package com.wx_hospital.service;
  **/
 public interface OnlineConsultationService {
 
+    List<SecDoctor> getAlldt22();
+
+    boolean updateConsultationState(int id);
+
+    boolean addSecPicBySecConsultation(SecPic pic, int orderId);
+
+    Response addSecConsultation(SecDoctor doctor, int userid, String phone, String biaoti, String text, String fix, int paymentStatus, String orderNum, int state);
 }
 

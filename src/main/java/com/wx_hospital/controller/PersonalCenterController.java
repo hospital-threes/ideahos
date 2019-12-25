@@ -1,8 +1,6 @@
 package com.wx_hospital.controller;
 
-import com.wx_hospital.pojo.SecPatient;
-import com.wx_hospital.pojo.SecReservation;
-import com.wx_hospital.pojo.SecUser;
+import com.wx_hospital.pojo.*;
 import com.wx_hospital.service.PersonalCenterService;
 import com.wx_hospital.utils.JSONUtils;
 import com.wx_hospital.utils.JedisClientPool;
@@ -190,5 +188,76 @@ public class PersonalCenterController {
      * 获取当前就诊人的在线咨询信息
      */
 
+
+    /**
+     * 获取当前未支付订单信息
+     * @Param patientId
+     * return
+     */
+    @RequestMapping("/getNoPaymentOrderBypatientId")
+    @ResponseBody
+    public List<HisOrder> getNoPaymentOrderBypatientId(Integer patientId){
+
+        List<HisOrder> hisOrders = personalCenterServiceImpl.getNoPaymentOrderBypatientId(patientId);
+
+        return hisOrders;
+    }
+
+
+    /**
+     * 获取当前就诊人预约挂号信息
+     * @Param patientId
+     * return
+     */
+    @RequestMapping("/getReservationIsNotPaid")
+    @ResponseBody
+    public List<SecReservationVoio> getReservationIsNotPaid(Integer patientId){
+
+        List<SecReservationVoio> reservations = personalCenterServiceImpl.getReservationIsNotPaid(patientId);
+
+        return reservations;
+    }
+
+    /**
+     * 获取当前就诊人的在线咨询信息
+     * @Param patientId
+     * return
+     */
+    @RequestMapping("/getOnlineconsultationIsNotPaid")
+    @ResponseBody
+    public List<SecConsultationVoio> getOnlineconsultationIsNotPaid(Integer patientId){
+
+        List<SecConsultationVoio> consultations = personalCenterServiceImpl.getOnlineconsultationIsNotPaid(patientId);
+
+        return consultations;
+    }
+
+    /**
+     * 获取当前就诊人门诊缴费订单
+     * @Param patientId
+     * return
+     */
+    @RequestMapping("/getOutpatientpayment")
+    @ResponseBody
+    public List<SecPaymentVoio> getOutpatientpayment(Integer patientId){
+
+        List<SecPaymentVoio> paymentVoios = personalCenterServiceImpl.getOutpatientpayment(patientId);
+
+        return paymentVoios;
+    }
+
+    /**
+     * 获取当前就诊人充值缴费订单
+     * @Param patientId
+     * return
+     */
+    @RequestMapping("/getPatientrechargeIsNotPaid")
+    @ResponseBody
+    public List<HisOrder> getPatientrechargeIsNotPaid(Integer patientId){
+
+        List<HisOrder> orders = personalCenterServiceImpl.getPatientrechargeIsNotPaid(patientId);
+
+        return orders;
+    }
 }
 

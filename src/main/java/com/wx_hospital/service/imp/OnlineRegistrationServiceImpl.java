@@ -1,9 +1,6 @@
 package com.wx_hospital.service.imp;
 
-import com.wx_hospital.mapper.SecDoctorMapper;
-import com.wx_hospital.mapper.SecPatientMapper;
-import com.wx_hospital.mapper.SecPayWayMapper;
-import com.wx_hospital.mapper.SecReservationMapper;
+import com.wx_hospital.mapper.*;
 import com.wx_hospital.pojo.*;
 import com.wx_hospital.service.OnlineRegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +25,8 @@ public class OnlineRegistrationServiceImpl implements OnlineRegistrationService 
     private SecDoctorMapper secDoctorMapper;
     @Autowired
     private SecPatientMapper secPatientMapper;
+    @Autowired
+    private SecFirstDepartmentMapper secFirstDepartmentMapper;
 
 
     @Override
@@ -117,6 +116,11 @@ public class OnlineRegistrationServiceImpl implements OnlineRegistrationService 
     @Override
     public int deleteOrder(Integer orderId) {
         return secReservationMapper.deleteOrder(orderId);
+    }
+
+    @Override
+    public List<SecFirstDepartment> selectFirstdepartment() {
+        return secFirstDepartmentMapper.selectFirstdepartment();
     }
 }
 

@@ -1,9 +1,7 @@
 package com.wx_hospital.service.imp;
 
-import com.wx_hospital.mapper.SecPatientMapper;
-import com.wx_hospital.mapper.SecUserMapper;
-import com.wx_hospital.pojo.SecPatient;
-import com.wx_hospital.pojo.SecUser;
+import com.wx_hospital.mapper.*;
+import com.wx_hospital.pojo.*;
 import com.wx_hospital.service.PersonalCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +20,15 @@ public class PersonalCenterServiceImpl implements PersonalCenterService {
     private SecUserMapper secUserMapper;
     @Autowired
     private SecPatientMapper secPatientMapper;
+    @Autowired
+    private HisOrderMapper hisOrderMapper;
+    @Autowired
+    private SecReservationMapper secReservationMapper;
+    @Autowired
+    private SecConsultationMapper secConsultationMapper;
+    @Autowired
+    private SecPaymentMapper secPaymentMapper;
+
 
     @Override
     public SecPatient selectHuixiapatient(Integer patientId) {
@@ -74,7 +81,50 @@ public class PersonalCenterServiceImpl implements PersonalCenterService {
 
     @Override
     public int deletePatient(Integer patientid) {
+
         return secPatientMapper.deletePatient(patientid);
     }
+
+    @Override
+    public List<HisOrder> getNoPaymentOrderBypatientId(Integer patientId) {
+
+        List<HisOrder> hisOrders = hisOrderMapper.getNoPaymentOrderBypatientId(patientId);
+
+        return hisOrders;
+    }
+
+    @Override
+    public List<SecReservationVoio> getReservationIsNotPaid(Integer patientId) {
+
+        List<SecReservationVoio> reservations = secReservationMapper.getReservationIsNotPaid(patientId);
+
+        return reservations;
+    }
+
+    @Override
+    public List<SecConsultationVoio> getOnlineconsultationIsNotPaid(Integer patientId) {
+
+        List<SecConsultationVoio> secConsultationVoios = secConsultationMapper.getOnlineconsultationIsNotPaid(patientId);
+
+        return secConsultationVoios;
+    }
+
+    @Override
+    public List<SecPaymentVoio> getOutpatientpayment(Integer patientId) {
+
+        List<SecPaymentVoio> paymentVoios = secPaymentMapper.getOutpatientpayment(patientId);
+
+        return paymentVoios;
+    }
+
+    @Override
+    public List<HisOrder> getPatientrechargeIsNotPaid(Integer patientId) {
+
+        List<HisOrder> orders = hisOrderMapper.getNoPaymentOrderBypatientId(patientId);
+
+        return orders;
+    }
+
+
 }
 

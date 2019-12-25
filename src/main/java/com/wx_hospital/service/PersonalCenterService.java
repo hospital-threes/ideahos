@@ -1,7 +1,6 @@
 package com.wx_hospital.service;
 
-import com.wx_hospital.pojo.SecPatient;
-import com.wx_hospital.pojo.SecUser;
+import com.wx_hospital.pojo.*;
 
 import java.util.List;
 
@@ -28,5 +27,15 @@ public interface PersonalCenterService {
     int updatePatient(SecPatient secPatient);
 
     int deletePatient(Integer patientid);
+
+    List<HisOrder> getNoPaymentOrderBypatientId(Integer patientId);
+
+    List<SecReservationVoio> getReservationIsNotPaid(Integer patientId);
+
+    List<SecConsultationVoio> getOnlineconsultationIsNotPaid(Integer patientId);
+
+    List<SecPaymentVoio> getOutpatientpayment(Integer patientId);
+
+    List<HisOrder> getPatientrechargeIsNotPaid(Integer patientId);
 }
 
