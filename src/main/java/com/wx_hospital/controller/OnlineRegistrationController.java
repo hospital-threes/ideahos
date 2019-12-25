@@ -258,7 +258,7 @@ public class OnlineRegistrationController {
 
     /**
      * 删除订单（取消）
-     * @param patientId
+     * @param
      * @return
      */
     @RequestMapping("deleteOrder")
@@ -271,6 +271,18 @@ public class OnlineRegistrationController {
             return 0;
         }
 
+    }
+
+
+    /**
+     *  查询一级科室-
+     * @return
+     */
+    @RequestMapping("selectFirstdepartment")
+    @ResponseBody
+    public List<SecFirstDepartment> selectFirstdepartment(){
+        List<SecFirstDepartment> list=onlineRegistrationServiceImpl.selectFirstdepartment();
+        return list;
     }
 
 }

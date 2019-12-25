@@ -4,6 +4,7 @@ package com.wx_hospital.utils;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.wx_hospital.pojo.SecDoctor;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
@@ -134,4 +135,7 @@ public class JSONUtils {
     }
 
 
+    public static SecDoctor json2Ojbect(String s, Class<SecDoctor> secDoctorClass) {
+        return null;
+    }
 }

@@ -2,4 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wx_hospital.mapper.SecFirstDepartmentMapper" >
 
+
+    <!--List<SecFirstDepartment> selectFirstdepartment(); 查询一级科室-->
+    <select id="selectFirstdepartment" resultType="com.wx_hospital.pojo.SecFirstDepartment">
+         select *  from sec_first_department
+    </select>
 </mapper>

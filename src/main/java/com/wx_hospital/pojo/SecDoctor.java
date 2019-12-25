@@ -32,7 +32,7 @@ public class SecDoctor implements Serializable {
 
     private Boolean onlineconsultant;
 
-    private Boolean ispremium;
+    private Integer ispremium;
 
     private Double price;
 
@@ -46,6 +46,76 @@ public class SecDoctor implements Serializable {
 
     private String hospitalName;
 
+
+    private String phto;
+
+    private String author;
+
+    private String info;
+
+    private boolean hasChange;
+
+    private String jieshao;
+
+    private int praise;
+
+    private int state;
+
+    public String getPhto() {
+        return phto;
+    }
+
+    public void setPhto(String phto) {
+        this.phto = phto;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public boolean isHasChange() {
+        return hasChange;
+    }
+
+    public void setHasChange(boolean hasChange) {
+        this.hasChange = hasChange;
+    }
+
+    public String getJieshao() {
+        return jieshao;
+    }
+
+    public void setJieshao(String jieshao) {
+        this.jieshao = jieshao;
+    }
+
+    public int getPraise() {
+        return praise;
+    }
+
+    public void setPraise(int praise) {
+        this.praise = praise;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -187,11 +257,11 @@ public class SecDoctor implements Serializable {
         this.onlineconsultant = onlineconsultant;
     }
 
-    public Boolean getIspremium() {
+    public Integer getIspremium() {
         return ispremium;
     }
 
-    public void setIspremium(Boolean ispremium) {
+    public void setIspremium(Integer ispremium) {
         this.ispremium = ispremium;
     }
 

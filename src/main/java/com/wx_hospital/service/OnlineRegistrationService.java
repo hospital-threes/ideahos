@@ -45,5 +45,7 @@ public interface OnlineRegistrationService {
     SecPatient SelectCardNumber(String patientId);
 
     int deleteOrder(Integer orderId);
+
+    List<SecFirstDepartment> selectFirstdepartment();
 }
 
