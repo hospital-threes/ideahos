@@ -1,13 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wx_hospital.mapper.SecSecondDepartmentMapper" >
-    <!--List<SecSecondDepartment> SelectFirDep();-->
     <select id="SelectFirDep" resultType="com.wx_hospital.pojo.SecSecondDepartment">
-        SELECT
-            *
-        FROM
-            sec_second_department
-        WHERE
-            disabled=0
+        select ssd.* from sec_first_department sfd left JOIN  sec_second_department ssd ON sfd.id= ssd.first_department_id
+        WHERE sfd.hospital_id = #{hospitalId}
     </select>
 </mapper>
