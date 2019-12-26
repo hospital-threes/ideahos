@@ -4,46 +4,16 @@
 
     <!--就诊人检测报告内容回显 List<SecReport> seclectReport(Integer id);-->
     <select id="seclectReport" resultType="com.wx_hospital.pojo.SecReport">
-select sec_report.id, sec_report.examine_info examineInfo,sec_report.sample_time sampleTime,sec_report.file_addr  fileAddr
- from sec_reservation,sec_doctor,sec_report,sec_patient,sec_user,sec_second_department
- where
-sec_report.examine_id=sec_reservation.doctor_id
-and sec_reservation.doctor_id=sec_doctor.id
-and sec_second_department.id=sec_reservation.department_id
-and sec_patient.id=sec_reservation.patient_id
-and sec_user.id=sec_reservation.user_id
-and sec_reservation.user_id=sec_patient.user_id
-and   sec_user.id=#{id}
+        select * from sec_report WHERE examine_id = #{id}
     </select>
 
-
-
-    <!-- 回显就诊人信息 SecUser JiuzenPerson(Integer id); 后期可能会加就诊人id-->
-    <select id="JiuzenPerson" resultType="com.wx_hospital.pojo.SecUser">
-  select *  from  sec_user  where sec_user.id=#{id}
-    </select>
-
-    <!--    JiuzhenPersonVo Xingqing(@Param("id") Integer id,@Param("reportId") Integer reportId);
--->
+    <!--检查报告-->
+    <!-- JiuzhenPersonVo Xingqing(@Param("id") Integer id,@Param("reportId") Integer reportId);-->
     <select id="Xingqing" resultType="com.wx_hospital.pojo.JiuzhenPersonVo">
-
-select sec_patient.patient_name patientName,
-  sec_report.examine_info examineInfo,
-  sec_report.sample_type sampleType,
-  sec_report.sample_time sampleTime,
-  sec_second_department.second_department_name secondDepartmentName,
-  sec_second_department.second_department_address  secondDepartmentAddress,
-  sec_report.file_addr  fileAddr
- from sec_reservation,sec_doctor,sec_report,sec_patient,sec_user,sec_second_department
- where
-sec_report.examine_id=sec_reservation.doctor_id
-and sec_reservation.doctor_id=sec_doctor.id
-and sec_second_department.id=sec_reservation.department_id
-and sec_patient.id=sec_reservation.patient_id
-and sec_user.id=sec_reservation.user_id
-and sec_reservation.user_id=sec_patient.user_id
-and   sec_user.id=#{id}
-and   sec_report.id=#{reportId}
+        select sr.id,sp.patient_name,sr.examine_info,sr.sample_type,
+        sr.sample_time,ssd.second_department_name,ssd.second_department_address,sr.file_addr
+          from sec_patient sp,sec_report sr,sec_second_department ssd
+          WHERE sp.id = sr.examine_id AND sr.clinic_department_id =ssd.id AND sr.id = #{reportId}
     </select>
 
 
