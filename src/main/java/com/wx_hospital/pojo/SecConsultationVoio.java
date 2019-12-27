@@ -11,7 +11,16 @@ public class SecConsultationVoio implements Serializable {
     private String orderNum;
     private Double payMoney;
     private String status;
+    private String payStatus;
     private String questionTitle;
+
+    public String getPayStatus() {
+        return payStatus;
+    }
+
+    public void setPayStatus(String payStatus) {
+        this.payStatus = payStatus;
+    }
 
     public Integer getId() {
         return id;

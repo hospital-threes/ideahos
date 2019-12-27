@@ -259,5 +259,20 @@ public class PersonalCenterController {
 
         return orders;
     }
+
+
+    /**
+     *
+     * 获取当前就诊人的信息
+     */
+    @RequestMapping("/getOnlineOrder")
+    @ResponseBody
+    public List<SecConsultationVoio> getOnlineOrder(Integer patientId){
+
+        List<SecConsultationVoio> consultations = personalCenterServiceImpl.getOnlineOrder(patientId);
+
+        return consultations;
+    }
+
 }
 
