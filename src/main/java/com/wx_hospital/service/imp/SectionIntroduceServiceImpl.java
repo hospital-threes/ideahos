@@ -1,6 +1,8 @@
 package com.wx_hospital.service.imp;
 
+import com.wx_hospital.mapper.SecFirstDepartmentMapper;
 import com.wx_hospital.mapper.SecSecondDepartmentMapper;
+import com.wx_hospital.pojo.SecFirstDepartment;
 import com.wx_hospital.pojo.SecSecondDepartment;
 import com.wx_hospital.service.SectionIntroduceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +20,12 @@ import java.util.List;
 public class SectionIntroduceServiceImpl implements SectionIntroduceService {
     @Autowired
     private SecSecondDepartmentMapper secSecondDepartmentMapper;
+    @Autowired
+    private SecFirstDepartmentMapper secFirstDepartmentMapper;
+
     @Override
-    public List<SecSecondDepartment> SelectFirDep(Integer hospitalId) {
-        return secSecondDepartmentMapper.SelectFirDep(hospitalId);
+    public List<SecSecondDepartment> SelectFirDep() {
+        return secSecondDepartmentMapper.SelectFirDep();
     }
 }
 

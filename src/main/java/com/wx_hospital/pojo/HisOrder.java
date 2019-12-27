@@ -30,7 +30,17 @@ public class HisOrder implements Serializable {
 
     private String payWay;
 
+    private String patientMedicalcardnumber;
+
     private static final long serialVersionUID = 1L;
+
+    public String getPatientMedicalcardnumber() {
+        return patientMedicalcardnumber;
+    }
+
+    public void setPatientMedicalcardnumber(String patientMedicalcardnumber) {
+        this.patientMedicalcardnumber = patientMedicalcardnumber;
+    }
 
     public Integer getId() {
         return id;
@@ -122,23 +132,19 @@ public class HisOrder implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", disabled=").append(disabled);
-        sb.append(", createtime=").append(createtime);
-        sb.append(", orderName=").append(orderName);
-        sb.append(", orderNum=").append(orderNum);
-        sb.append(", orderPlacer=").append(orderPlacer);
-        sb.append(", status=").append(status);
-        sb.append(", payStartTime=").append(payStartTime);
-        sb.append(", refundStartTime=").append(refundStartTime);
-        sb.append(", payMoney=").append(payMoney);
-        sb.append(", payWay=").append(payWay);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "HisOrder{" +
+                "id=" + id +
+                ", disabled=" + disabled +
+                ", createtime=" + createtime +
+                ", orderName='" + orderName + '\'' +
+                ", orderNum='" + orderNum + '\'' +
+                ", orderPlacer=" + orderPlacer +
+                ", status='" + status + '\'' +
+                ", payStartTime=" + payStartTime +
+                ", refundStartTime=" + refundStartTime +
+                ", payMoney=" + payMoney +
+                ", payWay='" + payWay + '\'' +
+                ", patientMedicalcardnumber='" + patientMedicalcardnumber + '\'' +
+                '}';
     }
 }

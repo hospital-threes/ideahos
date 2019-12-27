@@ -60,5 +60,9 @@
     <update id="deletePatient">
         update sec_patient set disabled = 1 where id = #{patientid}
     </update>
+    <!-- int UpdataMedical(@Param("medicalCardBalance")SecPatient medicalCardBalance);-->
+    <update id="UpdataMedical" parameterType="com.wx_hospital.pojo.SecPatient">
+        UPDATE sec_patient SET  medicalCard_balance=medicalCard_balance+${price} WHERE id=#{id}
+    </update>
 
 </mapper>

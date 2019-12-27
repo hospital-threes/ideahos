@@ -22,4 +22,7 @@ public interface SecPatientMapper {
     int updatePatient(@Param("secPatient")SecPatient secPatient);
 
     int deletePatient(Integer patientid);
+
+    /*就趁充值*/
+    int UpdataMedical(@Param("price")Integer price,@Param("id")Integer id);
 }

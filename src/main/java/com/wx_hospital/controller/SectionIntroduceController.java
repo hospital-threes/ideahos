@@ -23,8 +23,8 @@ public class SectionIntroduceController {
     //科室介绍页面信息
     @RequestMapping("/SelectFirDep")
     @ResponseBody
-    public List<SecSecondDepartment> SelectFirDep(Integer hospitalId){
-        List<SecSecondDepartment> list=sectionIntroduceServiceImpl.SelectFirDep(hospitalId);
+    public List<SecSecondDepartment> SelectFirDep(){
+        List<SecSecondDepartment> list=sectionIntroduceServiceImpl.SelectFirDep();
         return list;
     }
 }

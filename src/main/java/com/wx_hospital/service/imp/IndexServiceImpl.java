@@ -18,6 +18,7 @@ import java.util.List;
 public class IndexServiceImpl implements IndexService {
     @Autowired
     private SecHospitalMapper secHospitalMapper;
+
     //主页信息
     @Override
     public List<SecHospital> SelectHos(String hospitalId) {

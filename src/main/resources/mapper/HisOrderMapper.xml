@@ -3,6 +3,31 @@
 <mapper namespace="com.wx_hospital.mapper.HisOrderMapper" >
     <!-- List<HisOrder> getNoPaymentOrderBypatientId(Integer patientId); -->
     <select id="getNoPaymentOrderBypatientId" resultType="com.wx_hospital.pojo.HisOrder">
-        select * from his_order WHERE order_placer = #{patientId} AND status = 0
+        select * from his_order WHERE order_placer = #{patientId} AND status = 0 AND order_name = "就诊卡充值"
     </select>
+    <insert id="InsertOrder" parameterType="com.wx_hospital.pojo.HisOrder">
+        <!-- selectKey将主键返回，需要再返回 -->
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            select LAST_INSERT_ID()
+        </selectKey>
+         INSERT into his_order (id,disabled,createtime,order_name,order_num,order_placer,status,pay_start_time,refund_start_time,pay_money,pay_way)
+    VALUES (#{id},#{disabled},now(),#{orderName},#{orderNum},#{orderPlacer},#{status},#{payStartTime},#{refundStartTime},#{payMoney},#{payWay})
+    </insert>
+    <!-- /*查询充值的记录*/List<HisOrder> SelectIdOne(@Param("id")Integer id);-->
+    <select id="SelectIdOne" resultType="com.wx_hospital.pojo.HisOrder">
+       SELECT
+            *
+        FROM
+            his_order hi,sec_patient sc
+        WHERE
+            hi.order_placer=sc.id and hi.id=#{id}
+    </select>
+    <update id="UpdataStatus" parameterType="com.wx_hospital.pojo.HisOrder">
+        UPDATE
+            his_order
+        SET
+            `status`=1,pay_way=#{payWay},pay_start_time=now(),refund_start_time=now()
+        WHERE
+            id=#{oId}
+    </update>
 </mapper>
