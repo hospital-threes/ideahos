@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("hospitalDynamics")
 public class HospitalDynamicsController {
-
     @Autowired
     private HospitalDynamicsService hospitalDynamicsServiceImpl;
 }

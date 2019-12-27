@@ -21,6 +21,12 @@ public class IndexController {
     @Autowired
     private IndexService indexServiceImpl;
 
+    /**
+     *
+     *
+     * @param hospitalId
+     * @return
+     */
     //首页的信息
     @RequestMapping("/SelectHos")
     @ResponseBody
@@ -28,6 +34,5 @@ public class IndexController {
         List<SecHospital> list=indexServiceImpl.SelectHos(hospitalId);
         return list;
     }
-
 }
 

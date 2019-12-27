@@ -61,6 +61,26 @@ public class SecDoctor implements Serializable {
 
     private int state;
 
+    private  String picPath;
+
+    private  String picName;
+
+    public String getPicName() {
+        return picName;
+    }
+
+    public void setPicName(String picName) {
+        this.picName = picName;
+    }
+
+    public String getPicPath() {
+        return picPath;
+    }
+
+    public void setPicPath(String picPath) {
+        this.picPath = picPath;
+    }
+
     public String getPhto() {
         return phto;
     }
