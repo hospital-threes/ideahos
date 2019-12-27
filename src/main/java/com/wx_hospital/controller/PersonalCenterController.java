@@ -274,5 +274,20 @@ public class PersonalCenterController {
         return consultations;
     }
 
+    /**
+     * 获取在线咨询详情
+     * @param id
+     * @param hospitalId
+     * @return
+     */
+    @RequestMapping("/getOrderDetailById")
+    @ResponseBody
+    public SecConsultation getOrderDetailById(Integer id,Integer hospitalId){
+
+        SecConsultation consultation = personalCenterServiceImpl.getOrderDetailById(id,hospitalId);
+
+        return consultation;
+    }
+
 }
 
