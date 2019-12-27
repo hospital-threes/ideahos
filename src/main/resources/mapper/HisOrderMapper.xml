@@ -26,7 +26,7 @@
         UPDATE
             his_order
         SET
-            `status`=1,pay_way=#{payWay},pay_start_time=now(),refund_start_time=now()
+            `status`=1,pay_way=#{payWay},pay_start_time=now()
         WHERE
             id=#{oId}
     </update>
