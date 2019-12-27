@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wx_hospital.mapper.SecReservationMapper">
 
-    <!--int addReservationTable(SecReservation secReservation); 添加预约表-->
+    <!--int addReservationTable(@Param("orderId") int orderId, @Param("secReservation") SecReservation secReservation); 添加预约表-->
     <insert id="addReservationTable">
    INSERT into sec_reservation (order_id,hospital_id,timeframe_id,department_id,doctor_id,patient_id,price,user_id)
-    VALUES (#{orderId},#{hospitalId},#{timeframeId},#{doctorId},#{departmentId},#{patientId},#{price},#{userId})
+    VALUES (#{orderId},#{secReservation.hospitalId},#{secReservation.timeframeId},#{secReservation.doctorId},#{secReservation.departmentId},#{secReservation.patientId},#{secReservation.price},#{secReservation.userId})
 </insert>
 
 

@@ -30,4 +30,21 @@
         WHERE
             id=#{oId}
     </update>
+
+
+
+    <!--  int addOrder(HisOrder hisOrder);添加订单表-->
+    <insert id="addOrder" useGeneratedKeys="true"  keyProperty="id">
+        INSERT into his_order (disabled,createtime,order_name,order_num,order_placer,status,pay_money)
+        VALUES (#{disabled},now(),#{orderName},#{orderNum},#{orderPlacer},#{status},#{payMoney})
+    </insert>
+
+
+    <!-- int upOrder(SecReservation secReservation);-->
+    <update id="upOrder">
+        UPDATE his_order SET  status=1,pay_way=#{priceType},pay_start_time=now()   WHERE   id=#{orderId}
+    </update>
+
+
+
 </mapper>

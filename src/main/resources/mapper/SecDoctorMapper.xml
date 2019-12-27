@@ -31,9 +31,13 @@ and sp.obj_type='doctor'
 
     <!--List<SecDoctor> huoquadministrative(String deptname);-->
     <select id="huoquadministrative" resultType="com.wx_hospital.pojo.SecDoctor">
-        select * from sec_doctor sd,sec_rank_dic srd,sec_doctor_multipoint sdm,sec_first_department sfd where
+        select * from sec_doctor sd,sec_rank_dic srd,sec_doctor_multipoint sdm,sec_first_department sfd ,sec_pic sp where
 sd.rank=srd.rank_code and sd.id=sdm.doctor_id  and sfd.id=sdm.department_id and sfd.department_name=#{deptname}
-    </select>
+and sp.obj_id=sd.id
+and sp.type='head'
+and sp.obj_type='doctor'
+
+</select>
 
     <!--List<SecDoctorAppointmenttimeTimeframe> huoquappointmenttime();-->
     <select id="huoquappointmenttime" resultType="com.wx_hospital.pojo.SecDoctorAppointmenttimeTimeframe">

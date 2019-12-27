@@ -22,7 +22,7 @@
      select *  from sec_patient where id=#{id}
     </select>
 
-    <!-- SecPatient getDefaultPatient(Integer userId); -->
+    <!-- SecPatient getDefaultPatient(Integer userId);查询默认就诊人 -->
     <select id="getDefaultPatient" resultType="com.wx_hospital.pojo.SecPatient">
        select *  from sec_patient where user_id=#{id} AND is_default = 0
     </select>

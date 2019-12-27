@@ -204,15 +204,42 @@ public class OnlineRegistrationController {
 
 
     /**
-     * 添加预约表
+     * 添加order表和预约表
      * @param secReservation
      * @return
      */
     @RequestMapping("addReservationTable")
     @ResponseBody
-    public int addReservationTable(SecReservation secReservation){
-        int i=onlineRegistrationServiceImpl.addReservationTable(secReservation);
-        return i;
+    public int addReservationTable(SecReservation secReservation,HisOrder hisOrder){
+        //添加order表
+        hisOrder.setOrderNum(hisOrder.getOrderNum());//  Order生成的随机数
+        hisOrder.setStatus("0");//未支付
+        hisOrder.setOrderName("在线预约");
+        hisOrder.setPayMoney(secReservation.getPrice());// 金钱
+        hisOrder.setOrderPlacer(2);//就诊人id
+        int i=onlineRegistrationServiceImpl.addOrder(hisOrder);
+
+        //添加预约表
+        //获取主键自增id
+        int orderId=hisOrder.getId();
+        System.out.println(orderId+"------------orderId----------------------");
+        int i2=onlineRegistrationServiceImpl.addReservationTable(orderId,secReservation);
+
+        //
+       // Order_id
+        //        在线预约
+
+
+      //  order_placer就诊人id
+
+        //        获取自增order_id
+     //  order_id添加到预约表里
+
+
+
+
+
+        return orderId;
     }
 
 
@@ -225,7 +252,13 @@ public class OnlineRegistrationController {
     @RequestMapping("addReservationTablePay")
     @ResponseBody
     public int addReservationTablePay(SecReservation secReservation){
-        int i=onlineRegistrationServiceImpl.addReservationTablePay(secReservation);
+
+         //修改订单表(加支付方式)
+        int i=onlineRegistrationServiceImpl.upOrder(secReservation);
+
+
+        //添加支付方式
+        int i2=onlineRegistrationServiceImpl.addReservationTablePay(secReservation);
         return i;
     }
 
