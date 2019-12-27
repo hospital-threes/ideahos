@@ -3,7 +3,7 @@
 <mapper namespace="com.wx_hospital.mapper.HisOrderMapper" >
     <!-- List<HisOrder> getNoPaymentOrderBypatientId(Integer patientId); -->
     <select id="getNoPaymentOrderBypatientId" resultType="com.wx_hospital.pojo.HisOrder">
-        select * from his_order WHERE order_placer = #{patientId} AND status = 0
+        select * from his_order WHERE order_placer = #{patientId} AND status = 0 AND order_name = "就诊卡充值"
     </select>
     <insert id="InsertOrder" parameterType="com.wx_hospital.pojo.HisOrder">
         <!-- selectKey将主键返回，需要再返回 -->

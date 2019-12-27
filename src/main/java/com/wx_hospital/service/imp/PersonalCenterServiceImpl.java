@@ -125,6 +125,12 @@ public class PersonalCenterServiceImpl implements PersonalCenterService {
         return orders;
     }
 
+    @Override
+    public List<SecConsultationVoio> getOnlineOrder(Integer patientId) {
 
+        List<SecConsultationVoio> consultationVoios = secConsultationMapper.getOnlineOrder(patientId);
+
+        return consultationVoios;
+    }
 }
 

@@ -5,6 +5,13 @@
     <select id="getOnlineconsultationIsNotPaid" resultType="com.wx_hospital.pojo.SecConsultationVoio">
         select sc.id,ho.id as orderId,ho.order_name,ho.order_num,ho.pay_money,ho.status,sc.question_title
             from sec_consultation sc left JOIN his_order ho on sc.order_id = ho.id
+            where sc.patient_id = #{patientId} AND ho.status = 0
+    </select>
+
+    <!-- List<SecConsultationVoio> getOnlineOrder(Integer patientId); -->
+    <select id="getOnlineOrder" resultType="com.wx_hospital.pojo.SecConsultationVoio">
+        select sc.id,sc.status,ho.id as orderId,ho.order_name,ho.order_num,ho.pay_money,ho.status as payStatus,sc.question_title
+            from sec_consultation sc left JOIN his_order ho on sc.order_id = ho.id
             where sc.patient_id = #{patientId}
     </select>
 </mapper>
