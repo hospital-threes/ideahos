@@ -28,6 +28,8 @@ public class PersonalCenterServiceImpl implements PersonalCenterService {
     private SecConsultationMapper secConsultationMapper;
     @Autowired
     private SecPaymentMapper secPaymentMapper;
+    @Autowired
+    private SecDoctorMultipointMapper secDoctorMultipointMapper;
 
 
     @Override
@@ -132,5 +134,14 @@ public class PersonalCenterServiceImpl implements PersonalCenterService {
 
         return consultationVoios;
     }
+
+    @Override
+    public SecConsultation getOrderDetailById(Integer id, Integer hospitalId) {
+
+        SecConsultation consultation = secConsultationMapper.getOrderDetailById(id,hospitalId);
+
+        return consultation;
+    }
+
 }
 
