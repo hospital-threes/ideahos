@@ -1,9 +1,13 @@
 package com.wx_hospital.controller;
 
+import com.wx_hospital.pojo.SecPatient;
 import com.wx_hospital.service.OutpatientPaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * @program: ideahos
@@ -16,5 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class OutpatientPaymentController {
     @Autowired
     private OutpatientPaymentService outpatientPaymentServiceImpl;
+
+    @RequestMapping("/SelectPatOrPay")
+    @ResponseBody
+    public List<SecPatient> SelectPatOrPay(Integer id) {
+        List<SecPatient>  list=outpatientPaymentServiceImpl.SelectPatOrPay(id);
+        return list;
+    }
 }
 

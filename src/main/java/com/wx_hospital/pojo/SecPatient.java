@@ -1,5 +1,8 @@
 package com.wx_hospital.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,7 +12,8 @@ public class SecPatient implements Serializable {
     private String status;
 
     private Boolean disabled;
-
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createtime;
 
     private Integer userId;
@@ -32,9 +36,37 @@ public class SecPatient implements Serializable {
 
     private Double medicalcardBalance;
 
+    private Double payMoney;
+
+    private String orderName;
+
+    private String orderNum;
 
     private static final long serialVersionUID = 1L;
 
+    public String getOrderNum() {
+        return orderNum;
+    }
+
+    public void setOrderNum(String orderNum) {
+        this.orderNum = orderNum;
+    }
+
+    public Double getPayMoney() {
+        return payMoney;
+    }
+
+    public void setPayMoney(Double payMoney) {
+        this.payMoney = payMoney;
+    }
+
+    public String getOrderName() {
+        return orderName;
+    }
+
+    public void setOrderName(String orderName) {
+        this.orderName = orderName;
+    }
 
     public Integer getId() {
         return id;
@@ -165,6 +197,9 @@ public class SecPatient implements Serializable {
                 ", patientAddress='" + patientAddress + '\'' +
                 ", isDefault=" + isDefault +
                 ", medicalcardBalance=" + medicalcardBalance +
+                ", payMoney=" + payMoney +
+                ", orderName='" + orderName + '\'' +
+                ", orderNum='" + orderNum + '\'' +
                 '}';
     }
 }

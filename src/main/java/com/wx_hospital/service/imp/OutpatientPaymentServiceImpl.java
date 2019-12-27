@@ -1,7 +1,12 @@
 package com.wx_hospital.service.imp;
 
+import com.wx_hospital.mapper.SecPatientMapper;
+import com.wx_hospital.pojo.SecPatient;
 import com.wx_hospital.service.OutpatientPaymentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @program: ideahos
@@ -11,6 +16,11 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 public class OutpatientPaymentServiceImpl implements OutpatientPaymentService {
-
+    @Autowired
+    private SecPatientMapper secPatientMapper;
+    @Override
+    public List<SecPatient> SelectPatOrPay(Integer id) {
+        return secPatientMapper.SelectPatOrPay(id);
+    }
 }
 

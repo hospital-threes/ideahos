@@ -65,4 +65,13 @@
         UPDATE sec_patient SET  medicalCard_balance=medicalCard_balance+${price} WHERE id=#{id}
     </update>
 
+    <select id="SelectPatOrPay" resultType="com.wx_hospital.pojo.SecPatient">
+        SELECT
+            *
+        FROM
+            sec_patient pat,sec_payment pay,his_order his
+        WHERE
+            pat.id=pay.patient_id and pay.order_id=his.id and pat.id=#{id}
+    </select>
+
 </mapper>
