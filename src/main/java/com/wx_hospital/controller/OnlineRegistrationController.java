@@ -60,6 +60,7 @@ public class OnlineRegistrationController {
      * @return
      */
     @RequestMapping("huoquappointment")
+    @ResponseBody
     public String huoquappointment(String appointmenttime){
         SecDoctorAppointmenttime sd=onlineRegistrationServiceImpl.huoquappointment(appointmenttime);
         String statu="";
@@ -81,6 +82,7 @@ public class OnlineRegistrationController {
      * @return
      */
     @RequestMapping("huoqutime")
+    @ResponseBody
     public List<SecDoctorAppointmenttime> huoqutime(Integer id,HttpServletResponse response){
         response.setContentType("text/html;charset=utf-8");
         System.out.println(id);
@@ -153,6 +155,7 @@ public class OnlineRegistrationController {
      * @return
      */
     @RequestMapping(value = "huoqustutas" )
+    @ResponseBody
     public String huoqustutas(Integer id, HttpServletResponse response){
         response.setContentType("text/html;charset=utf-8");
         if(id==null){
@@ -164,7 +167,7 @@ public class OnlineRegistrationController {
         //已预约人数
         Integer sum2=onlineRegistrationServiceImpl.sum2(id);
         System.out.println(sum1+"loooooooo"+sum2);
-        if(sum1==sum2){
+        if(sum1 == sum2){
             status="停诊";
 
             System.out.println(status);

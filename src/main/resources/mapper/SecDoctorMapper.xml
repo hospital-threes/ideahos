@@ -4,8 +4,16 @@
 
     <!--List<SecDoctor> findDoctor(String deptId);-->
     <select id="findDoctor" resultType="com.wx_hospital.pojo.SecDoctor">
-       select * from sec_doctor sd,sec_rank_dic srd,sec_doctor_multipoint sdm,sec_first_department sfd where
-sd.rank=srd.rank_code and sd.id=sdm.doctor_id  and sfd.id=sdm.department_id and sfd.id=#{deptId}
+
+
+  select * from sec_doctor sd,sec_rank_dic srd,sec_doctor_multipoint sdm,sec_first_department sfd ,sec_pic sp where
+sd.rank=srd.rank_code and sd.id=sdm.doctor_id  and sfd.id=sdm.department_id
+and sfd.id=#{deptId}
+and sp.obj_id=sd.id
+and sp.type='head'
+and sp.obj_type='doctor'
+
+
     </select>
     <!--SecDoctor huoquaddress(String id);-->
     <select id="huoquaddress" resultType="com.wx_hospital.pojo.SecDoctor">
