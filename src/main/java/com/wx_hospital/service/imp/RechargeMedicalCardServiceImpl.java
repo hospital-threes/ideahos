@@ -8,6 +8,8 @@ import com.wx_hospital.service.RechargeMedicalCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @program: ideahos
  * @description: 就诊卡充值-业务层
@@ -27,8 +29,14 @@ public class RechargeMedicalCardServiceImpl implements RechargeMedicalCardServic
     }
 
     @Override
-    public int UpdataMedical(SecPatient secPatient) {
-        return secPatientMapper.UpdataMedical(secPatient);
+    public int UpdataMedical(Integer price,Integer id,Integer oId,String payWay) {
+        hisOrderMapper.UpdataStatus(oId,payWay);
+        return secPatientMapper.UpdataMedical(price,id);
+    }
+
+    @Override
+    public HisOrder SelectIdOne(Integer id) {
+        return hisOrderMapper.SelectIdOne(id);
     }
 }
 

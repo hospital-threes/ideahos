@@ -24,5 +24,5 @@ public interface SecPatientMapper {
     int deletePatient(Integer patientid);
 
     /*就趁充值*/
-    int UpdataMedical(@Param("secPatient")SecPatient secPatient);
+    int UpdataMedical(@Param("price")Integer price,@Param("id")Integer id);
 }

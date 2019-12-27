@@ -32,17 +32,9 @@ public class SecPatient implements Serializable {
 
     private Double medicalcardBalance;
 
-    private Double price;
 
     private static final long serialVersionUID = 1L;
 
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
 
     public Integer getId() {
         return id;
@@ -173,7 +165,6 @@ public class SecPatient implements Serializable {
                 ", patientAddress='" + patientAddress + '\'' +
                 ", isDefault=" + isDefault +
                 ", medicalcardBalance=" + medicalcardBalance +
-                ", price=" + price +
                 '}';
     }
 }
