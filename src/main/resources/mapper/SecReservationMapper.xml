@@ -34,6 +34,6 @@
             left JOIN his_order ho on sr.order_id = ho.id
             left JOIN sec_doctor_appointmenttime_timeframe sdat on sr.timeframe_id = sdat.id
             left JOIN sec_doctor_appointmenttime sda on sdat.appointmenttime_id = sda.id
-            where sr.patient_id = #{patientId}
+            where sr.patient_id = #{patientId} AND ho.status = 0
     </select>
 </mapper>

@@ -26,6 +26,14 @@ public class SecConsultation implements Serializable {
 
     private Integer doctorId;
 
+    private Integer hospitalId;
+
+    private String doctorName;
+    private String rankName;
+    private String hospitalName;
+    private String departmentName;
+    private String picPath;
+
     private Integer responseId;
 
     private String response;
@@ -33,6 +41,54 @@ public class SecConsultation implements Serializable {
     private Date responseTime;
 
     private static final long serialVersionUID = 1L;
+
+    public Integer getHospitalId() {
+        return hospitalId;
+    }
+
+    public void setHospitalId(Integer hospitalId) {
+        this.hospitalId = hospitalId;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
+    public String getRankName() {
+        return rankName;
+    }
+
+    public void setRankName(String rankName) {
+        this.rankName = rankName;
+    }
+
+    public String getHospitalName() {
+        return hospitalName;
+    }
+
+    public void setHospitalName(String hospitalName) {
+        this.hospitalName = hospitalName;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
+    public String getPicPath() {
+        return picPath;
+    }
+
+    public void setPicPath(String picPath) {
+        this.picPath = picPath;
+    }
 
     public Integer getId() {
         return id;

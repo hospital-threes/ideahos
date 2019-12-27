@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wx_hospital.mapper.SecConsultationMapper" >
+<mapper namespace="com.wx_hospital.mapper.SecConsultationMapper">
     <!-- List<SecConsultationVoio> getOnlineconsultationIsNotPaid(Integer patientId); -->
     <select id="getOnlineconsultationIsNotPaid" resultType="com.wx_hospital.pojo.SecConsultationVoio">
         select sc.id,ho.id as orderId,ho.order_name,ho.order_num,ho.pay_money,ho.status,sc.question_title
@@ -13,5 +13,20 @@
         select sc.id,sc.status,ho.id as orderId,ho.order_name,ho.order_num,ho.pay_money,ho.status as payStatus,sc.question_title
             from sec_consultation sc left JOIN his_order ho on sc.order_id = ho.id
             where sc.patient_id = #{patientId}
+    </select>
+
+
+    <!-- SecConsultation getOrderDetailById(@Param("id") Integer id,@Param("hospitalId") Integer hospitalId); -->
+    <select id="getOrderDetailById" resultType="com.wx_hospital.pojo.SecConsultation">
+         select sc.*,sd.name as doctorName,sh.hospital_name,ssd.second_department_name as departmentName,sec_pic.pic_path,sec_rank_dic.rank_name
+            from sec_consultation sc
+            LEFT JOIN sec_doctor_multipoint sdm ON sc.response_id = sdm.id
+            LEFT JOIN sec_doctor sd on sdm.doctor_id = sd.id
+            LEFT JOIN sec_rank_dic on sd.rank = sec_rank_dic.id
+            LEFT JOIN sec_hospital sh on sdm.hospital_id = sh.id
+            LEFT JOIN sec_second_department ssd ON sdm.department_id = ssd.id
+            LEFT JOIN sec_pic ON sdm.doctor_id = sec_pic.obj_id AND sec_pic.obj_type = 'doctor' AND sec_pic.type = 'head'
+            WHERE sc.id = #{id} and sc.hospital_id = #{hospitalId}
+
     </select>
 </mapper>

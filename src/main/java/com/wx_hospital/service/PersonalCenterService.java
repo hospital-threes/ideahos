@@ -39,5 +39,7 @@ public interface PersonalCenterService {
     List<HisOrder> getPatientrechargeIsNotPaid(Integer patientId);
 
     List<SecConsultationVoio> getOnlineOrder(Integer patientId);
+
+    SecConsultation getOrderDetailById(Integer id, Integer hospitalId);
 }
 
