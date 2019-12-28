@@ -17,6 +17,8 @@ public interface RechargeMedicalCardService {
     int InsertOrder(HisOrder HisOrder);
     /*就趁充值*/
     int UpdataMedical(@Param("price")Integer price,@Param("id")Integer id,@Param("oId")Integer oId,@Param("payWay")String payWay);
+    /*就诊卡扣费*/
+    int UpdataMedicalko(@Param("price")Integer price,@Param("id")Integer id,@Param("oId")Integer oId,@Param("payWay")String payWay);
     /*查询充值的记录*/
     HisOrder SelectIdOne(@Param("id")Integer id);
 

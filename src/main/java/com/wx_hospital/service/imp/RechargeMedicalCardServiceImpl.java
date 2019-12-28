@@ -35,6 +35,12 @@ public class RechargeMedicalCardServiceImpl implements RechargeMedicalCardServic
     }
 
     @Override
+    public int UpdataMedicalko(Integer price, Integer id, Integer oId, String payWay) {
+        hisOrderMapper.UpdataStatus(oId,payWay);
+        return secPatientMapper.UpdataMedicalko(price,id);
+    }
+
+    @Override
     public HisOrder SelectIdOne(Integer id) {
         return hisOrderMapper.SelectIdOne(id);
     }

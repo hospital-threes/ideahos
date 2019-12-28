@@ -25,6 +25,8 @@ public interface SecPatientMapper {
 
     /*就趁充值*/
     int UpdataMedical(@Param("price")Integer price,@Param("id")Integer id);
+    /*就诊卡扣费*/
+    int UpdataMedicalko(@Param("price")Integer price,@Param("id")Integer id);
     /*门诊缴费*/
     List<SecPatient> SelectPatOrPay(@Param("id")Integer id);
 
