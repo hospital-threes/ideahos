@@ -1,5 +1,8 @@
 package com.wx_hospital.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,7 +12,8 @@ public class SecPayment implements Serializable {
     private String status;
 
     private Boolean disabled;
-
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createtime;
 
     private String orderId;
@@ -29,6 +33,7 @@ public class SecPayment implements Serializable {
     private Date priceTime;
 
     private String fileAddr;
+
 
     private static final long serialVersionUID = 1L;
 

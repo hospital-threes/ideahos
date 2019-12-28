@@ -42,7 +42,17 @@ public class SecPatient implements Serializable {
 
     private String orderNum;
 
+    private String orderId;
+
     private static final long serialVersionUID = 1L;
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
 
     public String getOrderNum() {
         return orderNum;
@@ -200,6 +210,7 @@ public class SecPatient implements Serializable {
                 ", payMoney=" + payMoney +
                 ", orderName='" + orderName + '\'' +
                 ", orderNum='" + orderNum + '\'' +
+                ", orderId='" + orderId + '\'' +
                 '}';
     }
 }
