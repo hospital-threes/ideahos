@@ -20,6 +20,6 @@ public interface OnlineConsultationService {
 
     boolean addSecPicBySecConsultation(SecPic pic, int orderId);
 
-    Response addSecConsultation(SecDoctor doctor, int userid, String phone, String biaoti, String text, String fix, int paymentStatus, String orderNum, int state);
+    Response addSecConsultation(SecDoctor doctor, int userid, String phone, String biaoti, String text, String fix, int paymentStatus, String orderNum, int state, int hospitalId);
 }
 
