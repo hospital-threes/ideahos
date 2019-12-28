@@ -27,6 +27,9 @@ public class OnlineRegistrationServiceImpl implements OnlineRegistrationService 
     private SecPatientMapper secPatientMapper;
     @Autowired
     private SecFirstDepartmentMapper secFirstDepartmentMapper;
+    @Autowired
+    private HisOrderMapper hisOrderMapper;
+
 
 
     @Override
@@ -35,8 +38,8 @@ public class OnlineRegistrationServiceImpl implements OnlineRegistrationService 
     }
 
     @Override
-    public int addReservationTable(SecReservation secReservation) {
-        return secReservationMapper.addReservationTable(secReservation);
+    public int addReservationTable(int orderId, SecReservation secReservation) {
+        return secReservationMapper.addReservationTable(orderId,secReservation);
     }
 
     @Override
@@ -121,6 +124,16 @@ public class OnlineRegistrationServiceImpl implements OnlineRegistrationService 
     @Override
     public List<SecFirstDepartment> selectFirstdepartment() {
         return secFirstDepartmentMapper.selectFirstdepartment();
+    }
+
+    @Override
+    public int addOrder(HisOrder hisOrder) {
+        return hisOrderMapper.addOrder(hisOrder);
+    }
+
+    @Override
+    public int upOrder(SecReservation secReservation) {
+        return hisOrderMapper.upOrder(secReservation);
     }
 }
 

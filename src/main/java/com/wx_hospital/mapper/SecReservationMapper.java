@@ -2,12 +2,13 @@ package com.wx_hospital.mapper;
 
 import com.wx_hospital.pojo.SecReservation;
 import com.wx_hospital.pojo.SecReservationVoio;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
 public interface SecReservationMapper {
-
-    int addReservationTable(SecReservation secReservation);
+    /*添加预约关联表*/
+    int addReservationTable(@Param("orderId") int orderId, @Param("secReservation") SecReservation secReservation);
 
     int addReservationTablePay(SecReservation secReservation);
 

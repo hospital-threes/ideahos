@@ -14,7 +14,7 @@ public interface OnlineRegistrationService {
 
     List<SecPayWay> selectZhifuStyle();
 
-    int addReservationTable(SecReservation secReservation);
+    int addReservationTable(int orderId, SecReservation secReservation);
 
     List<SecDoctor> findDoctor(String deptId);
 
@@ -47,5 +47,9 @@ public interface OnlineRegistrationService {
     int deleteOrder(Integer orderId);
 
     List<SecFirstDepartment> selectFirstdepartment();
+
+    int addOrder(HisOrder hisOrder);
+
+    int upOrder(SecReservation secReservation);
 }
 
