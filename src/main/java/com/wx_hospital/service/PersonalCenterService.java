@@ -125,10 +125,8 @@ public interface PersonalCenterService {
      * 获取在线咨询详情
      *
      * @param id
-     * @param hospitalId
      * @return
      */
-    SecConsultation getOrderDetailById(Integer id, Integer hospitalId);
     SecConsultation getConsultationOrderDetailById(Integer id);
 
     List<SecReservationVoio> getReservationOrder(Integer patientId);
