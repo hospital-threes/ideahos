@@ -18,6 +18,16 @@ public class SecPaymentVoio implements Serializable {
     @DateTimeFormat(pattern = "yyyt-MM-dd")
     private Date patmentTime;
 
+    private String fileAddr;
+
+    public String getFileAddr() {
+        return fileAddr;
+    }
+
+    public void setFileAddr(String fileAddr) {
+        this.fileAddr = fileAddr;
+    }
+
     public Integer getId() {
         return id;
     }
