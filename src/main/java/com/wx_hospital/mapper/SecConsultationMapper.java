@@ -12,5 +12,5 @@ public interface SecConsultationMapper {
 
     List<SecConsultationVoio> getOnlineOrder(Integer patientId);
 
-    SecConsultation getOrderDetailById(@Param("id") Integer id,@Param("hospitalId") Integer hospitalId);
+    SecConsultation getConsultationOrderDetailById(@Param("id") Integer id);
 }

@@ -7,7 +7,12 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface SecReservationMapper {
-    /*添加预约关联表*/
+    /**
+     * 添加预约关联表
+     * @param orderId
+     * @param secReservation
+     * @return
+     */
     int addReservationTable(@Param("orderId") int orderId, @Param("secReservation") SecReservation secReservation);
 
     int addReservationTablePay(SecReservation secReservation);
@@ -17,4 +22,6 @@ public interface SecReservationMapper {
     int deleteOrder(Integer orderId);
 
     List<SecReservationVoio> getReservationIsNotPaid(Integer patientId);
+
+    List<SecReservationVoio> getReservationOrder(Integer patientId);
 }

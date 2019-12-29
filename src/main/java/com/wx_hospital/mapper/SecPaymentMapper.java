@@ -7,4 +7,6 @@ import java.util.List;
 public interface SecPaymentMapper {
 
     List<SecPaymentVoio> getOutpatientpayment(Integer patientId);
+
+    List<SecPaymentVoio> getAllOutpatientpayment(Integer patientId);
 }

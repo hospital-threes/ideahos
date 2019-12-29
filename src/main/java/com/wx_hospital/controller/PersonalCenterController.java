@@ -205,7 +205,7 @@ public class PersonalCenterController {
 
 
     /**
-     * 获取当前就诊人预约挂号信息
+     * 获取当前就诊人未支付预约挂号信息
      * @Param patientId
      * return
      */
@@ -219,7 +219,7 @@ public class PersonalCenterController {
     }
 
     /**
-     * 获取当前就诊人的在线咨询信息
+     * 获取当前就诊人的未支付在线咨询信息
      * @Param patientId
      * return
      */
@@ -233,7 +233,7 @@ public class PersonalCenterController {
     }
 
     /**
-     * 获取当前就诊人门诊缴费订单
+     * 获取当前就诊人未支付门诊缴费订单
      * @Param patientId
      * return
      */
@@ -247,7 +247,7 @@ public class PersonalCenterController {
     }
 
     /**
-     * 获取当前就诊人充值缴费订单
+     * 获取当前就诊人未支付充值缴费订单
      * @Param patientId
      * return
      */
@@ -260,10 +260,10 @@ public class PersonalCenterController {
         return orders;
     }
 
-
     /**
-     *
-     * 获取当前就诊人的信息
+     * 获取当前就诊人的所有在线咨询订单
+     * @param patientId
+     * @return
      */
     @RequestMapping("/getOnlineOrder")
     @ResponseBody
@@ -275,18 +275,59 @@ public class PersonalCenterController {
     }
 
     /**
-     * 获取在线咨询详情
+     * 根据id获取当前就诊人的咨询信息
      * @param id
-     * @param hospitalId
      * @return
      */
-    @RequestMapping("/getOrderDetailById")
+    @RequestMapping("/getConsultationOrderDetailById")
     @ResponseBody
-    public SecConsultation getOrderDetailById(Integer id,Integer hospitalId){
+    public SecConsultation getConsultationOrderDetailById(Integer id){
 
-        SecConsultation consultation = personalCenterServiceImpl.getOrderDetailById(id,hospitalId);
+        SecConsultation consultation = personalCenterServiceImpl.getConsultationOrderDetailById(id);
 
         return consultation;
+    }
+
+    /**
+     * 获取当前就诊人预约挂号信息
+     * @Param patientId
+     * return
+     */
+    @RequestMapping("/getReservationOrder")
+    @ResponseBody
+    public List<SecReservationVoio> getReservationOrder(Integer patientId){
+
+        List<SecReservationVoio> reservations = personalCenterServiceImpl.getReservationOrder(patientId);
+
+        return reservations;
+    }
+
+    /**
+     * 获取当前就诊人门诊缴费订单
+     * @Param patientId
+     * return
+     */
+    @RequestMapping("/getAllOutpatientpayment")
+    @ResponseBody
+    public List<SecPaymentVoio> getAllOutpatientpayment(Integer patientId){
+
+        List<SecPaymentVoio> paymentVoios = personalCenterServiceImpl.getAllOutpatientpayment(patientId);
+
+        return paymentVoios;
+    }
+
+    /**
+     * 获取当前就诊人充值缴费订单
+     * @Param patientId
+     * return
+     */
+    @RequestMapping("/getPatientrecharge")
+    @ResponseBody
+    public List<HisOrder> getPatientrecharge(Integer patientId){
+
+        List<HisOrder> orders = personalCenterServiceImpl.getPatientrecharge(patientId);
+
+        return orders;
     }
 
 }

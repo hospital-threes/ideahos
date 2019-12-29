@@ -28,8 +28,6 @@ public class PersonalCenterServiceImpl implements PersonalCenterService {
     private SecConsultationMapper secConsultationMapper;
     @Autowired
     private SecPaymentMapper secPaymentMapper;
-    @Autowired
-    private SecDoctorMultipointMapper secDoctorMultipointMapper;
 
 
     @Override
@@ -136,12 +134,35 @@ public class PersonalCenterServiceImpl implements PersonalCenterService {
     }
 
     @Override
-    public SecConsultation getOrderDetailById(Integer id, Integer hospitalId) {
+    public SecConsultation getConsultationOrderDetailById(Integer id) {
 
-        SecConsultation consultation = secConsultationMapper.getOrderDetailById(id,hospitalId);
+        SecConsultation consultation = secConsultationMapper.getConsultationOrderDetailById(id);
 
         return consultation;
     }
 
+    @Override
+    public List<SecReservationVoio> getReservationOrder(Integer patientId) {
+
+        List<SecReservationVoio> reservationVoios = secReservationMapper.getReservationOrder(patientId);
+
+        return reservationVoios;
+    }
+
+    @Override
+    public List<SecPaymentVoio> getAllOutpatientpayment(Integer patientId) {
+
+        List<SecPaymentVoio> paymentVoios = secPaymentMapper.getAllOutpatientpayment(patientId);
+
+        return paymentVoios;
+    }
+
+    @Override
+    public List<HisOrder> getPatientrecharge(Integer patientId) {
+
+        List<HisOrder> hisOrders = hisOrderMapper.getPatientrecharge(patientId);
+
+        return hisOrders;
+    }
 }
 

@@ -40,6 +40,12 @@ public interface PersonalCenterService {
 
     List<SecConsultationVoio> getOnlineOrder(Integer patientId);
 
-    SecConsultation getOrderDetailById(Integer id, Integer hospitalId);
+    SecConsultation getConsultationOrderDetailById(Integer id);
+
+    List<SecReservationVoio> getReservationOrder(Integer patientId);
+
+    List<SecPaymentVoio> getAllOutpatientpayment(Integer patientId);
+
+    List<HisOrder> getPatientrecharge(Integer patientId);
 }
 

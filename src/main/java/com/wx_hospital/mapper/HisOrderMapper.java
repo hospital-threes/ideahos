@@ -12,6 +12,9 @@ public interface HisOrderMapper {
     int InsertOrder(HisOrder HisOrder);
 
     List<HisOrder> getNoPaymentOrderBypatientId(Integer patientId);
+
+    List<HisOrder> getPatientrecharge(Integer patientId);
+
     /*查询充值的记录*/
     HisOrder SelectIdOne(@Param("id")Integer id);
     /*修改充值记录的状态*/
@@ -21,4 +24,5 @@ public interface HisOrderMapper {
     int addOrder(HisOrder hisOrder);
     /*修改订单表*/
     int upOrder(SecReservation secReservation);
+
 }
