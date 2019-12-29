@@ -11,6 +11,11 @@ import java.util.List;
  * @create: 2019-12-13 12:46
  **/
 public interface IndexService {
-    //查询医院的首页信息
+
+    /**
+     * 首页的信息
+     * @param hospitalId
+     * @return
+     */
     List<SecHospital> SelectHos(String hospitalId);
 }

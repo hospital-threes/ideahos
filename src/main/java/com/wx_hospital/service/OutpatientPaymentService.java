@@ -12,7 +12,11 @@ import java.util.List;
  * @create: 2019-12-13 12:56
  **/
 public interface OutpatientPaymentService {
-    /*门诊缴费*/
+    /**
+     * 门诊缴费
+     * @param id
+     * @return
+     */
     List<SecPatient> SelectPatOrPay(@Param("id")Integer id);
 }
 

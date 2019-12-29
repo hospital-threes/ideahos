@@ -35,29 +35,37 @@ public class OnlineConsultationController {
     @Autowired
     private OnlineConsultationService onlineConsultationServiceImpl;
 
-
+    /**
+     *
+     * @param session
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/getAlldt22")
     public List<SecDoctor> getAlldt22(HttpSession session){
-
         List<SecDoctor> list=onlineConsultationServiceImpl.getAlldt22();
-
         return list;
     }
+    /**
+     *
+     * @param id
+     * @param session
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/updateConsultationState")
     public boolean updateConsultationState(int id,HttpSession session){
-
         boolean list=onlineConsultationServiceImpl.updateConsultationState(id);
-
         return list;
     }
-
-
+    /**
+     *
+     * @param jsonObject
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "/api", method = RequestMethod.POST)
     public Response xxx(@RequestBody JSONObject jsonObject) {
-
 
         JSONObject ite = jsonObject.getJSONObject("ite");
         String s = ite.toJSONString();
@@ -93,8 +101,6 @@ public class OnlineConsultationController {
             int oo = ThreadLocalRandom.current().nextInt(10);
             orderNum+=String.valueOf(oo);
         }
-
-
         //添加数据库  咨询表\订单表
         Response f= onlineConsultationServiceImpl.addSecConsultation(doctor,userid,phone,biaoti,text,fix,paymentStatus,orderNum,state);
 
@@ -128,16 +134,10 @@ public class OnlineConsultationController {
                 pic.setStatus("1");
 
                 boolean h = onlineConsultationServiceImpl.addSecPicBySecConsultation(pic,f.getOrderId());
-
             }
-
         }
-
-
-
         System.out.println(f.getResponse()+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         return f;
-
     }
 }
 

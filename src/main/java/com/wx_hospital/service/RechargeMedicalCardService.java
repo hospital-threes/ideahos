@@ -13,13 +13,36 @@ import java.util.List;
  * @create: 2019-12-13 13:04
  **/
 public interface RechargeMedicalCardService {
-    /*添加充值记录*/
+    /**
+     * 就诊卡充值
+     * @param HisOrder
+     * @return
+     */
     int InsertOrder(HisOrder HisOrder);
-    /*就趁充值*/
+    /**
+     * 就诊卡充值信息
+     *
+     * @param price
+     * @param id
+     * @param oId
+     * @param payWay
+     * @return
+     */
     int UpdataMedical(@Param("price")Integer price,@Param("id")Integer id,@Param("oId")Integer oId,@Param("payWay")String payWay);
-    /*就诊卡扣费*/
+    /**
+     * 从就诊卡中扣钱信息
+     * @param price
+     * @param id
+     * @param oId
+     * @param payWay
+     * @return
+     */
     int UpdataMedicalko(@Param("price")Integer price,@Param("id")Integer id,@Param("oId")Integer oId,@Param("payWay")String payWay);
-    /*查询充值的记录*/
+    /**
+     * 查询单个充值记录
+     * @param id
+     * @return
+     */
     HisOrder SelectIdOne(@Param("id")Integer id);
 
 

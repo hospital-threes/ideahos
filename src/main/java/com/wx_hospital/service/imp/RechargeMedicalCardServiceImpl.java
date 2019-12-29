@@ -27,19 +27,38 @@ public class RechargeMedicalCardServiceImpl implements RechargeMedicalCardServic
     public int InsertOrder(HisOrder HisOrder) {
         return hisOrderMapper.InsertOrder(HisOrder);
     }
-
+    /**
+     * 就诊卡充值信息
+     *
+     * @param price
+     * @param id
+     * @param oId
+     * @param payWay
+     * @return
+     */
     @Override
     public int UpdataMedical(Integer price,Integer id,Integer oId,String payWay) {
         hisOrderMapper.UpdataStatus(oId,payWay);
         return secPatientMapper.UpdataMedical(price,id);
     }
-
+    /**
+     * 从就诊卡中扣钱信息
+     * @param price
+     * @param id
+     * @param oId
+     * @param payWay
+     * @return
+     */
     @Override
     public int UpdataMedicalko(Integer price, Integer id, Integer oId, String payWay) {
         hisOrderMapper.UpdataStatus(oId,payWay);
         return secPatientMapper.UpdataMedicalko(price,id);
     }
-
+    /**
+     * 查询单个充值记录
+     * @param id
+     * @return
+     */
     @Override
     public HisOrder SelectIdOne(Integer id) {
         return hisOrderMapper.SelectIdOne(id);

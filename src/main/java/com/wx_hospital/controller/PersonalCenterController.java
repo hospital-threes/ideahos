@@ -182,13 +182,6 @@ public class PersonalCenterController {
         return i>0;
     }
 
-
-    /**
-     * getOnlineOrder
-     * 获取当前就诊人的在线咨询信息
-     */
-
-
     /**
      * 获取当前未支付订单信息
      * @Param patientId

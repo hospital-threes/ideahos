@@ -6,7 +6,11 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface SecSecondDepartmentMapper {
-    //查询科室管理
+    /**
+     * 科室介绍页面信息
+     *
+     * @return
+     */
     List<SecSecondDepartment> SelectFirDep();
 
 

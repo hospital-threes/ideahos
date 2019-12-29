@@ -13,9 +13,18 @@ import java.util.List;
  * @create: 2019-12-13 12:40
  **/
 public interface HospitalIntroduceService {
-    //医院动态
+    /**
+     * 医院动态信息
+     * @param articleType
+     * @param hospitalId
+     * @return
+     */
     List<SecHospitalArticle> SelectNews( @Param("articleType") Integer articleType,@Param("hospitalId") Integer hospitalId);
-    //医院介绍详细
+    /**
+     * 医院动态详细
+     * @param id
+     * @return
+     */
     List<SecHospitalArticleInfo> SelectArticleInfoAll(Integer id);
 }
 

@@ -22,7 +22,11 @@ public class SectionIntroduceServiceImpl implements SectionIntroduceService {
     private SecSecondDepartmentMapper secSecondDepartmentMapper;
     @Autowired
     private SecFirstDepartmentMapper secFirstDepartmentMapper;
-
+    /**
+     * 科室介绍页面信息
+     *
+     * @return
+     */
     @Override
     public List<SecSecondDepartment> SelectFirDep() {
         return secSecondDepartmentMapper.SelectFirDep();

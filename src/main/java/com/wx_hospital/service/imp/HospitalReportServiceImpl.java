@@ -21,12 +21,20 @@ import java.util.List;
 public class HospitalReportServiceImpl implements HospitalReportService {
     @Autowired
     private SecReportMapper secReportMapper;
-
+    /**
+     * 检查报告（对应用户id查询）
+     * @param id
+     * @return
+     */
     @Override
     public List<SecReport> seclectReport(Integer id) {
         return  secReportMapper.seclectReport(id);
     }
-
+    /**
+     * 检查报告详情（对应用户id查询）
+     * @param reportId
+     * @return
+     */
     @Override
     public JiuzhenPersonVo Xingqing(Integer reportId) {
         return secReportMapper.Xingqing(reportId);

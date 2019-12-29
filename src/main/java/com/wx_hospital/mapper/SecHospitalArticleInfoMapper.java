@@ -5,7 +5,11 @@ import com.wx_hospital.pojo.SecHospitalArticleInfo;
 import java.util.List;
 
 public interface SecHospitalArticleInfoMapper {
-    //医院介绍详细
+    /**
+     * 医院动态详细
+     * @param id
+     * @return
+     */
     List<SecHospitalArticleInfo> SelectArticleInfoAll(Integer id);
 
 }

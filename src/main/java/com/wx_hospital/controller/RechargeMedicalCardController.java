@@ -23,32 +23,61 @@ public class RechargeMedicalCardController {
     @Autowired
     private RechargeMedicalCardService rechargeMedicalCardServiceImpl;
 
+    /**
+     * 就诊卡充值信息
+     *
+     * @param price
+     * @param id
+     * @param oId
+     * @param payWay
+     * @return
+     */
     @RequestMapping("/UpdataMedical")
     @ResponseBody
-    public int UpdataMedical(Integer price,Integer id,Integer oId,String payWay){
-        return rechargeMedicalCardServiceImpl.UpdataMedical(price,id,oId,payWay);
+    public int UpdataMedical(Integer price, Integer id, Integer oId, String payWay) {
+        return rechargeMedicalCardServiceImpl.UpdataMedical(price, id, oId, payWay);
     }
+
+    /**
+     * 从就诊卡中扣钱信息
+     * @param price
+     * @param id
+     * @param oId
+     * @param payWay
+     * @return
+     */
     @RequestMapping("/UpdataMedicalko")
     @ResponseBody
-    public int UpdataMedicalko(Integer price,Integer id,Integer oId,String payWay){
-        return rechargeMedicalCardServiceImpl.UpdataMedicalko(price,id,oId,payWay);
+    public int UpdataMedicalko(Integer price, Integer id, Integer oId, String payWay) {
+        return rechargeMedicalCardServiceImpl.UpdataMedicalko(price, id, oId, payWay);
     }
-    /*就诊卡充值*/
+
+    /**
+     * 就诊卡充值
+     * @param HisOrder
+     * @return
+     */
     @RequestMapping("/InsertOrder")
     @ResponseBody
-    public int InsertOrder(HisOrder HisOrder){
+    public int InsertOrder(HisOrder HisOrder) {
         int radomInt = new Random().nextInt(999999);
         System.out.println(radomInt);
         HisOrder.setOrderNum(String.valueOf(radomInt));
-        int i= rechargeMedicalCardServiceImpl.InsertOrder(HisOrder);
-        int id=HisOrder.getId();
+        int i = rechargeMedicalCardServiceImpl.InsertOrder(HisOrder);
+        int id = HisOrder.getId();
         return id;
 
     }
+
+    /**
+     * 查询单个充值记录
+     * @param id
+     * @return
+     */
     @RequestMapping("/SelectIdOne")
     @ResponseBody
     public HisOrder SelectIdOne(Integer id) {
-        HisOrder hisOrder=rechargeMedicalCardServiceImpl.SelectIdOne(id);
+        HisOrder hisOrder = rechargeMedicalCardServiceImpl.SelectIdOne(id);
         return hisOrder;
     }
 

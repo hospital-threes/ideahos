@@ -18,6 +18,11 @@ import java.util.List;
 public class OutpatientPaymentServiceImpl implements OutpatientPaymentService {
     @Autowired
     private SecPatientMapper secPatientMapper;
+    /**
+     * 门诊缴费
+     * @param id
+     * @return
+     */
     @Override
     public List<SecPatient> SelectPatOrPay(Integer id) {
         return secPatientMapper.SelectPatOrPay(id);

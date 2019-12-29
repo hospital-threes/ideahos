@@ -12,7 +12,11 @@ import java.util.List;
  * @create: 2019-12-13 13:05
  **/
 public interface SectionIntroduceService {
-    //查询科室管理
+    /**
+     * 科室介绍页面信息
+     *
+     * @return
+     */
     List<SecSecondDepartment> SelectFirDep();
 
 }

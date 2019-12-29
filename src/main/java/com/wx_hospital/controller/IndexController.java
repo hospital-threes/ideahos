@@ -22,12 +22,10 @@ public class IndexController {
     private IndexService indexServiceImpl;
 
     /**
-     *
-     *
+     * 首页的信息
      * @param hospitalId
      * @return
      */
-    //首页的信息
     @RequestMapping("/SelectHos")
     @ResponseBody
     public List<SecHospital> SelectHos(String hospitalId) {

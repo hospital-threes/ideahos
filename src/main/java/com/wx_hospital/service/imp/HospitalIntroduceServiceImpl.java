@@ -22,12 +22,21 @@ public class HospitalIntroduceServiceImpl implements HospitalIntroduceService {
     private SecHospitalArticleMapper SecHospitalArticleMapper;
     @Autowired
     private SecHospitalArticleInfoMapper SecHospitalArticleInfoMapper;
-
+    /**
+     * 医院动态信息
+     * @param articleType
+     * @param hospitalId
+     * @return
+     */
     @Override
     public List<SecHospitalArticle> SelectNews( Integer articleType,Integer hospitalId) {
         return SecHospitalArticleMapper.SelectNews(articleType,hospitalId);
     }
-
+    /**
+     * 医院动态详细
+     * @param id
+     * @return
+     */
     @Override
     public List<SecHospitalArticleInfo> SelectArticleInfoAll(Integer id) {
         return SecHospitalArticleInfoMapper.SelectArticleInfoAll(id);

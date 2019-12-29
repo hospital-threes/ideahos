@@ -14,8 +14,17 @@ import java.util.List;
  * @create: 2019-12-13 12:44
  **/
 public interface HospitalReportService {
+    /**
+     * 检查报告（对应用户id查询）
+     * @param id
+     * @return
+     */
     List<SecReport> seclectReport(Integer id);
-
+    /**
+     * 检查报告详情（对应用户id查询）
+     * @param reportId
+     * @return
+     */
     JiuzhenPersonVo Xingqing(Integer reportId);
 
 }

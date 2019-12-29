@@ -82,7 +82,19 @@ public class OnlineConsultationServiceImpl implements OnlineConsultationService 
         return  list;
     }
 
-    //添加数据库  咨询表\订单表
+    /**
+     * 添加数据库  咨询表\订单表
+     * @param doctor
+     * @param userid
+     * @param phone
+     * @param biaoti
+     * @param text
+     * @param fix
+     * @param paymentStatus
+     * @param orderNum
+     * @param state
+     * @return
+     */
     @Transactional
     @Override
     public Response addSecConsultation(SecDoctor doctor, int userid, String phone, String biaoti, String text, String fix, int paymentStatus, String orderNum, int state) {
@@ -122,7 +134,13 @@ public class OnlineConsultationServiceImpl implements OnlineConsultationService 
         response.setOrderNum(orderNum);
         return response;
     }
-    //添加图片
+
+    /**
+     * 添加图片
+     * @param pic
+     * @param orderId
+     * @return
+     */
     @Override
     public boolean addSecPicBySecConsultation(SecPic pic, int orderId) {
         boolean k=false;

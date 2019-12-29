@@ -23,18 +23,29 @@ public class HospitalIntroduceController {
     @Autowired
     private HospitalIntroduceService hospitalIntroduceServiceImpl;
 
-    //医院动态信息
+
+    /**
+     * 医院动态信息
+     * @param articleType
+     * @param hospitalId
+     * @return
+     */
     @RequestMapping("/SelectNews")
     @ResponseBody
-    public List<SecHospitalArticle> SelectNews(Integer articleType,Integer hospitalId){
-        List<SecHospitalArticle> list=hospitalIntroduceServiceImpl.SelectNews(articleType,hospitalId);
+    public List<SecHospitalArticle> SelectNews(Integer articleType, Integer hospitalId) {
+        List<SecHospitalArticle> list = hospitalIntroduceServiceImpl.SelectNews(articleType, hospitalId);
         return list;
     }
-    //医院动态详细
+
+    /**
+     * 医院动态详细
+     * @param id
+     * @return
+     */
     @RequestMapping("/SelectArticleInfoAll")
     @ResponseBody
-    public List<SecHospitalArticleInfo> SelectArticleInfoAll(Integer id){
-        List<SecHospitalArticleInfo> list=hospitalIntroduceServiceImpl.SelectArticleInfoAll(id);
+    public List<SecHospitalArticleInfo> SelectArticleInfoAll(Integer id) {
+        List<SecHospitalArticleInfo> list = hospitalIntroduceServiceImpl.SelectArticleInfoAll(id);
         return list;
     }
 }

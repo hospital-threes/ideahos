@@ -21,10 +21,15 @@ public class OutpatientPaymentController {
     @Autowired
     private OutpatientPaymentService outpatientPaymentServiceImpl;
 
+    /**
+     * 门诊缴费
+     * @param id
+     * @return
+     */
     @RequestMapping("/SelectPatOrPay")
     @ResponseBody
     public List<SecPatient> SelectPatOrPay(Integer id) {
-        List<SecPatient>  list=outpatientPaymentServiceImpl.SelectPatOrPay(id);
+        List<SecPatient> list = outpatientPaymentServiceImpl.SelectPatOrPay(id);
         return list;
     }
 }

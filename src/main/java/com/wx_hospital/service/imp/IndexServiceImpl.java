@@ -19,7 +19,11 @@ public class IndexServiceImpl implements IndexService {
     @Autowired
     private SecHospitalMapper secHospitalMapper;
 
-    //主页信息
+    /**
+     * 首页的信息
+     * @param hospitalId
+     * @return
+     */
     @Override
     public List<SecHospital> SelectHos(String hospitalId) {
 
