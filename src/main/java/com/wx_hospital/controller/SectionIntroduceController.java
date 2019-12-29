@@ -28,8 +28,8 @@ public class SectionIntroduceController {
      */
     @RequestMapping("/SelectFirDep")
     @ResponseBody
-    public List<SecSecondDepartment> SelectFirDep() {
-        List<SecSecondDepartment> list = sectionIntroduceServiceImpl.SelectFirDep();
+    public List<SecSecondDepartment> SelectFirDep(Integer hospitalId) {
+        List<SecSecondDepartment> list = sectionIntroduceServiceImpl.SelectFirDep(hospitalId);
         return list;
     }
 }

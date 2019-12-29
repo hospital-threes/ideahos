@@ -11,7 +11,7 @@ public interface SecSecondDepartmentMapper {
      *
      * @return
      */
-    List<SecSecondDepartment> SelectFirDep();
+    List<SecSecondDepartment> SelectFirDep(Integer hospitalId);
 
 
 

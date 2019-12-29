@@ -196,7 +196,6 @@ public class PersonalCenterServiceImpl implements PersonalCenterService {
     /**
      * 获取在线咨询详情
      * @param id
-     * @param hospitalId
      * @return
      */
     @Override
@@ -230,5 +229,6 @@ public class PersonalCenterServiceImpl implements PersonalCenterService {
 
         return hisOrders;
     }
+
 }
 
