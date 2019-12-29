@@ -28,6 +28,11 @@ public class RechargeMedicalCardController {
     public int UpdataMedical(Integer price,Integer id,Integer oId,String payWay){
         return rechargeMedicalCardServiceImpl.UpdataMedical(price,id,oId,payWay);
     }
+    @RequestMapping("/UpdataMedicalko")
+    @ResponseBody
+    public int UpdataMedicalko(Integer price,Integer id,Integer oId,String payWay){
+        return rechargeMedicalCardServiceImpl.UpdataMedicalko(price,id,oId,payWay);
+    }
     /*就诊卡充值*/
     @RequestMapping("/InsertOrder")
     @ResponseBody

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wx_hospital.mapper.SecPaymentMapper" >
     <!-- List<SecPaymentVoio> getOutpatientpayment(Integer patientId); -->
-    <select id="getOutpatientpayment" resultType="com.wx_hospital.pojo.SecPaymentVoio">
+    <select id="getOutpatientpayment" resultType="com.wx_hospital.pojo.SecPatient">
         select sp.id,ho.id as orderId,ho.order_name,ho.order_num,ho.pay_money,ho.status,sp.order_name as patmentName,sp.createtime as patmentTime
             from sec_payment sp left JOIN his_order ho on sp.order_id = ho.id
             where sp.patient_id = #{patientId} AND ho.status = 0

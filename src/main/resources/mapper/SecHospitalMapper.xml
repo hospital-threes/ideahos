@@ -34,12 +34,12 @@
       createtime, order_id, patient_id,
       question_title, sex, Illness_description,
       payment_status, doctor_id, response_id,
-      response, response_time)
+      response, response_time,hospital_id)
     values (null, 0, 0,
       now(), #{orderId}, #{userid},
       #{biaoti}, #{fix}, #{text},
       #{paymentStatus}, #{doctor.id}, null,
-      null,null)
+      null,null,#{hospitalId})
   </insert>
     <!--//添加订单表boolean addSecPicBySecConsultation(SecPic pic);
     boolean addHisOrder(@Param("hisOrder") HisOrder hisOrder);-->

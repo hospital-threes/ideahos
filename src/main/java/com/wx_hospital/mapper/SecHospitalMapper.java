@@ -15,9 +15,11 @@ public interface SecHospitalMapper {
 
     boolean addHisOrder(@Param("hisOrder") HisOrder hisOrder);
 
-    boolean addSecConsultation(@Param("doctor") SecDoctor doctor, @Param("userid") int userid,@Param("phone") String phone,@Param("biaoti") String biaoti, @Param("text") String text,@Param("fix") String fix,@Param("paymentStatus") int paymentStatus,@Param("orderId") int orderIdd);
+//    boolean addSecConsultation(@Param("doctor") SecDoctor doctor, @Param("userid") int userid, @Param("phone") String phone, @Param("biaoti") String biaoti, @Param("text") String text, @Param("fix") String fix,@Param("status") int status, @Param("paymentStatus") int paymentStatus, @Param("orderId") int orderId,@Param("hospitalId") int hospitalId);
 
     boolean addSecPicBySecConsultation(@Param("pic")SecPic pic);
 
     boolean updateConsultationState(int id);
+
+    boolean addSecConsultation(@Param("doctor") SecDoctor doctor,@Param("userid") int userid, @Param("phone") String phone,@Param("biaoti") String biaoti,@Param("text") String text, @Param("fix") String fix,@Param("paymentStatus") int paymentStatus, @Param("orderId") Integer id, @Param("hospitalId") int hospitalId);
 }
