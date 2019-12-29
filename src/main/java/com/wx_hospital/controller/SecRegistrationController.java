@@ -17,32 +17,5 @@ import java.util.List;
 @Controller
 public class SecRegistrationController {
 
-
-    /**
-     * 查询一级科室信息
-     *
-     * @param hospitalId
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping("findFirstDepartmentByHospitalId")
-    public List<SecFirstDepartment> findFirstDepartmentByHospitalId(Integer hospitalId) {
-
-
-        return null;
-    }
-
-    /**
-     * 查询二级科室信息
-     *
-     * @param firstDepartmentId
-     * @return
-     */
-    @ResponseBody
-    @RequestMapping("findSecondDepartmentByFirstDepartmentId")
-    public List<SecSecondDepartment> findSecondDepartmentByFirstDepartmentId(Integer firstDepartmentId) {
-        return null;
-    }
-
 }
 

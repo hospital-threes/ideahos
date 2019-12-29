@@ -17,7 +17,7 @@ public interface SectionIntroduceService {
      *
      * @return
      */
-    List<SecSecondDepartment> SelectFirDep();
+    List<SecSecondDepartment> SelectFirDep(Integer hospitalId);
 
 }
 

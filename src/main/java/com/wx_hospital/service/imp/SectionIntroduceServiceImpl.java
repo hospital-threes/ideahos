@@ -28,8 +28,8 @@ public class SectionIntroduceServiceImpl implements SectionIntroduceService {
      * @return
      */
     @Override
-    public List<SecSecondDepartment> SelectFirDep() {
-        return secSecondDepartmentMapper.SelectFirDep();
+    public List<SecSecondDepartment> SelectFirDep(Integer hospitalId) {
+        return secSecondDepartmentMapper.SelectFirDep(hospitalId);
     }
 }
 
