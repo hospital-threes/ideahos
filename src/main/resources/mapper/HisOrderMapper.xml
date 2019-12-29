@@ -5,6 +5,11 @@
     <select id="getNoPaymentOrderBypatientId" resultType="com.wx_hospital.pojo.HisOrder">
         select * from his_order WHERE order_placer = #{patientId} AND status = 0 AND order_name = "就诊卡充值"
     </select>
+    <!-- List<HisOrder> getPatientrecharge(Integer patientId); -->
+    <select id="getPatientrecharge" resultType="com.wx_hospital.pojo.HisOrder">
+        select * from his_order WHERE order_placer = #{patientId} AND order_name = "就诊卡充值"
+    </select>
+
     <insert id="InsertOrder" parameterType="com.wx_hospital.pojo.HisOrder">
         <!-- selectKey将主键返回，需要再返回 -->
         <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">

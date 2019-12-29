@@ -16,8 +16,8 @@
     </select>
 
 
-    <!-- SecConsultation getOrderDetailById(@Param("id") Integer id,@Param("hospitalId") Integer hospitalId); -->
-    <select id="getOrderDetailById" resultType="com.wx_hospital.pojo.SecConsultation">
+    <!-- SecConsultation getConsultationOrderDetailById(@Param("id") Integer id); -->
+    <select id="getConsultationOrderDetailById" resultType="com.wx_hospital.pojo.SecConsultation">
          select sc.*,sd.name as doctorName,sh.hospital_name,ssd.second_department_name as departmentName,sec_pic.pic_path,sec_rank_dic.rank_name
             from sec_consultation sc
             LEFT JOIN sec_doctor_multipoint sdm ON sc.response_id = sdm.id
@@ -26,7 +26,7 @@
             LEFT JOIN sec_hospital sh on sdm.hospital_id = sh.id
             LEFT JOIN sec_second_department ssd ON sdm.department_id = ssd.id
             LEFT JOIN sec_pic ON sdm.doctor_id = sec_pic.obj_id AND sec_pic.obj_type = 'doctor' AND sec_pic.type = 'head'
-            WHERE sc.id = #{id} and sc.hospital_id = #{hospitalId}
+            WHERE sc.id = #{id}
 
     </select>
 </mapper>

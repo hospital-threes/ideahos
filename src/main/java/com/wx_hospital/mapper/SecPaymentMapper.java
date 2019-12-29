@@ -11,4 +11,6 @@ public interface SecPaymentMapper {
      * return
      */
     List<SecPaymentVoio> getOutpatientpayment(Integer patientId);
+
+    List<SecPaymentVoio> getAllOutpatientpayment(Integer patientId);
 }

@@ -13,6 +13,12 @@ public interface SecReservationMapper {
      * @param secReservation
      * @return
      */
+    /**
+     * 添加预约关联表
+     * @param orderId
+     * @param secReservation
+     * @return
+     */
     int addReservationTable(@Param("orderId") int orderId, @Param("secReservation") SecReservation secReservation);
     /**
      * 添加预约表点击支付支付成功
@@ -41,4 +47,6 @@ public interface SecReservationMapper {
      * return
      */
     List<SecReservationVoio> getReservationIsNotPaid(Integer patientId);
+
+    List<SecReservationVoio> getReservationOrder(Integer patientId);
 }

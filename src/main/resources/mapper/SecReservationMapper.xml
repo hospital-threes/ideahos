@@ -36,4 +36,15 @@
             left JOIN sec_doctor_appointmenttime sda on sdat.appointmenttime_id = sda.id
             where sr.patient_id = #{patientId} AND ho.status = 0
     </select>
+
+    <!-- List<SecReservationVoio> getReservationOrder(Integer patientId); -->
+    <select id="getReservationOrder" resultType="com.wx_hospital.pojo.SecReservationVoio">
+        select sr.id,ho.id as orderId,ho.order_name,ho.order_num,ho.pay_money,ho.status,sda.appointment_time,sdat.timeframe,hospital_name,sd.name as doctorName
+            from sec_reservation sr left JOIN sec_hospital sh on sr.hospital_id = sh.id
+            left JOIN sec_doctor sd on sr.doctor_id = sd.id
+            left JOIN his_order ho on sr.order_id = ho.id
+            left JOIN sec_doctor_appointmenttime_timeframe sdat on sr.timeframe_id = sdat.id
+            left JOIN sec_doctor_appointmenttime sda on sdat.appointmenttime_id = sda.id
+            where sr.patient_id = #{patientId}
+    </select>
 </mapper>

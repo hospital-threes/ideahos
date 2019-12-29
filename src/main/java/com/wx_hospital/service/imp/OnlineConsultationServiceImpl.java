@@ -97,7 +97,7 @@ public class OnlineConsultationServiceImpl implements OnlineConsultationService 
      */
     @Transactional
     @Override
-    public Response addSecConsultation(SecDoctor doctor, int userid, String phone, String biaoti, String text, String fix, int paymentStatus, String orderNum, int state) {
+    public Response addSecConsultation(SecDoctor doctor, int userid, String phone, String biaoti, String text, String fix, int paymentStatus, String orderNum, int state, int hospitalId) {
         System.out.println("userId+++++"+userid);
         if(fix.equals("男")){
             fix="1";
@@ -124,7 +124,7 @@ public class OnlineConsultationServiceImpl implements OnlineConsultationService 
         boolean r= secHospitalMapper.addHisOrder(hisOrder);
         if(r!=false){
             //添加数据库  咨询表
-            g=secHospitalMapper.addSecConsultation(doctor,userid,phone,biaoti,text,fix,paymentStatus,hisOrder.getId());
+            g=secHospitalMapper.addSecConsultation(doctor,userid,phone,biaoti,text,fix,paymentStatus,hisOrder.getId(),hospitalId);
         }
 
 

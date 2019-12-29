@@ -26,4 +26,6 @@ public interface SecConsultationMapper {
      * @return
      */
     SecConsultation getOrderDetailById(@Param("id") Integer id,@Param("hospitalId") Integer hospitalId);
+
+    SecConsultation getConsultationOrderDetailById(@Param("id") Integer id);
 }

@@ -23,6 +23,10 @@ public interface HisOrderMapper {
      */
     List<HisOrder> getNoPaymentOrderBypatientId(Integer patientId);
 
+    List<HisOrder> getPatientrecharge(Integer patientId);
+
+    /*查询充值的记录*/
+
     /**
      * 查询充值的记录
      * @param id
@@ -52,4 +56,5 @@ public interface HisOrderMapper {
      * @return
      */
     int upOrder(SecReservation secReservation);
+
 }

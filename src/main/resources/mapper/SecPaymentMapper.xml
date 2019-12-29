@@ -7,4 +7,11 @@
             from sec_payment sp left JOIN his_order ho on sp.order_id = ho.id
             where sp.patient_id = #{patientId} AND ho.status = 0
     </select>
+
+    <!-- List<SecPaymentVoio> getAllOutpatientpayment(Integer patientId); -->
+    <select id="getAllOutpatientpayment" resultType="com.wx_hospital.pojo.SecPaymentVoio">
+        select sp.id,ho.id as orderId,ho.order_name,ho.order_num,ho.pay_money,ho.status,sp.order_name as patmentName,sp.createtime as patmentTime
+            from sec_payment sp left JOIN his_order ho on sp.order_id = ho.id
+            where sp.patient_id = #{patientId}
+    </select>
 </mapper>
