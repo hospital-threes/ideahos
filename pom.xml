@@ -23,6 +23,18 @@
 
 
     <dependencies>
+        <!--对接微信支付 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.5.9</version>
+            <scope>compile</scope>
+        </dependency>
         <!-- web项目 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
