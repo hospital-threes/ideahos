@@ -29,22 +29,22 @@ public class RechargeAPI {
     /*@PostMapping("/creat")*/
     @RequestMapping("/create")
     public Object order(@RequestBody RechargeDto rechargeDto) throws Exception {
-        System.out.println("rechargeDto.getRechargeMoney()的内容是:++++++"+rechargeDto.getRechargeMoney());
+        System.out.println("rechargeDto.getRechargeMoney()的内容是:        "+rechargeDto.getRechargeMoney());
         /**
          微信小程序支付
          */
         //获取code
         String code = rechargeDto.getCode();
-        System.out.println("用户的code是++++"+code);
+        System.out.println("用户的code是：       "+code);
         //调用接口获取openId
         String openId = AppletPayUtil.getOpenIdByCode(code);
-        System.out.println("用户的openId是++++++++"+openId);
+        System.out.println("用户的openId是：        "+openId);
         /*
             生成订单....，这里只创建了订单号
          */
         //订单号  uuid
         String outTradeNo= IdGen.uuid();
-        System.out.println("生成的订单号是：++++"+outTradeNo);
+        System.out.println("生成的订单号是："+outTradeNo);
         return Render.ok(payService.unifiedOrder(outTradeNo,rechargeDto.getRechargeMoney(),openId));
     }
     @RequestMapping("/back")

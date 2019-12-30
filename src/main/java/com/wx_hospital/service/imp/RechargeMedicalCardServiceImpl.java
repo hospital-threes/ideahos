@@ -37,7 +37,7 @@ public class RechargeMedicalCardServiceImpl implements RechargeMedicalCardServic
      * @return
      */
     @Override
-    public int UpdataMedical(Integer price,Integer id,Integer oId,String payWay) {
+    public int UpdataMedical(Double price,Integer id,Integer oId,String payWay) {
         hisOrderMapper.UpdataStatus(oId,payWay);
         return secPatientMapper.UpdataMedical(price,id);
     }
@@ -50,7 +50,7 @@ public class RechargeMedicalCardServiceImpl implements RechargeMedicalCardServic
      * @return
      */
     @Override
-    public int UpdataMedicalko(Integer price, Integer id, Integer oId, String payWay) {
+    public int UpdataMedicalko(Double price, Integer id, Integer oId, String payWay) {
         hisOrderMapper.UpdataStatus(oId,payWay);
         return secPatientMapper.UpdataMedicalko(price,id);
     }

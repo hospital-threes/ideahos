@@ -60,11 +60,11 @@
     <update id="deletePatient">
         update sec_patient set disabled = 1 where id = #{patientid}
     </update>
-    <!--  int UpdataMedical(@Param("price")Integer price,@Param("id")Integer id);-->
+    <!--  int UpdataMedical(@Param("price")Double price,@Param("id")Integer id);-->
     <update id="UpdataMedical" parameterType="com.wx_hospital.pojo.SecPatient">
         UPDATE sec_patient SET  medicalCard_balance=medicalCard_balance+${price} WHERE id=#{id}
     </update>
-    <!-- int UpdataMedicalko(@Param("price")Integer price,@Param("id")Integer id);-->
+    <!-- int UpdataMedicalko(@Param("price")Double price,@Param("id")Integer id);-->
     <update id="UpdataMedicalko" parameterType="com.wx_hospital.pojo.SecPatient">
         UPDATE sec_patient SET  medicalCard_balance=medicalCard_balance-${price} WHERE id=#{id}
     </update>
@@ -75,7 +75,7 @@
         FROM
             sec_patient pat,sec_payment pay,his_order his
         WHERE
-            pat.id=pay.patient_id and pay.order_id=his.id and pat.id=#{id}
+            pat.id=pay.patient_id and pay.order_id=his.id and pat.id=#{id} and his.status=0
     </select>
 
 </mapper>

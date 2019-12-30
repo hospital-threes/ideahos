@@ -64,14 +64,14 @@ public interface SecPatientMapper {
      * @param id
      * @return
      */
-    int UpdataMedical(@Param("price")Integer price,@Param("id")Integer id);
+    int UpdataMedical(@Param("price")Double price,@Param("id")Integer id);
     /**
      * 从就诊卡中扣钱信息
      * @param price
      * @param id
      * @return
      */
-    int UpdataMedicalko(@Param("price")Integer price,@Param("id")Integer id);
+    int UpdataMedicalko(@Param("price")Double price,@Param("id")Integer id);
     /**
      * 门诊缴费
      * @param id

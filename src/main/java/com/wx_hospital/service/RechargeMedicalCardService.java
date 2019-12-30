@@ -28,7 +28,7 @@ public interface RechargeMedicalCardService {
      * @param payWay
      * @return
      */
-    int UpdataMedical(@Param("price")Integer price,@Param("id")Integer id,@Param("oId")Integer oId,@Param("payWay")String payWay);
+    int UpdataMedical(@Param("price")Double price,@Param("id")Integer id,@Param("oId")Integer oId,@Param("payWay")String payWay);
     /**
      * 从就诊卡中扣钱信息
      * @param price
@@ -37,7 +37,7 @@ public interface RechargeMedicalCardService {
      * @param payWay
      * @return
      */
-    int UpdataMedicalko(@Param("price")Integer price,@Param("id")Integer id,@Param("oId")Integer oId,@Param("payWay")String payWay);
+    int UpdataMedicalko(@Param("price")Double price,@Param("id")Integer id,@Param("oId")Integer oId,@Param("payWay")String payWay);
     /**
      * 查询单个充值记录
      * @param id

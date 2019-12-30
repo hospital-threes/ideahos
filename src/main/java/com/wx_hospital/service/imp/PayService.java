@@ -64,7 +64,7 @@ public class PayService {
         reqParams.put("openid", openid);
         //签名
         String sign = WXPayUtil.generateSignature(reqParams, WxProgramPayConfig.KEY);
-        System.out.println("签名是++++++++++++++++"+sign);
+        System.out.println("签名是："+sign);
         reqParams.put("sign", sign);
         /*
             调用支付定义下单API,返回预付单信息 prepay_id
@@ -74,7 +74,7 @@ public class PayService {
         Map<String, String> result = PaymentKit.xmlToMap(xmlResult);
         //预付单信息
         String prepay_id = result.get("prepay_id");
-        System.out.println("prepay_id+++++)))))))++++++)))))))))))+++"+prepay_id);
+        System.out.println("prepay_id："+prepay_id);
         /*
             小程序调起支付数据签名
          */

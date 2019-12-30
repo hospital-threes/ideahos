@@ -34,7 +34,7 @@ public class RechargeMedicalCardController {
      */
     @RequestMapping("/UpdataMedical")
     @ResponseBody
-    public int UpdataMedical(Integer price, Integer id, Integer oId, String payWay) {
+    public int UpdataMedical(Double price, Integer id, Integer oId, String payWay) {
         return rechargeMedicalCardServiceImpl.UpdataMedical(price, id, oId, payWay);
     }
 
@@ -48,7 +48,7 @@ public class RechargeMedicalCardController {
      */
     @RequestMapping("/UpdataMedicalko")
     @ResponseBody
-    public int UpdataMedicalko(Integer price, Integer id, Integer oId, String payWay) {
+    public int UpdataMedicalko(Double price, Integer id, Integer oId, String payWay) {
         return rechargeMedicalCardServiceImpl.UpdataMedicalko(price, id, oId, payWay);
     }
 
