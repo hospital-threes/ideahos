@@ -7,7 +7,7 @@ package com.wx_hospital.sdk;
  * @description: TODO
  * @date 2019/12/1710:00
  */
-import org.apache.commons.io.Charsets;
+import org.apache.commons.codec.Charsets;
 
 import java.io.*;
 import java.nio.charset.Charset;
