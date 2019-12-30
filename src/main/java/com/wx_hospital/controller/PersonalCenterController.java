@@ -41,7 +41,7 @@ public class PersonalCenterController {
         //生成随机4位数验证码
         int code = (int) ((Math.random() * 9 + 1) * 1000);
         //将int 转换成 string
-        String pCode = String.valueOf(code);
+        String pCode = String.valueOf("1111");
         System.out.println(pCode);
 
         //生成key值
