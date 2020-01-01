@@ -100,7 +100,7 @@ public class PersonalCenterController {
     public SecPatient getDefaultPatient(Integer userId){
 
         SecPatient secPatient = personalCenterServiceImpl.getDefaultPatient(userId);
-
+        System.out.println("11111111"+secPatient);
         return secPatient;
     }
 

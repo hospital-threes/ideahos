@@ -16,6 +16,4 @@
           WHERE sp.id = sr.examine_id AND sr.clinic_department_id =ssd.id AND sr.id = #{reportId}
     </select>
 
-
-
 </mapper>

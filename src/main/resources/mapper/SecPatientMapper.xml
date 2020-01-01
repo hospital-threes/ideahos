@@ -27,7 +27,6 @@
        select *  from sec_patient where user_id=#{id} AND is_default = 0
     </select>
 
-
     <!--SecPatient SelectCardNumber(String patientId);查询就诊卡-->
     <select id="SelectCardNumber" resultType="com.wx_hospital.pojo.SecPatient">
      select patient_medicalCardNumber patientMedicalCardNumber from sec_patient where id=#{patientId}
