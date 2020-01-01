@@ -14,4 +14,12 @@ public interface SecHospitalArticleMapper {
      */
     List<SecHospitalArticle> SelectNews(@Param("articleType") Integer articleType,@Param("hospitalId") Integer hospitalId);
 
+    /**
+     * 医院信息介绍
+     * @param articleType
+     * @param hospitalId
+     * @return
+     */
+    List<SecHospitalArticle> SelectNews2(@Param("articleType") Integer articleType,@Param("hospitalId") Integer hospitalId);
+
 }

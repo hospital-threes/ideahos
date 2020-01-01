@@ -5,6 +5,14 @@
         SELECT
          *
         FROM
+         sec_hospital_article
+        WHERE
+         article_type=#{articleType} and hospital_id=#{hospitalId}
+    </select>
+    <select id="SelectNews2" resultType="com.wx_hospital.pojo.SecHospitalArticle">
+        SELECT
+         *
+        FROM
          sec_hospital_article ar , sec_hospital_article_info info
         WHERE
          ar.id=info.article_id and article_type=#{articleType} and hospital_id=#{hospitalId}
