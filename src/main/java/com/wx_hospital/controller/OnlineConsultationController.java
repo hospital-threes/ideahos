@@ -106,9 +106,13 @@ public class OnlineConsultationController {
         //医院id  hospitalId
         int hospitalId=Integer.parseInt(jsonObject.getString("hospitalId"));
 
+        //就诊人id
+         int  patientId=Integer.parseInt(jsonObject.getString("patientId"));
+        //医生id
+        int  doctorId=Integer.parseInt(jsonObject.getString("doctorId"));
 
         //添加数据库  咨询表\订单表
-        Response f= onlineConsultationServiceImpl.addSecConsultation(doctor,userid,phone,biaoti,text,fix,paymentStatus,orderNum,state,hospitalId);
+        Response f= onlineConsultationServiceImpl.addSecConsultation(doctor,userid,phone,biaoti,text,fix,paymentStatus,orderNum,state,hospitalId,patientId,doctorId);
 
         if (photos.size() > 0) {
             for (int i = 0; i < photos.size(); i++) {

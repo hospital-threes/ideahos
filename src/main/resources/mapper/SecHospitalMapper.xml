@@ -25,7 +25,7 @@
 
 
 
-
+<!--@Param("doctor") SecDoctor doctor, @Param("userid") int userid,@Param("phone") String phone,@Param("biaoti") String biaoti, @Param("text") String text,@Param("fix") String fix,@Param("paymentStatus") int paymentStatus,@Param("orderId") int orderIdd,@Param("state") int state,@Param("hospitalId")int hospitalId,@Param("patientId")int patientId,@Param("doctorId")int  doctorId-->
 
     <!--//
   boolean addSecConsultation(@Param("doctor") Doctor doctor, @Param("userid") int userid,@Param("phone") String phone,@Param("biaoti") String biaoti, @Param("text") String text,@Param("fix") String fix@Param("paymentStatus") int paymentStatus,@Param("orderId") int orderId);-->
@@ -36,9 +36,9 @@
       payment_status, doctor_id, response_id,
       response, response_time,hospital_id)
     values (null, 0, 0,
-      now(), #{orderId}, #{userid},
+      now(), #{orderId}, ,#{patientId},
       #{biaoti}, #{fix}, #{text},
-      #{paymentStatus}, #{doctor.id}, null,
+      #{paymentStatus}, #{docotrId}, null,
       null,null,#{hospitalId})
   </insert>
     <!--//添加订单表boolean addSecPicBySecConsultation(SecPic pic);
