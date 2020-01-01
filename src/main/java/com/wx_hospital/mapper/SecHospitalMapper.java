@@ -34,7 +34,7 @@ public interface SecHospitalMapper {
      * @param paymentStatus
      * @return
      */
-    boolean addSecConsultation(@Param("doctor") SecDoctor doctor, @Param("userid") int userid,@Param("phone") String phone,@Param("biaoti") String biaoti, @Param("text") String text,@Param("fix") String fix,@Param("paymentStatus") int paymentStatus,@Param("orderId") int orderIdd,@Param("state") int state,@Param("hospitalId")int hospitalId,@Param("patientId")int patientId,@Param("doctorId")int  doctorId);
+  //boolean addSecConsultation(@Param("doctor") SecDoctor doctor, @Param("userid") int userid,@Param("phone") String phone,@Param("biaoti") String biaoti, @Param("text") String text,@Param("fix") String fix,@Param("paymentStatus") int paymentStatus,@Param("orderId") int orderIdd,@Param("state") int state,@Param("patientId")int patientId,@Param("hospitalId")int hospitalId);
     /**
      * 添加图片
      * @param pic
@@ -46,5 +46,9 @@ public interface SecHospitalMapper {
 
     boolean updateConsultationState(int id);
 
-    boolean addSecConsultation(@Param("doctor") SecDoctor doctor,@Param("userid") int userid, @Param("phone") String phone,@Param("biaoti") String biaoti,@Param("text") String text, @Param("fix") String fix,@Param("paymentStatus") int paymentStatus, @Param("orderId") Integer id, @Param("hospitalId") int hospitalId);
+    boolean addSecConsultation(@Param("doctor")SecDoctor doctor,@Param("userid") int userid,@Param("phone") String phone,@Param("biaoti") String biaoti,@Param("text") String text,@Param("fix") String fix,@Param("paymentStatus") int paymentStatus,@Param("orderId") Integer id,@Param("state") int state, @Param("hospitalId")int hospitalId, @Param("patientId")int patientId,@Param("doctorId") int doctorId);
+
+
+//    boolean addSecConsultation(@Param("doctor") SecDoctor doctor, @Param("userid") int userid,@Param("phone") String phone,@Param("biaoti") String biaoti, @Param("text") String text,@Param("fix") String fix,@Param("paymentStatus") int paymentStatus,@Param("orderId") int orderId,@Param("state") int state,@Param("hospitalId") int hospitalId,@Param("patientId")int patientId,@Param("doctorId")int  doctorId);
+//    boolean addSecConsultation(@Param("doctor") SecDoctor doctor,@Param("userid") int userid, @Param("phone") String phone,@Param("biaoti") String biaoti,@Param("text") String text, @Param("fix") String fix,@Param("paymentStatus") int paymentStatus, @Param("orderId") Integer id, @Param("hospitalId") int hospitalId,@Param("patientId")int patientId,@Param("doctorId")int  doctorId);
 }

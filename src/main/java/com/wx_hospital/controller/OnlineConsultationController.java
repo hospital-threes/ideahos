@@ -110,6 +110,7 @@ public class OnlineConsultationController {
          int  patientId=Integer.parseInt(jsonObject.getString("patientId"));
         //医生id
         int  doctorId=Integer.parseInt(jsonObject.getString("doctorId"));
+        System.out.println("-------------------------------docid"+doctorId);
 
         //添加数据库  咨询表\订单表
         Response f= onlineConsultationServiceImpl.addSecConsultation(doctor,userid,phone,biaoti,text,fix,paymentStatus,orderNum,state,hospitalId,patientId,doctorId);

@@ -97,7 +97,7 @@ public class OnlineConsultationServiceImpl implements OnlineConsultationService 
      */
     @Transactional
     @Override
-    public Response addSecConsultation(SecDoctor doctor, int userid, String phone, String biaoti, String text, String fix, int paymentStatus, String orderNum, int state, int hospitalId,int patientId,int doctorId) {
+    public Response addSecConsultation(SecDoctor doctor, int userid, String phone, String biaoti, String text, String fix, int paymentStatus, String orderNum, int state, int hospitalId, int patientId, int doctorId) {
         System.out.println("userId+++++"+userid);
         if(fix.equals("男")){
             fix="1";
