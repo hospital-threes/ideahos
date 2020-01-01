@@ -5,8 +5,8 @@
         SELECT
          *
         FROM
-         sec_hospital_article
+         sec_hospital_article ar , sec_hospital_article_info info
         WHERE
-         article_type=#{articleType} and hospital_id=#{hospitalId}
+         ar.id=info.article_id and article_type=#{articleType} and hospital_id=#{hospitalId}
     </select>
 </mapper>
