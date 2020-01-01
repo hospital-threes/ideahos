@@ -38,6 +38,18 @@ public class HospitalIntroduceController {
     }
 
     /**
+     * 医院介绍信息
+     * @param articleType
+     * @param hospitalId
+     * @return
+     */
+    @RequestMapping("/SelectNews2")
+    @ResponseBody
+    public List<SecHospitalArticle> SelectNews2(Integer articleType, Integer hospitalId) {
+        List<SecHospitalArticle> list = hospitalIntroduceServiceImpl.SelectNews2(articleType, hospitalId);
+        return list;
+    }
+    /**
      * 医院动态详细
      * @param id
      * @return
