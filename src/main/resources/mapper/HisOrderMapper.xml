@@ -21,7 +21,7 @@
     <!-- /*查询充值的记录*/List<HisOrder> SelectIdOne(@Param("id")Integer id);-->
     <select id="SelectIdOne" resultType="com.wx_hospital.pojo.HisOrder">
        SELECT
-            *
+            hi.*,sc.patient_healthCareCardNumber AS patientMedicalcardnumber
         FROM
             his_order hi,sec_patient sc
         WHERE
